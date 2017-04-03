@@ -1,0 +1,37 @@
+Nouns
+Nooz4 – Name of main class
+GUI – What we are implementing
+MVC – Relationships for UML
+Model – parameter in every model class
+Several views – multiple view classes potentially
+Controller – Controller classes for the models
+User gestures 
+Model class - 
+Selection view – default setup of display window
+File menu – parameter for view
+File – Jmenu item
+Load – JMenuItem
+Save – JMenuItem
+Import – JMenuItem
+Export – JMenuItem
+NewsMaker – Jmenu item
+Add Newsmaker - JMenuItem
+Edit newsmaker - JMenuItem
+Delete Newsmaker - JMenuItem
+Delete Newsmaker List – JmenuItem
+NewsStory – Jmenu
+Add NewsStory - JMenuItem
+Edit NewsStory - JMenuItem
+Delete NewsStory - JMenuItem
+Delete All NewsStories – JmenuItem
+Display – Jmenu
+PieChart – JmenuItem
+Text – Jmenu Item
+Nooz - JPane 
+
+
+Verb Phrases
+Allow users to view and manipulate info graphically - 
+Follow MVC design pattern
+Data for model will be entered either importing data, loading data, entering data
+Model will be updated
