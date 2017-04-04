@@ -4,8 +4,9 @@
  * that fill a pie chart. Each wedge has a text (label)
  * and a percent.
  * 
- * @author Joe Pauly, Nathan Fritz, Cavan Gary
- *
+  * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class Wedge {
 
