@@ -1,7 +1,11 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
+ */
 public class NewsStoryList implements Serializable {
 	/**The Serial UID*/
 	private static final long serialVersionUID = 1L;
