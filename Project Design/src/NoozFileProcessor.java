@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
-
+/**
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
+ */
 public class NoozFileProcessor 
 {
 	/** The list of news makers.*/
