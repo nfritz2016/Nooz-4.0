@@ -3,6 +3,9 @@ import java.util.Comparator;
 /**
  * SourceComparator compares the source of two news stories.
  * 
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class SourceComparator implements Comparator<NewsStory> 
 {
