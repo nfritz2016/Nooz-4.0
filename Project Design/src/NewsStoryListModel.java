@@ -58,6 +58,7 @@ public class NewsStoryListModel extends NewsStoryList{
 		 * @param newsMaker The newsStorylist we want to delete.
 		 * @return Returns true if the list was deleted and false otherwise.
 		 */
+	        @Override
 		public boolean deleteNewsStoryList(NewsStoryList newsStoryList) {
 			
 		}
