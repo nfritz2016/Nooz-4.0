@@ -3,7 +3,9 @@ import java.util.Comparator;
 /**
  * DateComparator compares the date of two news stories.
  * If the date are the same, the time of day will be compared.
- * 
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class DateComparator implements Comparator<NewsStory> 
 {
