@@ -4,6 +4,9 @@ import java.util.Comparator;
  * LengthComparator compares the lengths of two news stories.
  * Comparison will be on the length in words of the news story.
  * 
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class LengthComparator implements Comparator<NewsStory> 
 {
