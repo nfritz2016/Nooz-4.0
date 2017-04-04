@@ -6,7 +6,9 @@ import java.util.ArrayList;
 /**
  * Serves as the model for data in a NewsMakerList.
  * 
- * @author Nathan Fritz, Joe Pauly, Cavan Gary
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  *
  */
 public class NewsMakerListModel extends NewsMakerList{
