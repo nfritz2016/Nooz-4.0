@@ -4,7 +4,9 @@ import java.awt.event.ActionListener;
 /**
  * Controller for NewsMakerList.
  * 
- * @author Nathan Fritz, Joe Pauly, Cavan Gary
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  *
  */
 public class NewsMakerListController {
