@@ -8,7 +8,9 @@ import javax.swing.JPanel;
  * PieChart object cotains the title of the chart the wedges of the chart.
  * Also contains the PieChartPanel class.
  * 
- * @author Joe Pauly, Nathan Fritz, Cavan Gary
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  *
  */
 public class PieChart {
