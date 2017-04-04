@@ -1,6 +1,10 @@
 import java.io.Serializable;
 import java.time.LocalDate;
-
+/**
+ * @author Nathan Fritz - 113294199
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
+*/
 abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**The Serial UID*/
 	private static final long serialVersionUID = 1L;
