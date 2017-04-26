@@ -37,12 +37,47 @@ class NewsStoryListModel implements Serializable {
 		return newsStories.isEmpty();
 	}
 	
-	//TODO: check to see if returning correct object
-	public DefaultListModel<NewsStory> getNewsStories(){
-		return this.newsStories;
+	/**
+	 * The accessor for determining the number of stories in the list.
+	 * <P>
+	 * Note that this accessor name violates the convention that accessor names
+	 * should start with "get" (or "is" for booleans). However, "size" is an
+	 * accepted convention for names serving this particular purpose, so we are
+	 * following the second convention rather than the first.
+	 * </P>
+	 * 
+	 * @return The number of stories in the list.
+	 */
+	public int size() {
+		return this.newsStories.size();
 	}
 	
+	public boolean contains (NewsStory newsStory){
+		return this.newsStories.contains(newsStory);
+	}
 	
+	/**
+	 * An accessor for getting a story from the list based on its position
+	 * (index) in the list.
+	 * 
+	 * @param index
+	 *            The location from which to get the story.
+	 * @return The newspaper story at the index, if the index is valid.
+	 * @throws IllegalArgumentException
+	 *             if the index is not valid.
+	 */
+	public NewsStory get(int index) {
+		if (index >= 0 && index < this.newsStories.size()) {
+			return this.newsStories.get(index);
+		} else {
+			throw new IllegalArgumentException("Index out of bounds: " + index);
+		}
+	}
+	
+	//TODO: check to see if returning correct object
+	public DefaultListModel<NewsStory> getNewsStories(){
+			return this.newsStories;
+	}
 	
 	/**
 	 * The mutator for adding a newspaper story to the list.
@@ -90,36 +125,6 @@ class NewsStoryListModel implements Serializable {
 		}
 	}
 
-	/**
-	 * The accessor for determining the number of stories in the list.
-	 * <P>
-	 * Note that this accessor name violates the convention that accessor names
-	 * should start with "get" (or "is" for booleans). However, "size" is an
-	 * accepted convention for names serving this particular purpose, so we are
-	 * following the second convention rather than the first.
-	 * </P>
-	 * 
-	 * @return The number of stories in the list.
-	 */
-	public int size() {
-		return this.newsStories.size();
-	}
 
-	/**
-	 * An accessor for getting a story from the list based on its position
-	 * (index) in the list.
-	 * 
-	 * @param index
-	 *            The location from which to get the story.
-	 * @return The newspaper story at the index, if the index is valid.
-	 * @throws IllegalArgumentException
-	 *             if the index is not valid.
-	 */
-	public NewsStory get(int index) {
-		if (index >= 0 && index < this.newsStories.size()) {
-			return this.newsStories.get(index);
-		} else {
-			throw new IllegalArgumentException("Index out of bounds: " + index);
-		}
-	}
+	
 }
