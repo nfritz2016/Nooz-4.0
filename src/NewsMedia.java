@@ -19,14 +19,19 @@ public enum NewsMedia {
 		case ONLINE:
 			return "Online";
 		case TV:
-			return "tv";//TODO: Check to see if this is right output
+			return "TV";//TODO: Check to see if this is right output
 		default:
 			throw new IllegalArgumentException();
 		}
 	}
 	
 	public List<NewsMedia> valuesAsList() {
-		//TODO: do method
+		
+		VALUES_LIST.add(NEWSPAPER);
+		VALUES_LIST.add(ONLINE);
+		VALUES_LIST.add(TV);
+		
+		return VALUES_LIST;
 	
 	}
 
