@@ -21,6 +21,7 @@ import java.util.Comparator;
  * @version 1.0
  * 
  */
+//test comment
 public class DateComparator implements Comparator<NewsStory> {
 	/**
 	 * We create a single comparator object for the class and make a public
