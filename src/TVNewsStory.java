@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -26,7 +27,7 @@ import java.time.LocalDate;
  * @version 2.0
  * 
  */
-public class TVNewsStory extends NewsStory, implements Serializable {
+public class TVNewsStory extends NewsStory implements Serializable {
 	
 	/**
 	 * Generated serial version ID
