@@ -1,4 +1,4 @@
-import java.awt.List;
+import java.util.List;
 
 /**
  * 
@@ -20,11 +20,15 @@ public enum NewsMedia {
 			return "Online";
 		case TV:
 			return "tv";//TODO: Check to see if this is right output
+		default:
+			throw new IllegalArgumentException();
 		}
 	}
 	
 	public List<NewsMedia> valuesAsList() {
-		
+		//TODO: do method
+	
 	}
+
 
 }
