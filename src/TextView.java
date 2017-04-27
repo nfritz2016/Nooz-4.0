@@ -1,10 +1,15 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class TextView {
+public class TextView implements ActionListener {
+	/**
+	 * 
+	 */
 	private JFrame jfText;
 	private NewsMakerModel newsMakerModel;
 	private List<NEwsMedia> newsMedia;
@@ -28,8 +33,9 @@ public class TextView {
 	private void constructTitle() {
 		
 	}
-	
-	private void actionPerformed(ActionEvent) {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
-	}
-}
+	}}
