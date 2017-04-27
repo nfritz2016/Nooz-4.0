@@ -1,4 +1,5 @@
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 import javax.swing.DefaultListModel;
@@ -9,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class EditNewsMakerView implements Serializable {
+public class EditNewsMakerView implements Serializable, ActionListener {
 
 	/**
 	 * 
