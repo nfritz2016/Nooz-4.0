@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -21,7 +22,7 @@ import java.time.LocalDate;
  * @version 3.0
  * 
  */
-public class NewspaperStory extends NewsStory, implements Serializable {
+public class NewspaperStory extends NewsStory implements Serializable {
 	
 	
 
