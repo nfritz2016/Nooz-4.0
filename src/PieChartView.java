@@ -1,10 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
-//TODO write constructor
-//TODO write methods
-//TODO write Javadoc
 /**
  * 
  * @author Alex
@@ -66,8 +64,19 @@ public class PieChartView implements ActionListener{
 	 * @return
 	 */
 	//created by alex 4/21
-	private String constructTitle(){
-		return null;
+	//written by alex 4/30
+	public String constructTitle(){
+		String title = "Pie Chart of " ;
+		
+		for(int i = 0; i < media.size(); ++i){
+			title += media.get(i).toString() + " News Stories " + " and ";
+		}
+		
+		title = title.substring(0, title.length() - 5);
+		
+		title += "Sorted by " + content.toString() + " (words or word equivalents)";
+		
+		return title;
 	}
 	
 	/**
@@ -76,7 +85,34 @@ public class PieChartView implements ActionListener{
 	 */
 	//created by alex 4/21
 	private List<Wedge> constructWedges(){
-		return null;
+		int numStoriesTotal = newsMakerModel.getNewsStories().size();
+		NewsStoryListModel selectedList = new NewsStoryListModel();
+		
+		for(int index = 0; index < media.size(); ++index){
+			if(media.get(index) == NewsMedia.NEWSPAPER){
+				for(int i = 0; i < numStoriesTotal; ++i){
+					if(newsMakerModel.getNewsStories().get(i) instanceof NewspaperStory){
+						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					}
+				}
+			}
+			if(media.get(index) == NewsMedia.ONLINE){
+				for(int i = 0; i < numStoriesTotal; ++i){
+					if(newsMakerModel.getNewsStories().get(i) instanceof OnlineNewsStory){
+						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					}
+				}
+			}
+			if(media.get(index) == NewsMedia.TV){
+				for(int i = 0; i < numStoriesTotal; ++i){
+					if(newsMakerModel.getNewsStories().get(i) instanceof TVNewsStory){
+						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					}
+				}
+			}
+		}
+		
+		for(int j = 0; j < selectedList.size(); ++j){
 	}
 	
 	/**
@@ -86,6 +122,16 @@ public class PieChartView implements ActionListener{
 	//created by alex 4/21
 	public void actionPerformed(ActionEvent actionEvent){
 		
+	}
+	
+	//TODO test main, delete leter
+	public static void main(String[] args){
+		List<NewsMedia> testList = new ArrayList<NewsMedia>();
+		testList.add(NewsMedia.TV);
+		
+		PieChartView test = new PieChartView(null, testList, NewsContent.SOURCE, NewsMetric.LENGTH);
+		
+		System.out.print(test.constructTitle());
 	}
 	
 }
