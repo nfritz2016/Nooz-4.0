@@ -85,34 +85,39 @@ public class PieChartView implements ActionListener{
 	 */
 	//created by alex 4/21
 	private List<Wedge> constructWedges(){
-		int numStoriesTotal = newsMakerModel.getNewsStories().size();
+		int numStoriesTotal = newsMakerModel.getNewsStoryListModel().size();
 		NewsStoryListModel selectedList = new NewsStoryListModel();
 		
 		for(int index = 0; index < media.size(); ++index){
 			if(media.get(index) == NewsMedia.NEWSPAPER){
 				for(int i = 0; i < numStoriesTotal; ++i){
-					if(newsMakerModel.getNewsStories().get(i) instanceof NewspaperStory){
-						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					if(newsMakerModel.getNewsStoryListModel().get(i) instanceof NewspaperStory){
+						selectedList.add(newsMakerModel.getNewsStoryListModel().get(i));
 					}
 				}
 			}
 			if(media.get(index) == NewsMedia.ONLINE){
 				for(int i = 0; i < numStoriesTotal; ++i){
-					if(newsMakerModel.getNewsStories().get(i) instanceof OnlineNewsStory){
-						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					if(newsMakerModel.getNewsStoryListModel().get(i) instanceof OnlineNewsStory){
+						selectedList.add(newsMakerModel.getNewsStoryListModel().get(i));
 					}
 				}
 			}
 			if(media.get(index) == NewsMedia.TV){
 				for(int i = 0; i < numStoriesTotal; ++i){
-					if(newsMakerModel.getNewsStories().get(i) instanceof TVNewsStory){
-						selectedList.add(newsMakerModel.getNewsStories().get(i));
+					if(newsMakerModel.getNewsStoryListModel().get(i) instanceof TVNewsStory){
+						selectedList.add(newsMakerModel.getNewsStoryListModel().get(i));
 					}
 				}
 			}
 		}
 		
-		for(int j = 0; j < selectedList.size(); ++j){
+		List<Wedge> wedgeList = new ArrayList<Wedge>();
+		double parts = selectedList.size();
+		for (int i = 0; i < (int) parts; i++) {
+			wedgeList.add(new Wedge(100.0 / parts, "Label"));
+		}
+		return wedgeList;
 	}
 	
 	/**
