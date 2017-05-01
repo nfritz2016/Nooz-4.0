@@ -15,7 +15,10 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	public NewsStoryListModel(NewsStoryListModel newsStoryListModel) {
-		//TODO
+		this.newsStories.clear();
+		for (int i = 0; i < newsStoryListModel.size(); i++) {
+			this.newsStories.addElement(newsStoryListModel.get(i));
+		}
 	}
 	
 	public boolean isEmpty() {
@@ -53,7 +56,10 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	public void setNewsStories(NewsStoryListModel newsStoryListModel) {
-		
+		this.newsStories.clear();
+		for (int i = 0; i < newsStoryListModel.size(); i++) {
+			this.newsStories.addElement(newsStoryListModel.get(i));
+		}
 	}
 	
 	public void setNewsStoriesFromArray(NewsStory[] newsStoryArray) {
