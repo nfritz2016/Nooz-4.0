@@ -1,366 +1,180 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.DefaultListModel;
 
-//TODO add to class when he releases UML
-//TODO write Javadoc
-/**
- * 
- * @author Alex
- *
- */
-//class created by alex 4/21
-//all fields created by alex 4/25
-public class NewsDataBaseModel implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4731282697611876377L;
+public class NewsDataBaseModel {
+	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
+	private Map<String, String> newsSourceMap = new HashMap<String, String>();
+	private Map<String, String> newsTopicMap = new HashMap<String, String>();
+	private Map<String, String> newsSubjectMap = new HashMap<String, String>();
+	NewsMakerModel newsMakerModel = new NewsMakerModel();
+	private NewsMakerListModel newsMakerListModel = new NewsMakerListModel();
+	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
-	/**
-	 * 
-	 */
-	private ArrayList<ActionListener> actionListenerList;
-	
-	/**
-	 * 
-	 */
-	private Map<String, String> newsSourceMap;
-	
-	/**
-	 * 
-	 */
-	private Map<String, String> newsTopicMap;
-	
-	/**
-	 * 
-	 */
-	private Map<String, String> newsSubjectMap;
-	
-	/**
-	 * 
-	 */
-	NewsMakerModel none;
-	
-	/**
-	 * 
-	 */
-	private NewsMakerListModel newsMakerListModel;
-	
-	/**
-	 * 
-	 */
-	private NewsStoryListModel newsStoryListModel;
-	
-	/**
-	 * 
-	 */
-	//created by alex 4/25
-	public NewsDataBaseModel(){
+	public NewsDataBaseModel() {
 		
 	}
 	
-	/**
-	 * 
-	 * @param newsMakerListModel
-	 * @param newsStoryListModel
-	 */
-	//created by alex 4/25
-	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel){
+	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
+		this.newsMakerListModel = newsMakerListModel;
+		this.newsStoryListModel = newsStoryListModel;
 		
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public Map<String, String> getNewsSourceMap(){
-		return null;
+	public Map<String, String> getNewsSourceMap() {
+		return this.newsSourceMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public String[] getNewsSources(){
-		return null;
+	public String[] getNewsSources() {
+		/*
+		String[] sources = new String[this.newsSourceMap.size()];
+		int i = 0;
+		for (String source : this.newsSourceMap.values()) {
+			sources[i] = source;
+			i++;
+		}
+		return sources;
+		*/
+		return (String[]) this.newsSourceMap.values().toArray();
 	}
 	
-	/**
-	 * 
-	 * @param newsSourceMap
-	 */
-	//created by alex 4/25
-	public void setNewsSourceMap(Map<String, String> newsSourceMap){
-		
+	public void setNewsSourceMap(Map<String, String> newsSourceMap) {
+		this.newsSourceMap = newsSourceMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public Map<String, String> getNewsTopicMap(){
-		return null;
+	public Map<String, String> getNewsTopicMap() {
+		return this.newsTopicMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public String[] getNewsTopics(){
-		return null;
+	public String[] getNewsTopics() {
+		return (String[]) this.newsTopicMap.values().toArray();
 	}
 	
-	/**
-	 * 
-	 * @param newsTopicMap
-	 */
-	//created by alex 4/25
-	public void setNewsTopicMap(Map<String, String> newsTopicMap){
-		
+	public void setNewsTopicMap(Map<String, String> newsTopicMap) {
+		this.newsTopicMap = newsTopicMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public Map<String, String> getNewsSubjectMap(){
-		return null;
+	public Map<String, String> getNewsSubjectMap() {
+		return this.newsSubjectMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public String[] getNewsSubjects(){
-		return null;
+	public String[] getNewsSubjects() {
+		return (String[]) this.newsSubjectMap.values().toArray();
 	}
 	
-	/**
-	 * 
-	 * @param newsSubjectMap
-	 */
-	//created by alex 4/25
-	public void setNewsSubjectMap(Map<String, String> newsSubjectMap){
-		
+	public void setNewsSubjectMap(Map<String, String> newsSubjectMap) {
+		this.newsSubjectMap = newsSubjectMap;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public boolean newsMakerListIsEmpty(){
-		return false;
+	public boolean newsMakerListIsEmpty() {
+		return this.newsMakerListModel.isEmpty();
 	}
 	
-	/**
-	 * 
-	 * @param newsMakerModel
-	 * @return
-	 */
-	//created by alex 4/25
-	public boolean containsNewsMakerModel(NewsMakerModel newsMakerModel){
-		return false;
+	public boolean containsNewsMakerModel(NewsMakerModel newsMakerModel) {
+		return this.newsMakerListModel.contains(newsMakerModel);
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public NewsMakerListModel getNewsMakerListModel(){
-		return null;
+	public NewsMakerListModel getNewsMakerListModel() {
+		return this.newsMakerListModel;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public  String[] getNewsMakerNames(){
-		return null;
+	public String[] getNewsMakerNames() {
+		return this.newsMakerListModel.getNewsMakerNames();
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public DefaultListModel<NewsMakerModel> getNewsMakers(){
-		return null;
+	public DefaultListModel<NewsMakerModel> getNewsMakers() {
+		return this.newsMakerListModel.getNewsMakers();
 	}
 	
-	/**
-	 * 
-	 * @param newsMakerListModel
-	 */
-	//created by alex 4/25
-	public void setNewsMakerListModel(NewsMakerListModel newsMakerListModel){
-		
+	public void setNewsMakerListModel(NewsMakerListModel newsMakerListModel) {
+		this.newsMakerListModel = newsMakerListModel;
 	}
 	
-	/**
-	 * 
-	 * @param newsMakerModel
-	 */
-	//created by alex 4/25
-	public void addNewsMakerModel(NewsMakerModel newsMakerModel){
-		
+	public void addNewsMakerModel(NewsMakerModel newsMakerModel) {
+		this.newsMakerListModel.add(newsMakerModel);
 	}
 	
-	/**
-	 * 
-	 * @param newsMakerModel
-	 */
-	//created by alex 4/25
-	public void replaceNewsMakerModel(NewsMakerModel newsMakerModel){
-		
+	public void replaceNewsMakerModel(NewsMakerModel newsMakerModel) {
+		this.newsMakerListModel.replace(newsMakerModel);
 	}
 	
-	/**
-	 * 
-	 * @param newsMakers
-	 */
-	//created by alex 4/25
-	public void removeNewsMakers(DefaultListModel<NewsMakerModel> newsMakers){
-		
+	public void removeNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
+		this.newsMakerListModel.removeListOfNewsMakers(newsMakers);
 	}
 	
-	/**
-	 * 
-	 */
-	//created by alex 4/25
-	public void removeAllNewsMakers(){
-		
+	public void removeAllNewsMakers() {
+		this.newsMakerListModel.removeAllNewsMakers();
 	}
 	
-	/**
-	 * 
-	 */
-	//created by alex 4/25
-	public void sortNewsMakerListModel(){
-		
+	public void sortNewsMakerListModel() {
+		this.newsMakerListModel.sort();
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public boolean newsStoryListIsEmpty(){
-		return false;
+	public boolean newsStoryListIsEmpty() {
+		return this.newsStoryListModel.isEmpty();
 	}
 	
-	/**
-	 * 
-	 * @param newsStory
-	 * @return
-	 */
-	//created by alex 4/25
-	public boolean containsNewsStory(NewsStory newsStory){
-		return false;
+	public boolean containsNewsStory(NewsStory newsStory) {
+		return this.newsStoryListModel.contains(newsStory);
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public NewsStoryListModel getNewsStoryListModel(){
-		return null;
+	public NewsStoryListModel getNewsStoryListModel() {
+		return this.newsStoryListModel;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	//created by alex 4/25
-	public DefaultListModel<NewsStory> getNewsStories(){
-		return null;
+	public DefaultListModel<NewsStory> getNewsStories() {
+		return this.newsStoryListModel.getNewsStories();
 	}
 	
-	/**
-	 * 
-	 * @param newsStoryListModel
-	 */
-	//created by alex 4/25
-	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel){
-		
+	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
+		this.newsStoryListModel = newsStoryListModel;
 	}
 	
-	/**
-	 * 
-	 * @param newsStoryModelArray
-	 */
-	//created by alex 4/25
-	public void setNewsStoryListModelFromArray(NewsStory[] newsStoryModelArray){
-		
+	public void setNewsStoryListModelFromArray(NewsStory[] newsStoryArray) {
+		this.newsStoryListModel.setNewsStoriesFromArray(newsStoryArray);
 	}
 	
-	/**
-	 * 
-	 * @param newsStory
-	 */
-	//created by alex 4/25
-	public void addNewsStory(NewsStory newsStory){
-		
+	public void addNewsStory(NewsStory newsStory) {
+		this.newsStoryListModel.add(newsStory);
 	}
 	
-	/**
-	 * 
-	 * @param newsStories
-	 */
-	//created by alex 4/25
-	public void removeNewsStories(DefaultListModel<NewsStory> newsStories){
-		
+	public void removeNewsStories(DefaultListModel<NewsStory> newsStories) {
+		this.newsStoryListModel.removeListOfNewsStories(newsStories);
 	}
 	
-	/**
-	 * 
-	 */
-	//created by alex 4/25
-	public void removeAllNewsStories(){
-		
+	public void removeAllNewsStories() {
+		//TODO should there be a removeall() in NewsStoryListModel?
 	}
 	
-	/**
-	 * 
-	 * @param l
-	 */
-	//created by alex 4/25
-	public void addActionListener(ActionListener l){
-		
+	public void addActionListener(ActionListener l) {
+		if (actionListenerList == null) {
+			actionListenerList = new ArrayList<ActionListener>();
+		}
+		actionListenerList.add(l);
 	}
 	
-	/**
-	 * 
-	 * @param l
-	 */
-	//created by alex 4/25
-	public void removeActionListener(ActionListener l){
-		
+	public void removeActionListener(ActionListener l) {
+		if (actionListenerList != null && actionListenerList.contains(l)) {
+			actionListenerList.remove(l);
+		}
 	}
 	
-	/**
-	 * 
-	 * @param e
-	 */
-	//created by alex 4/25
-	private void processEvent(ActionEvent e){
-		
+	private void processEvent(ActionEvent e) {
+		ArrayList<ActionListener> list;
+		synchronized (this) {
+			if (actionListenerList == null)
+				return;
+			list = (ArrayList<ActionListener>) actionListenerList.clone();
+		}
+		for (int i = 0; i < list.size(); i++) {
+			ActionListener listener = list.get(i);
+			listener.actionPerformed(e);
+		}
 	}
-
-
 }
