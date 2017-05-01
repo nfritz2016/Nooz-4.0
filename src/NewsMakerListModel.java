@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 
@@ -15,7 +17,10 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public NewsMakerListModel(NewsMakerListModel newsMakerListModel) {
-		//TODO
+		this.newsMakerDefaultListModel.clear();
+		for (int i = 0; i < newsMakerListModel.size(); i++) {
+		newsMakerDefaultListModel.addElement(newsMakerListModel.get(i));
+		}
 	}
 	
 	public boolean isEmpty() {
@@ -49,7 +54,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public String[] getNewsMakerNames() {
-		return null;
+		return (String[]) this.newsMakerDefaultListModel.toArray();
 	}
 	
 	public void add(NewsMakerModel newsMakerModel) {
@@ -58,7 +63,7 @@ public class NewsMakerListModel implements Serializable {
 	
 	public void replace(NewsMakerModel newsMakerModel) {
 		if (this.newsMakerDefaultListModel.contains(newsMakerModel)) {
-			
+			this.newsMakerDefaultListModel.set(this.newsMakerDefaultListModel.indexOf(newsMakerModel), newsMakerModel);
 		}
 	}
 	
@@ -77,10 +82,13 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public void setNewsMakersFromNewsMakerList(NewsMakerListModel newsMakerListModel) {
-		//TODO
+		this.newsMakerDefaultListModel.clear();
+		for (int i = 0; i < newsMakerListModel.size(); i++) {
+			this.newsMakerDefaultListModel.addElement(newsMakerListModel.get(i));
+		}
 	}
 	
 	public void sort() {
-		//TODO
+		//TODO not sure how to sort
 	}
 }
