@@ -38,7 +38,7 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
-		//TODO
+		this.newsStoryListModel = newsStoryListModel;
 	}
 	
 	public void removeNewsStory(NewsStory newsStory) {
@@ -46,18 +46,23 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	public boolean equals(Object o) {
-		return true;
-		//TODO
+		if (o instanceof NewsMakerModel) {
+			NewsMakerModel newsMakerModel = (NewsMakerModel) o;
+			if (newsMakerModel.getName().equals(this.name)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public int compareTo(NewsMakerModel newsMakerModel) {
-		return 0;
-		//TODO
+		return this.compareTo(newsMakerModel);
+		//TODO not entirely sure
 	}
 	
 	public String toString() {
 		return name;
-		//not sure
+		//TODO not entirely sure b/c no javadoc
 	}
 	
 	public void addActionListener(ActionListener actionListener) {
@@ -69,11 +74,20 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	private void processEvent(ActionEvent e) {
-		//TODO
+		ArrayList<ActionListener> list;
+		synchronized (this) {
+			if (actionListenerList == null)
+				return;
+			list = (ArrayList<ActionListener>) actionListenerList.clone();
+		}
+		for (int i = 0; i < list.size(); i++) {
+			ActionListener listener = list.get(i);
+			listener.actionPerformed(e);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//TODO
+		//TODO idk what to do here
 	}
 }
