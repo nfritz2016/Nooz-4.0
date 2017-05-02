@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class NewsController {
 
@@ -17,6 +18,7 @@ public class NewsController {
 	
 	
 	public NewsController() {
+		
 	}
 	
 	//TODO write 
