@@ -30,7 +30,7 @@ class NoozFileProcessor {
 	
 	private static NewsStoryListModel newsStories = new NewsStoryListModel();
 	
-	NewsDataBaseModel newsDataBase = new NewsDataBaseModel();
+	private static NewsDataBaseModel newsDataBase;
 
 	/**
 	 * The primary method for reading the Nooz-style data file.
@@ -80,6 +80,9 @@ class NoozFileProcessor {
 			nextLine = br.readLine();
 		}
 		br.close();
+		
+		newsDataBase.setNewsMakerListModel(newsMakers);
+		newsDataBase.setNewsStoryListModel(newsStories);
 
 		return newsDataBase;
 	}
@@ -238,6 +241,9 @@ class NoozFileProcessor {
 		// The news story is added to each news maker
 		newsMaker1.addNewsStory(newsStory);
 		newsMaker2.addNewsStory(newsStory);
+		//Then the news Stories are added to the list of news Stories
+		newsStories.add(newsStory);
+		
 	}
 
 	/**

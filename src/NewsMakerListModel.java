@@ -53,6 +53,10 @@ public class NewsMakerListModel implements Serializable {
 		return this.newsMakerDefaultListModel.getElementAt(index);
 	}
 	
+	public NewsMakerModel get(NewsMakerModel newsMakerModel){
+		return this.newsMakerDefaultListModel.getElementAt(this.newsMakerDefaultListModel.indexOf(newsMakerModel));
+	}
+	
 	public String[] getNewsMakerNames() {
 		return (String[]) this.newsMakerDefaultListModel.toArray();
 	}

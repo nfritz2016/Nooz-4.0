@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 
 public class NewsDataBaseModel {
+	
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
 	private Map<String, String> newsSourceMap = new HashMap<String, String>();
 	private Map<String, String> newsTopicMap = new HashMap<String, String>();
