@@ -16,12 +16,12 @@ public class NoozDriver {
 	/**
 	 * 
 	 */
-	private static SelectionView selectionView;
+	private static SelectionView selectionView = new SelectionView();
 	
 	/**
 	 * 
 	 */
-	private static NewsController newsController;
+	private static NewsController newsController = new NewsController();
 	
 	/**
 	 * 
