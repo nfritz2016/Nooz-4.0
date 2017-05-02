@@ -1,9 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public class NewsController {
 
@@ -14,21 +13,19 @@ public class NewsController {
 	private AddEditNewsStoryView addEditNewsStoryView;
 	private NewsStory editedNewsStory;
 	private MediaTypeSelectionView mediaTypeSelectionView;
-	private List<NewsMedia> selectedMediaTypes;
+	private List<NewsMedia> selectedMediaTypes = new ArrayList<NewsMedia>();
 	
 	
-	//TODO write constructor
-	public NewsController(){
-		//leave empty?
+	public NewsController() {
 	}
 	
 	//TODO write 
-	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel){
+	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
 	}
 	
 	//TODO write
-	public void setSelectionView(SelectionView selectionView){
+	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
 	}
 	
@@ -64,17 +61,21 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteNewsMakers() {
-		
+		NewsMakerModel.removeAllNewsMakers();
 	}
 	
 	//TODO write
 	private void deleteNewsMakerList() {
 		//calls on method in NewsMakerListModel
+		//SHOULDN'T THIS BE removeListOfNewsMakers ?? but then what are the arguments
+		//Get args from the view or model
+		NewsMakerListModel.removeListOfNewsMakers(NewsMakerModel.getNewsMakerListModel());
 	}
 	
 	//TODO write
 	private void addNewsStory() {
 		//calls or uses JDialog
+		NewsMakerModel.addNewsStory();
 	}
 	
 	//TODO write
@@ -94,7 +95,7 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteAllNewsStories() {
-		
+		NewsStoryListModel.removeListOfNewsStories(NewsStoryListModel.getNewsStories());
 	}
 	
 	/**
@@ -178,29 +179,26 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
+			if ("Load".equals(actionEvent.getActionCommand())) {
+				loadNewsData();
+			}
+			if ("Save".equals(actionEvent.getActionCommand())) {
+				saveNewsData();
+			}
+			if ("Import".equals(actionEvent.getActionCommand())) {
+				importNoozStories();
+			}
+			if ("Export".equals(actionEvent.getActionCommand())) {
+				exportNewsStories();
+			}
 		}
 
 	}
 	
 	private class NewsMakerMenuListener implements ActionListener {
-		//TODO not sure on how correct this is
+		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
-			if ("Add Newsmaker".equals(actionEvent.getActionCommand())) {
-                addNewsMaker();
-            }
-			if ("Edit Newsmaker".equals(actionEvent.getActionCommand())) {
-				editNewsMakers();
-            }
-			if ("Delete Newsmaker".equals(actionEvent.getActionCommand())) {
-				deleteNewsMakers();
-            }
-			if ("Delete Newsmaker List".equals(actionEvent.getActionCommand())) {
-				deleteNewsMakerList();
-            }
-            viewDialog.dispose();
 			
 		}
 	}
@@ -209,7 +207,21 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
+			if ("Add News Story".equals(actionEvent.getActionCommand())) {
+				loadNewsData();
+			}
+			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
+				editNewsStories();
+			}
+			if ("Sort News Stories".equals(actionEvent.getActionCommand())) {
+				sortNewsStories();
+			}
+			if ("Delete News Story".equals(actionEvent.getActionCommand())) {
+				deleteNewsStories();
+			}
+			if ("Delete All News Stories".equals(actionEvent.getActionCommand())) {
+				deleteAllNewsStories();
+			}
 		}
 	}
 	
@@ -217,7 +229,12 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
+			if ("Pie Chart".equals(actionEvent.getActionCommand())) {
+				displayPieCharts();
+			}
+			if ("Text".equals(actionEvent.getActionCommand())) {
+				displayTextViews();
+			}
 		}
 	}
 	
@@ -225,6 +242,14 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
+			//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
+			if(!NewsMakerListModel.getNewsMakerNames().contains())
+			/*
+			 * if name exists, confirm replacing existing news maker with name whose name has just been change
+			 * by using JOptionPane
+			 * Replace or don't depending on confirmation
+			 */
+		
 			
 		}
 	}
