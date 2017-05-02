@@ -1,6 +1,7 @@
 /**
  * 
  * @author Alex
+ * @author Nathan Fritz
  *
  */
 //class created by alex 4/25
@@ -30,9 +31,9 @@ public class NoozDriver {
 	public static void main(String[] args){
 		
 		newsDataBaseModel = new NewsDataBaseModel();
-		selectionView = new SelectionView();
-		newsController = new NewsController();
-		
+		selectionView.setNewsDataBaseModel(newsDataBaseModel);
+		newsController.setNewsDataBaseModel(newsDataBaseModel);
+		newsController.setSelectionView(selectionView);
 	}
 
 }
