@@ -85,9 +85,17 @@ public class PieChartView implements ActionListener{
 	 */
 	//created by alex 4/21
 	private List<Wedge> constructWedges(){
+		
+		//Gets number of total stories
 		int numStoriesTotal = newsMakerModel.getNewsStoryListModel().size();
+		
+		//Creates a list to hold only the types selected
 		NewsStoryListModel selectedList = new NewsStoryListModel();
 		
+		/*
+		 * Iterates through the list of NewsMedia enums and adds all the stories of that type to the list of desired
+		 * stories, similar to what was done in TextView
+		 */
 		for(int index = 0; index < media.size(); ++index){
 			if(media.get(index) == NewsMedia.NEWSPAPER){
 				for(int i = 0; i < numStoriesTotal; ++i){
