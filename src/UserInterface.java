@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.util.List;
 import java.util.Locale;
 /**
  * Project 3, CS 2334, Section 010, March 8, 2017
@@ -15,6 +16,7 @@ import java.util.Locale;
  * 
  * @author Dean Hougen
  * @version 3.0
+ * edited 5/1 by Alex Kloppenburg
  *
  */
 class UserInterface {
@@ -53,7 +55,7 @@ class UserInterface {
 	 *            included in the list.
 	 * @return The story in the display format.
 	 */
-	private static String convertToOutputFormat(NewsStory newsStory, String mediaType) {
+	private static String convertToOutputFormat(NewsStory newsStory, List<NewsMedia> mediaType) {
 
 		// TODO: Append each line with subject and (for TV and online) part of
 		// day.
@@ -61,12 +63,13 @@ class UserInterface {
 		LocalDate date = newsStory.getDate();
 
 		// If the type doesn't include TV, use words
-		if (!mediaType.contains("t")) {
+		if (!(mediaType.contains(NewsMedia.TV))) {
 			if (newsStory instanceof NewspaperStory) {
 				storyString += date.getMonth().getDisplayName(TextStyle.FULL, Locale.US) + " " + date.getDayOfMonth()
 						+ ", " + date.getYear() + "; " + newsStory.getSource() + "; " + newsStory.getLength()
 						+ " words; " + newsStory.getTopic() + "; " + newsStory.getSubject();
-			} else if (newsStory instanceof OnlineNewsStory) {
+			}
+			else if (newsStory instanceof OnlineNewsStory) {
 				storyString += date.getMonth().getDisplayName(TextStyle.FULL, Locale.US) + " " + date.getDayOfMonth()
 						+ ", " + date.getYear() + "; " + newsStory.getSource() + "; " + newsStory.getLength()
 						+ " words; " + newsStory.getTopic() + "; " + newsStory.getSubject() + "; "
@@ -74,7 +77,7 @@ class UserInterface {
 			}
 		}
 		// If the type is TV news, use seconds (from length)
-		else if (mediaType.equals("t")) {
+		else if (mediaType.contains(NewsMedia.TV)) {
 			storyString += date.getMonth().getDisplayName(TextStyle.FULL, Locale.US) + " " + date.getDayOfMonth() + ", "
 					+ date.getYear() + "; " + newsStory.getSource() + "; " + newsStory.getLength() + " seconds; "
 					+ newsStory.getTopic() + "; " + newsStory.getSubject() + "; "
