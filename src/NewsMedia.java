@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +27,8 @@ public enum NewsMedia {
 	}
 	
 	public List<NewsMedia> valuesAsList() {
+		
+		VALUES_LIST = new ArrayList<NewsMedia>();
 		
 		VALUES_LIST.add(NEWSPAPER);
 		VALUES_LIST.add(ONLINE);

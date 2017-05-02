@@ -1,6 +1,7 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -18,7 +19,7 @@ public class TextView implements ActionListener{
 	/**
 	 * 
 	 */
-	private JFrame jfText = new JFrame("Text View");
+	private JFrame jfText = new JFrame();
 	
 	/**
 	 * 
@@ -73,13 +74,16 @@ public class TextView implements ActionListener{
 		/*fill strings with info, will populate into text fields bc of initializations above.  When initialized,
 		 * the Strings are added into their respective JTextAreas an simply need to be added to the JFrame.
 		 */
-		
+		this.newsMakerModel = newsMakerModel;
+		this.newsMedia = newsMedia;
+		this.sortCriteria = sortCriteria;
 		
 		//GUI stuff
 		//TODO find right layout to make this look good
 		this.jfText.setLayout(new GridLayout(2, 1, 0, 0));
 		this.jfText.add(jspNewsStoryList);
 		this.jfText.add(jtaSummaryLine);
+		this.jfText.setTitle(constructTitle());
 		this.jfText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.jfText.pack();
 		this.jfText.setVisible(true);
@@ -91,6 +95,21 @@ public class TextView implements ActionListener{
 	 */
 	//created by alex 4/25
 	private void constructNewsStoriesAndSummary(){
+		//Constructs list of news Stories as a single string
+		this.listOfStories = "";
+		for(int i = 0; i < this.newsMakerModel.getNewsStoryListModel().size(); ++i){
+			this.listOfStories += UserInterface.convertToOutputFormat(this.newsMakerModel.getNewsStoryListModel().get(i), 
+					this.newsMedia);
+		}
+		//convertToOutputFormat adds the summary line by default so we have to do two substrings to separate them
+		if(this.listOfStories.lastIndexOf("\n") > 0) {
+			//Summary line is last line, or everything after the last newline character
+			this.summaryLine =  this.listOfStories.substring(this.listOfStories.lastIndexOf("\n"), 
+					this.listOfStories.length() - 1);
+			//Cuts off the summary line and leaves us with just the list of stories
+			this.listOfStories =  this.listOfStories.substring(0, this.listOfStories.lastIndexOf("\n"));
+		} 
+		
 		
 	}
 	
@@ -98,7 +117,25 @@ public class TextView implements ActionListener{
 	 * 
 	 */
 	//created by alex 4/25
-	private void constructTitle(){
+	private String constructTitle(){
+		
+		String title = "Text View of " ;
+		
+		for(int i = 0; i < this.newsMedia.size(); ++i){
+			title += this.newsMedia.get(i).toString() + " News Stories " + " and ";
+		}
+		
+		title = title.substring(0, title.length() - 5);
+		
+		title += "Sorted by ";
+		
+		for(int i = 0; i < this.sortCriteria.size(); ++i){
+			title += this.sortCriteria.get(i).toString() + " and ";
+		}
+		
+		title = title.substring(0, title.length() - 5);
+		
+		return title;
 		
 	}
 	
@@ -110,13 +147,16 @@ public class TextView implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent actionEvent){
 		
+		
+		
 	}
 	
 	//TODO main method just for testing, delete later
 	public static void main(String[] args){
 		NewsMakerModel test1 = null;
-		List<NewsMedia> test2 = NewsMedia.VALUES_LIST;
-		List<SortCriterion> test3 = null;
+		List<NewsMedia> test2 = null;
+		List<SortCriterion> test3 = new ArrayList<SortCriterion>();
+		test3.add(SortCriterion.DATE_TIME);
 		new TextView(test1, test2, test3);
 	}
 
