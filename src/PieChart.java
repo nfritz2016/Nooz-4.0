@@ -62,6 +62,7 @@ public class PieChart extends JFrame{
 	 *            The title of the chart itself.
 	 * @param wedges
 	 *            The list of wedges that will comprise the pie.
+	 *            Tests
 	 */
 	public PieChart(String title, List<Wedge> wedges) {
 		this.title = title;
