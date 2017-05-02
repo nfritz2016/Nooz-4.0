@@ -28,6 +28,8 @@ public enum NewsMedia {
 	
 	public List<NewsMedia> valuesAsList() {
 		
+		VALUES_LIST = new ArrayList<NewsMedia>();
+		
 		VALUES_LIST.add(NEWSPAPER);
 		VALUES_LIST.add(ONLINE);
 		VALUES_LIST.add(TV);

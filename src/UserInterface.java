@@ -55,7 +55,7 @@ class UserInterface {
 	 *            included in the list.
 	 * @return The story in the display format.
 	 */
-	private static String convertToOutputFormat(NewsStory newsStory, List<NewsMedia> mediaType) {
+	static String convertToOutputFormat(NewsStory newsStory, List<NewsMedia> mediaType) {
 
 		// TODO: Append each line with subject and (for TV and online) part of
 		// day.
