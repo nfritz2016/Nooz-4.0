@@ -1,8 +1,10 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class NewsController {
 
@@ -208,7 +210,7 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
-				loadNewsData();
+				addNewsStory();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
 				editNewsStories();
@@ -243,13 +245,14 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
-			if(!NewsMakerListModel.getNewsMakerNames().contains())
+			if(!NewsMakerListModel.getNewsMakerNames().contains()) {
+				 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
+			}
 			/*
 			 * if name exists, confirm replacing existing news maker with name whose name has just been change
 			 * by using JOptionPane
 			 * Replace or don't depending on confirmation
 			 */
-		
 			
 		}
 	}
