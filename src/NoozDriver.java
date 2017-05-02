@@ -2,10 +2,12 @@
  * 
  * @author Alex
  * @author Nathan Fritz
+ * @author Cavan Gary
  *
  */
 //class created by alex 4/25
 //all fields created by alex 4/25
+//initialized by Cavan 5/2
 public class NoozDriver {
 	
 	/**
@@ -16,12 +18,12 @@ public class NoozDriver {
 	/**
 	 * 
 	 */
-	private static SelectionView selectionView;
+	private static SelectionView selectionView = new SelectionView();
 	
 	/**
 	 * 
 	 */
-	private static NewsController newsController;
+	private static NewsController newsController = new NewsController();
 	
 	/**
 	 * 
