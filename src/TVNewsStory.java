@@ -63,10 +63,9 @@ public class TVNewsStory extends NewsStory implements Serializable {
 	 * @param newsMaker2
 	 *            The second news maker featured in the story.
 	 */
-	public TVNewsStory(LocalDate date, String source, int length, String topic, String subject, PartOfDay partOfDay,
-			NewsMakerModel newsMaker1, NewsMakerModel newsMaker2) {
+	public TVNewsStory(LocalDate date, String source, int length, String topic, String subject, PartOfDay partOfDay, NewsMakerModel newsMaker1, NewsMakerModel newsMaker2) {
 		super(date, source, length, topic, subject, newsMaker1, newsMaker2);
-		this.setPartOfDay(partOfDay);
+		this.partOfDay = partOfDay;
 	}
 
 	/**
