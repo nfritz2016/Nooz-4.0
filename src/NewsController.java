@@ -244,16 +244,21 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
-			if(!NewsMakerListModel.getNewsMakerNames().contains()) {
-				 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
-			}
-			/*
-			 * if name exists, confirm replacing existing news maker with name whose name has just been change
-			 * by using JOptionPane
-			 * Replace or don't depending on confirmation
-			 */
 			
+			//before we do this we need to add an if statement for the listener
+			if ("something".equals(actionEvent.getActionCommand())) {
+				
+				//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
+				if(!NewsMakerListModel.getNewsMakerNames().contains()) {
+					 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
+				}
+				/*
+				 * if name exists, confirm replacing existing news maker with name whose name has just been change
+				 * by using JOptionPane
+				 * Replace or don't depending on confirmation
+				 */
+				
+			}
 		}
 	}
 	
@@ -265,10 +270,18 @@ public class NewsController {
 		}
 	}
 	
+	//written by alex 5/2
 	private class AddEditNewsStoryListener implements ActionListener {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
+			
+			if ("Add News Story".equals(actionEvent.getActionCommand())) {
+				addNewsStory();
+			}
+			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
+				editNewsStories();
+			}
 			
 		}
 	}
