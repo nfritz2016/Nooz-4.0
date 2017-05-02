@@ -10,17 +10,17 @@ public class NoozDriver {
 	/**
 	 * 
 	 */
-	private NewsDataBaseModel newsDataBaseModel;
+	private static NewsDataBaseModel newsDataBaseModel;
 	
 	/**
 	 * 
 	 */
-	private SelectionView selectionView;
+	private static SelectionView selectionView;
 	
 	/**
 	 * 
 	 */
-	private NewsController newsController;
+	private static NewsController newsController;
 	
 	/**
 	 * 
@@ -29,7 +29,9 @@ public class NoozDriver {
 	//created by alex 4/25
 	public static void main(String[] args){
 		
-		
+		newsDataBaseModel = new NewsDataBaseModel();
+		selectionView = new SelectionView();
+		newsController = new NewsController();
 		
 	}
 

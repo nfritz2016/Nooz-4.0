@@ -26,7 +26,11 @@ import java.util.Map;
  */
 class NoozFileProcessor {
 	/** The list of news makers. */
-	private static NewsMakerList newsMakers = new NewsMakerList();
+	private static NewsMakerListModel newsMakers = new NewsMakerListModel();
+	
+	private static NewsStoryListModel newsStories = new NewsStoryListModel();
+	
+	NewsDataBaseModel newsDataBase = new NewsDataBaseModel();
 
 	/**
 	 * The primary method for reading the Nooz-style data file.
@@ -64,7 +68,7 @@ class NoozFileProcessor {
 	 * @throws IOException
 	 *             If there is an I/O problem reading the data file.
 	 */
-	public static NewsMakerList readNoozFile(String fileName, Map<String, String> sourceMap,
+	public static NewsDataBaseModel readNoozFile(String fileName, Map<String, String> sourceMap,
 			Map<String, String> topicMap, Map<String, String> subjectMap) throws IOException {
 		// TODO Handle possible I/O errors (Eventually)
 		FileReader fr = new FileReader(fileName);
@@ -77,7 +81,7 @@ class NoozFileProcessor {
 		}
 		br.close();
 
-		return newsMakers;
+		return newsDataBase;
 	}
 
 	/**
@@ -91,7 +95,7 @@ class NoozFileProcessor {
 	 * @throws IOException
 	 *             If there is an I/O problem writing the file.
 	 */
-	public static void writeNewsStoriesFile(String outputFileName, String listOfStories) throws IOException {
+	public static void writeNewsTextFile(String outputFileName, String listOfStories) throws IOException {
 		FileWriter outfile = new FileWriter(outputFileName);
 		BufferedWriter bw = new BufferedWriter(outfile);
 		bw.write(listOfStories);
@@ -177,7 +181,7 @@ class NoozFileProcessor {
 		 * The first news maker is constructed based on the first news maker
 		 * name read.
 		 */
-		NewsMaker newsMaker1 = new NewsMaker(newsMakerName1);
+		NewsMakerModel newsMaker1 = new NewsMakerModel(newsMakerName1);
 		// If the news maker is on the list, use the copy already on the list
 		if (newsMakers.contains(newsMaker1)) {
 			newsMaker1 = newsMakers.get(newsMaker1);
@@ -191,7 +195,7 @@ class NoozFileProcessor {
 		 * The second news maker is constructed based on the second news maker
 		 * name read.
 		 */
-		NewsMaker newsMaker2 = new NewsMaker(newsMakerName2);
+		NewsMakerModel newsMaker2 = new NewsMakerModel(newsMakerName2);
 		// If the news maker is on the list, use the copy already on the list
 		if (newsMakers.contains(newsMaker2)) {
 			newsMaker2 = newsMakers.get(newsMaker2);
