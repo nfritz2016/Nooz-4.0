@@ -201,34 +201,23 @@ public class TextView implements ActionListener{
 		// Construct the summary line
 		// If the type doesn't include TV, use words
 		if (!(this.newsMedia.contains(NewsMedia.TV))) {
-			this.listOfStories += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
+			this.summaryLine += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
 					+ distinctNewsSourceNames.size() + "; Number of Words: " + totalLength + "; Number of Topics: "
 					+ distinctTopics.size() + "; Number of Subjects: " + distinctSubjects.size();
 		}
 		// If the type is TV news, use seconds (from length)
 		else if (this.newsMedia.contains(NewsMedia.TV)) {
-			this.listOfStories += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
+			this.summaryLine += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
 					+ distinctNewsSourceNames.size() + "; Seconds: " + totalLength + "; Number of Topics: "
 					+ distinctTopics.size() + "; Number of Subjects: " + distinctSubjects.size();
 		}
 		// If the type is mixed, use words as common unit
 		else {
-			this.listOfStories += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
+			this.summaryLine += "Number of Stories: " + selectedList.size() + "; Number of Sources: "
 					+ distinctNewsSourceNames.size() + "; Number of Word Equivalents: " + totalLength
 					+ "; Number of Topics: " + distinctTopics.size() + "; Number of Subjects: "
 					+ distinctSubjects.size();
 		}
-		
-		
-		//convertToOutputFormat adds the summary line by default so we have to do two substrings to separate them
-		if(this.listOfStories.lastIndexOf("\n") > 0) {
-			//Summary line is last line, or everything after the last newline character
-			this.summaryLine =  this.listOfStories.substring(this.listOfStories.lastIndexOf("\n"), 
-					this.listOfStories.length() - 1);
-			//Cuts off the summary line and leaves us with just the list of stories
-			this.listOfStories =  this.listOfStories.substring(0, this.listOfStories.lastIndexOf("\n"));
-		} 
-		
 		
 	}
 	

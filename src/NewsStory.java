@@ -284,4 +284,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	public int compareTo(NewsStory newsStory) {
 		return this.topic.compareTo(newsStory.topic);
 	}
+	
+	public String toString(){
+		return UserInterface.convertToOutputFormat(this, null);
+	}
 }
