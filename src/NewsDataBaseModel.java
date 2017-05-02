@@ -149,7 +149,7 @@ public class NewsDataBaseModel {
 	}
 	
 	public void removeAllNewsStories() {
-		//TODO should there be a removeall() in NewsStoryListModel?
+		//TODO should there be a removeAll() in NewsStoryListModel?
 	}
 	
 	public void addActionListener(ActionListener l) {

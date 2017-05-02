@@ -184,9 +184,23 @@ public class NewsController {
 	}
 	
 	private class NewsMakerMenuListener implements ActionListener {
-		//TODO write
+		//TODO not sure on how correct this is
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
+			
+			if ("Add Newsmaker".equals(actionEvent.getActionCommand())) {
+                addNewsMaker();
+            }
+			if ("Edit Newsmaker".equals(actionEvent.getActionCommand())) {
+				editNewsMakers();
+            }
+			if ("Delete Newsmaker".equals(actionEvent.getActionCommand())) {
+				deleteNewsMakers();
+            }
+			if ("Delete Newsmaker List".equals(actionEvent.getActionCommand())) {
+				deleteNewsMakerList();
+            }
+            viewDialog.dispose();
 			
 		}
 	}
