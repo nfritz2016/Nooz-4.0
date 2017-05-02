@@ -3,7 +3,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public class NewsController {
 
@@ -18,7 +17,6 @@ public class NewsController {
 	
 	
 	public NewsController() {
-		
 	}
 	
 	//TODO write 
@@ -213,16 +211,16 @@ public class NewsController {
 				loadNewsData();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
-				saveNewsData();
+				editNewsStories();
 			}
 			if ("Sort News Stories".equals(actionEvent.getActionCommand())) {
-				importNoozStories();
+				sortNewsStories();
 			}
 			if ("Delete News Story".equals(actionEvent.getActionCommand())) {
-				exportNewsStories();
+				deleteNewsStories();
 			}
 			if ("Delete All News Stories".equals(actionEvent.getActionCommand())) {
-				exportNewsStories();
+				deleteAllNewsStories();
 			}
 		}
 	}
