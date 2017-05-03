@@ -243,8 +243,7 @@ public class NewsController {
 	private class EditNewsMakerNameListener implements ActionListener {
 		//TODO write
 		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-			
+		public void actionPerformed(ActionEvent actionEvent) {	
 			//before we do this we need to add an if statement for the listener
 			if ("something".equals(actionEvent.getActionCommand())) {
 				
