@@ -75,8 +75,13 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 			NewsMakerModel newsMaker2) {
 		this.date = date; // Note that LocalDate is immutable
 		this.source = source;
-		this.length = length; // TODO Restrict to positive values (for Project
-								// 4)
+		if(length >= 0){
+			this.length = length;
+		}
+		else{
+			this.length = 0;
+			System.err.println("News Story length value was negative, length has been set to default of 0.");
+		}
 		this.topic = topic;
 		this.subject = subject;
 		this.newsMaker1 = newsMaker1;
@@ -181,8 +186,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * @return The first news maker featured in the story.
 	 */
 	public NewsMakerModel getNewsMaker1() {
-		// TODO Have it return a copy instead (Eventually)
-		return newsMaker1;
+		NewsMakerModel newsmaker1 = this.newsMaker1;
+		return newsmaker1;
 	}
 
 	/**
@@ -197,8 +202,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * @return The second news maker featured in the story.
 	 */
 	public NewsMakerModel getNewsMaker2() {
-		// TODO Have it return a copy instead (Eventually)
-		return newsMaker2;
+		NewsMakerModel newsmaker2 = this.newsMaker2;
+		return newsmaker2;
 	}
 	
 	//Begins setters probably for the edit newsStory window

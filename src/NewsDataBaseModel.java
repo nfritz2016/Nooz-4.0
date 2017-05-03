@@ -154,8 +154,8 @@ public class NewsDataBaseModel {
 	}
 	
 	public void removeAllNewsStories() {
-		//TODO should there be a removeAll() in NewsStoryListModel?
-		//Answer from Dean: NO
+		//I think this should work, I might just be clearing a copy but I'm pretty sure I'm not
+		this.newsStoryListModel.getNewsStories().clear();
 	}
 	
 	public void addActionListener(ActionListener l) {
