@@ -225,6 +225,7 @@ public class SelectionView extends JFrame implements ActionListener {
 			NewsMakerModel[] newsMakerModelArray = new NewsMakerModel[newsDataBaseModel.getNewsMakers().size()];
 			for (int i = 0; i < newsDataBaseModel.getNewsMakers().size(); i++) {
 				newsMakerModelArray[i] = newsDataBaseModel.getNewsMakerListModel().get(i);
+				System.out.println("Actionperformed sview");
 			}
 			jlNewsMakerList.setListData(newsMakerModelArray);
 			
