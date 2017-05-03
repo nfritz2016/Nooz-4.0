@@ -312,7 +312,7 @@ public class NewsController {
                 // Create the text view.
                 TextView textView = new TextView(newsMakerModel, selectedMediaTypes, selectedSortCriteria);
 
-                //Make sure the pie chart listens for model changes so that it can update itself.
+                //Make sure the text view listens for model changes so that it can update itself.
                 newsMakerModel.addActionListener(textView);
             }
         }

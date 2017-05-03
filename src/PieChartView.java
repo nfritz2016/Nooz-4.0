@@ -135,7 +135,9 @@ public class PieChartView implements ActionListener{
 	//created by alex 4/21
 	public void actionPerformed(ActionEvent actionEvent){
 		
-		
+		if("something".equals(actionEvent.getActionCommand())){
+			//make it update itself (not sure how)????
+		}
 		
 	}
 	
