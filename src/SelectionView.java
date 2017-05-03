@@ -1,7 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -69,9 +71,20 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiImport.setActionCommand("Import");
 		jmiExport.setActionCommand("Export");
 		//Set appropriate buttons inactive initially
-		jmiSave.setEnabled(false);
-		jmiExport.setEnabled(false);
-		//Add methods here to turn buttons active when something happens
+		if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			jmiLoad.setEnabled(true);
+			jmiSave.setEnabled(false);
+			jmiImport.setEnabled(true);
+			jmiExport.setEnabled(false);
+			
+		}
+		else{
+			jmiLoad.setEnabled(true);
+			jmiSave.setEnabled(true);
+			jmiImport.setEnabled(true);
+			jmiExport.setEnabled(true);
+		}
+		
 		
 		//makes NewsMaker tab
 		jmNewsMaker.add(jmiAddNewsMaker);
@@ -84,10 +97,18 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteNewsMaker.setActionCommand("Delete Newsmaker");
 		jmiDeleteNewsMakerList.setActionCommand("Delete Newsmaker List");
 		//Set appropriate buttons inactive initially
-		jmiEditNewsMaker.setEnabled(false);
-		jmiDeleteNewsMaker.setEnabled(false);
-		jmiDeleteNewsMakerList.setEnabled(false);
-		//Add methods here to turn buttons active when something happens
+		if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			jmiAddNewsMaker.setEnabled(true);
+			jmiEditNewsMaker.setEnabled(false);
+			jmiDeleteNewsMaker.setEnabled(false);
+			jmiDeleteNewsMakerList.setEnabled(false);
+		}
+		else{
+			jmiAddNewsMaker.setEnabled(true);
+			jmiEditNewsMaker.setEnabled(true);
+			jmiDeleteNewsMaker.setEnabled(true);
+			jmiDeleteNewsMakerList.setEnabled(true);
+		}
 		
 		//makes NewsStory Tab
 		jmNewsStory.add(jmiAddNewsStory);
@@ -102,11 +123,21 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteNewsStory.setActionCommand("Delete News Story");
 		jmiDeleteAllNewsStories.setActionCommand("Delete All News Stories");
 		//Set appropriate buttons inactive initially
-		jmiEditNewsStory.setEnabled(false);
-		jmiSortNewsStories.setEnabled(false);
-		jmiDeleteNewsStory.setEnabled(false);
-		jmiDeleteAllNewsStories.setEnabled(false);
-		//Add methods here to turn buttons active when something happens
+		if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			jmiAddNewsStory.setEnabled(true);
+			jmiEditNewsStory.setEnabled(false);
+			jmiSortNewsStories.setEnabled(false);
+			jmiDeleteNewsStory.setEnabled(false);
+			jmiDeleteAllNewsStories.setEnabled(false);
+		}
+		else{
+			jmiAddNewsStory.setEnabled(true);
+			jmiEditNewsStory.setEnabled(true);
+			jmiSortNewsStories.setEnabled(true);
+			jmiDeleteNewsStory.setEnabled(true);
+			jmiDeleteAllNewsStories.setEnabled(true);
+		}
+		
 		
 		//makes display tab
 		jmDisplay.add(jmiPieChart);
@@ -115,9 +146,14 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiPieChart.setActionCommand("Pie Chart");
 		jmiText.setActionCommand("Text");
 		//Set appropriate buttons inactive initially
-		jmiPieChart.setEnabled(false);
-		jmiText.setEnabled(false);
-		//Add methods here to turn buttons active when something happens
+		if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			jmiPieChart.setEnabled(false);
+			jmiText.setEnabled(false);
+		}
+		else{
+			jmiPieChart.setEnabled(true);
+			jmiText.setEnabled(true);
+		}
 		
 		//puts all menus into bar
 		jmb.add(jmFile);
@@ -171,11 +207,14 @@ public class SelectionView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getActionCommand().equals("Present News Stories")) {
 			if (getSelectedNewsMakers().length == 0) {
-				//put all stories in story JList.
+				jlNewsStoryList.setModel(this.newsDataBaseModel.getNewsStories());
 			}
 			else {
+				
+				DefaultListModel<NewsStory> selectedListModel = new DefaultListModel<NewsStory>();
+				NewsStory[] selectedList = get
 				for (int i = 0; i < getSelectedNewsMakers().length; i++) {
-					//for each newsmaker selected, add the stories to the other window.
+					selectedListModel.addElement();
 				}
 			}
 		}

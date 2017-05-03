@@ -74,7 +74,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	}
 	
 	public void actionPerformed(ActionEvent actionEvent) {
-		if (actionEvent.getActionCommand().equals("Edit NewsMaker View")) {
+		if (actionEvent.getActionCommand().equals("something")) {
 			//populateNewsStoryJList();
 			//this method doesn't exist in the new UML????
 		}
