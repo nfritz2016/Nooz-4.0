@@ -17,16 +17,25 @@ import javax.swing.JTextField;
  *
  */
 public class EditNewsMakerView extends JPanel implements ActionListener, Serializable {
+	
 	private static final long serialVersionUID = 1L;
+	
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
+	
 	private DefaultListModel<String> newsStoryStringList = new DefaultListModel<String>();
+	
 	private JList<String> jlNewsStoryList = new JList<String>();
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	private JPanel jpNewsStoryList = new JPanel();
+	
+	//
 	JTextField jtfName = new JTextField();
 	private JLabel jlbName = new JLabel("Name: ");
-	JButton jbtRemoveFromStory = new JButton("Remove From Story");
 	private JPanel jplName = new JPanel();
+	
+	//A button to remove them
+	JButton jbtRemoveFromStory = new JButton("Remove From Story");
+	
 	
 	public EditNewsMakerView(NewsMakerModel newsMakerModel, NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
@@ -36,13 +45,15 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		setLayout(new BorderLayout(1, 2));
 		add(jplName);
 		add(jpNewsStoryList);
+		
+		enableRemovalButton();
 	}
 	
 	public int[] getSelectedNewsStoryIndices() {
 		return jlNewsStoryList.getSelectedIndices();
 	}
 	
-	private void populateNewsStoryJList() {
+	/*private void populateNewsStoryJList() {
 		DefaultListModel<NewsStory> duplicate = newsDataBaseModel.getNewsStories();
 		if (duplicate.isEmpty()) {
 			newsStoryStringList.clear();
@@ -51,11 +62,21 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		for (int i = 0; i < duplicate.getSize(); i++) {
 			newsStoryStringList.addElement(duplicate.get(i).toString());
 		}
+	}*/
+	
+	private void enableRemovalButton(){
+		if(getSelectedNewsStoryIndices() == null){
+			jbtRemoveFromStory.setEnabled(false);
+		}
+		else{
+			jbtRemoveFromStory.setEnabled(true);
+		}
 	}
 	
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Edit NewsMaker View")) {
-			populateNewsStoryJList();
+			//populateNewsStoryJList();
+			//this method doesn't exist in the new UML????
 		}
 	}
 }

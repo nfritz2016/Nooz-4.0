@@ -266,7 +266,9 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			
-			
+			if("Remove From Story".equals(actionEvent.getActionCommand())){
+				EditNewsMakerView.getSelectedNewsStoryIndices();
+			}
 			
 		}
 	}
