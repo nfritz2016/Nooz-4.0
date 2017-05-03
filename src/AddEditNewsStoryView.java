@@ -169,7 +169,7 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		if (newsStory == null) {
 			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Add News Story");
-			jbtAddEditNewsStory.setActionCommand("Add News Story");
+			jbtAddEditNewsStory.setActionCommand("Add News Story Botton");
 			jplAddEditNewsStory.add(jbtAddEditNewsStory);
 		}
 		else {
