@@ -24,7 +24,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	
 	private DefaultListModel<String> newsStoryStringList = new DefaultListModel<String>();
 	
-	private JList<String> jlNewsStoryList = new JList<String>();
+	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	private JPanel jpNewsStoryList = new JPanel();
 	
@@ -37,6 +37,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	JButton jbtRemoveFromStory = new JButton("Remove From Story");
 	
 	
+	
 	public EditNewsMakerView(NewsMakerModel newsMakerModel, NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
 		jplName.add(jlbName);
@@ -45,7 +46,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		setLayout(new BorderLayout(1, 2));
 		add(jplName);
 		add(jpNewsStoryList);
-		
+		jbtRemoveFromStory.setActionCommand("Remove From Story");
 		enableRemovalButton();
 	}
 	
@@ -74,9 +75,15 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	}
 	
 	public void actionPerformed(ActionEvent actionEvent) {
-		if (actionEvent.getActionCommand().equals("something")) {
-			//populateNewsStoryJList();
-			//this method doesn't exist in the new UML????
+		if(actionEvent.getActionCommand().equals("Remove From Story")) {
+			//If none are selected, add the whole list of news stories to the jlist
+			if (getSelectedNewsStoryIndices().length > 0) {
+				int[] selectedList = getSelectedNewsStoryIndices();
+				for (int i = 0; i < getSelectedNewsStoryIndices().length; i++) {
+					//something
+				}
+				
+			}
 		}
 	}
 }

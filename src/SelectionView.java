@@ -206,11 +206,12 @@ public class SelectionView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getActionCommand().equals("Present News Stories")) {
+			//If none are selected, add the whole list of news stories to the jlist
 			if (getSelectedNewsMakers().length == 0) {
 				jlNewsStoryList.setModel(this.newsDataBaseModel.getNewsStories());
 			}
+			//Otherwise, only add the ones that are selected
 			else {
-				
 				DefaultListModel<NewsStory> selectedListModel = new DefaultListModel<NewsStory>();
 				int[] selectedList = getSelectedNewsStories();
 				for (int i = 0; i < getSelectedNewsMakers().length; i++) {
