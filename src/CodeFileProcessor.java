@@ -18,7 +18,7 @@ import java.util.TreeMap;
  * calling method that will keep track of it.
  * </P>
  * 
- * @author Dean Hougen
+ * @author alex Kloppenburg
  * @version 1.0
  * 
  */
@@ -58,24 +58,28 @@ public class CodeFileProcessor {
 	 * @throws IOException
 	 *             If there is an I/O problem reading the data file.
 	 */
-	public static Map<String, String> readCodeFile(String fileName) throws IOException {
+	public static Map<String, String> readCodeFile(String fileName){
 		// Need to clear map of old data before reading new.
 		codeMap.clear();
-		// TODO Handle possible I/O errors (Eventually)
-		FileReader fr = new FileReader(fileName);
-		BufferedReader br = new BufferedReader(fr);
-		String nextLine = br.readLine();
-		while (nextLine != null) {
-			String parts[] = nextLine.split(",");
-			if (parts.length == 2) {
-				codeMap.put(parts[0], parts[1].replaceAll("\"", ""));
-			} else {
-				System.err.println("Wrong number of components in line: " + parts.length);
-				System.err.println("Skipping bad line in " + fileName + ": " + nextLine);
+		try{
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
+			String nextLine = br.readLine();
+			while (nextLine != null) {
+				String parts[] = nextLine.split(",");
+				if (parts.length == 2) {
+					codeMap.put(parts[0], parts[1].replaceAll("\"", ""));
+				} else {
+					System.err.println("Wrong number of components in line: " + parts.length);
+					System.err.println("Skipping bad line in " + fileName + ": " + nextLine);
+				}
+				nextLine = br.readLine();
 			}
-			nextLine = br.readLine();
+			br.close();
 		}
-		br.close();
+		catch(IOException ioe){
+			System.err.println("Problem reading a file named " + fileName +".");
+		}
 
 		return codeMap;
 	}
