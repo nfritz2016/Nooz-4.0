@@ -15,6 +15,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.ListSelectionModel;
 
+/**
+ * @author Nathan Fritz
+ * @author Alex Kloppenburg
+ *
+ */
 public class SelectionView extends JFrame implements ActionListener {
 	
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
