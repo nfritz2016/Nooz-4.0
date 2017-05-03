@@ -181,8 +181,7 @@ public class NewsController {
 		this.viewDialog.pack();
 		this.viewDialog.setVisible(true);
 		
-		NewsMakerModel newsMakerModel = new NewsMakerModel();
-		//newsMakerModel.addActionListener(addEditNewsStoryView);
+		this.newsDataBaseModel.addActionListener(new AddEditNewsStoryListener());
 	}
 	
 	//TODO write

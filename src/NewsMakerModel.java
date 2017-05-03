@@ -37,7 +37,7 @@ public class NewsMakerModel implements ActionListener, Serializable {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
 		}
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update News Story"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Add News Story"));
 		System.out.println("called addNewsStory");
 	}
 	
