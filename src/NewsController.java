@@ -267,6 +267,8 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			
+			
+			
 		}
 	}
 	
