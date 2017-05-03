@@ -2,8 +2,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +14,10 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import src.NewsMakerListModel;
+import src.NewsMakerModel;
+import src.NewsStoryListModel;
 
 public class NewsController {
 
@@ -44,7 +50,7 @@ public class NewsController {
 		this.selectionView = selectionView;
 	}
 	
-	private void loadNewsData(){
+	private void loadNewsData() {
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -53,30 +59,48 @@ public class NewsController {
 				fileName = fc.getSelectedFile().getCanonicalPath();
 				FileInputStream fileInputStream = new FileInputStream(fileName);
 				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-				
 				newsDataBaseModel.none = (NewsMakerModel) objectInputStream.readObject();
 				newsDataBaseModel.setNewsMakerListModel((NewsMakerListModel) objectInputStream.readObject());
 				newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) objectInputStream.readObject());
-				
-				//NOT SURE AFTER THIS POINT
 				newsDataBaseModel.setNewsSourceMap((Map<String, String>) objectInputStream.readObject());
 				newsDataBaseModel.setNewsTopicMap((Map<String, String>) objectInputStream.readObject());
 				newsDataBaseModel.setNewsSubjectMap((Map<String, String>) objectInputStream.readObject());
+				objectInputStream.close();
 			} 
-			
 			catch (ClassNotFoundException cnf) {
 				System.err.println("Class not found exception: " + cnf.getMessage());
 			}
-			catch(IOException ioe){
+			catch(IOException ioe) {
 				System.err.println("I/O exception: " + ioe.getMessage());
 			}
 		}	
 	}
 	
-	//TODO write
+	//TODO: check this method. Based off of loadNewsData
 	private void saveNewsData() {
-		
+		JFileChooser fc = new JFileChooser(".");
+		int returnValue = fc.showOpenDialog(selectionView);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			String fileName = null;
+			try {
+				fileName = fc.getSelectedFile().getCanonicalPath();
+				FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				objectOutputStream.writeObject(newsDataBaseModel.none);
+				objectOutputStream.writeObject(newsDataBaseModel.getNewsMakerListModel());
+				objectOutputStream.writeObject(newsDataBaseModel.getNewsStoryListModel());
+				objectOutputStream.writeObject(newsDataBaseModel.getNewsSourceMap());
+				objectOutputStream.writeObject(newsDataBaseModel.getNewsTopicMap());
+				objectOutputStream.writeObject(newsDataBaseModel.getNewsSubjectMap());
+				objectOutputStream.close();
+			} 
+			catch(IOException ioe) {
+				System.err.println("I/O exception: " + ioe.getMessage());
+			}
+		}	
 	}
+	
+
 	
 	private void importNoozStories() {
 		
