@@ -245,7 +245,7 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
-			if(!NewsMakerListModel.getNewsMakerNames().contains()) {
+			if(!NewsMakerListModel.getNewsMakerNames().contains(jtfName.) {
 				 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
 			}
 			/*
