@@ -49,7 +49,10 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	public void removeNewsStory(NewsStory newsStory) {
-		this.newsStoryListModel.remove(newsStory);
+		if (this.newsStoryListModel.contains(newsStory)) {
+			this.newsStoryListModel.remove(newsStory);
+		}
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Remove News Story"));
 	}
 	
 	public boolean equals(Object o) {
