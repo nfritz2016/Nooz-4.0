@@ -24,22 +24,27 @@ public class MediaTypeSelectionView extends JPanel {
     
 
     public MediaTypeSelectionView() {
+    	
+    	//set button visiblity, text, and commands
         this.jbBlank.setVisible(false);
         this.jbOkay.setActionCommand("OK");
         this.jbOkay.setSelected(true);
         this.jbCancel.setActionCommand("Cancel");
-
+        
+        //add buttons to button panel
         this.jpCompletionButtons.add(this.jbBlank);
         this.jpCompletionButtons.add(this.jbCancel);
         this.jpCompletionButtons.add(this.jbOkay);
-
+        
+        //add everything to button panel
         this.jpMediaType.add(this.jlblMediaType);
         this.jpMediaType.add(this.jcbNewspaper);
         this.jpMediaType.add(this.jcbTVNews);
         this.jpMediaType.add(this.jcbOnline);
         this.jpMediaType.add(this.jpCompletionButtons);
         this.jpMediaType.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
+        
+        //add the panel to the class JFrame
         this.add(this.jpMediaType);
     }
 }

@@ -7,8 +7,10 @@
  *
  */
 public enum NewsContent {
+	
 	SOURCE, TOPIC, SUBJECT;
 	
+	//turns a newsContent enum into a string
 	@Override
 	public String toString() {
 		

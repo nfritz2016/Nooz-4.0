@@ -11,15 +11,18 @@ import javax.swing.DefaultListModel;
 public class NewsDataBaseModel {
 	
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
+	
 	private Map<String, String> newsSourceMap = new HashMap<String, String>();
 	private Map<String, String> newsTopicMap = new HashMap<String, String>();
 	private Map<String, String> newsSubjectMap = new HashMap<String, String>();
+	
 	NewsMakerModel newsMakerModel = new NewsMakerModel();
 	private NewsMakerListModel newsMakerListModel = new NewsMakerListModel();
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
+	
 	public NewsDataBaseModel() {
-		
+		//empty constructor
 	}
 	
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
@@ -151,6 +154,7 @@ public class NewsDataBaseModel {
 	
 	public void removeAllNewsStories() {
 		//TODO should there be a removeAll() in NewsStoryListModel?
+		//Answer from Dean: NO
 	}
 	
 	public void addActionListener(ActionListener l) {

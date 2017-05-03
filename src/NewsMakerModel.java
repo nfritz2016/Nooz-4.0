@@ -10,12 +10,15 @@ import java.util.ArrayList;
 public class NewsMakerModel implements ActionListener, Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
+	
 	private String name;
+	
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
 	public NewsMakerModel() {
-		
+		//empty constructor
 	}
 	
 	public NewsMakerModel(String name) {

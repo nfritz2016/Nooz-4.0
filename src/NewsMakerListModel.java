@@ -9,11 +9,12 @@ import javax.swing.DefaultListModel;
  *
  */
 public class NewsMakerListModel implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	private DefaultListModel<NewsMakerModel> newsMakerDefaultListModel = new DefaultListModel<NewsMakerModel>();
 	
 	public NewsMakerListModel() {
-		
+		//empty constructor
 	}
 	
 	public NewsMakerListModel(NewsMakerListModel newsMakerListModel) {
