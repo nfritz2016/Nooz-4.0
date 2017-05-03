@@ -61,7 +61,7 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteNewsMakers() {
-		NewsMakerModel.removeAllNewsMakers();
+		newsDataBaseModel.removeAllNewsMakers();
 	}
 	
 	//TODO write
@@ -69,7 +69,7 @@ public class NewsController {
 		//calls on method in NewsMakerListModel
 		//SHOULDN'T THIS BE removeListOfNewsMakers ?? but then what are the arguments
 		//Get args from the view or model
-		NewsMakerListModel.removeListOfNewsMakers(NewsMakerModel.getNewsMakerListModel());
+		newsDataBaseModel.removeNewsMakers(newsDataBaseModel.getNewsMakers());
 	}
 	
 	//TODO write
