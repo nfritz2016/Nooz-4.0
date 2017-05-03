@@ -212,10 +212,11 @@ public class SelectionView extends JFrame implements ActionListener {
 			else {
 				
 				DefaultListModel<NewsStory> selectedListModel = new DefaultListModel<NewsStory>();
-				NewsStory[] selectedList = get
+				int[] selectedList = getSelectedNewsStories();
 				for (int i = 0; i < getSelectedNewsMakers().length; i++) {
-					selectedListModel.addElement();
+					selectedListModel.addElement(this.newsDataBaseModel.getNewsStoryListModel().get(selectedList[i]));
 				}
+				jlNewsStoryList.setModel(selectedListModel);
 			}
 		}
 	}
