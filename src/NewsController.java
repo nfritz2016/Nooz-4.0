@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -52,17 +53,17 @@ public class NewsController {
 				fileName = fc.getSelectedFile().getCanonicalPath();
 				FileInputStream fileInputStream = new FileInputStream(fileName);
 				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+				
 				newsDataBaseModel.none = (NewsMakerModel) objectInputStream.readObject();
 				newsDataBaseModel.setNewsMakerListModel((NewsMakerListModel) objectInputStream.readObject());
+				newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) objectInputStream.readObject());
 				
 				//NOT SURE AFTER THIS POINT
-				newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) objectInputStream.readObject());
 				newsDataBaseModel.setNewsSourceMap((Map<String, String>) objectInputStream.readObject());
 				newsDataBaseModel.setNewsTopicMap((Map<String, String>) objectInputStream.readObject());
 				newsDataBaseModel.setNewsSubjectMap((Map<String, String>) objectInputStream.readObject());
 			} 
-			//WHY DO WE NEED TRY/CATCH?
-			// either class not found | invalid class exception | Stream corrupted exception
+			
 			catch (ClassNotFoundException cnf) {
 				System.err.println("Class not found exception: " + cnf.getMessage());
 			}
@@ -77,9 +78,41 @@ public class NewsController {
 		
 	}
 	
-	//TODO write
 	private void importNoozStories() {
 		
+		JFileChooser fc = new JFileChooser(".");
+		int returnValue = fc.showOpenDialog(selectionView);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			
+			File[] files = fc.getSelectedFiles();
+			ArrayList<String> filenames = new ArrayList<String>();
+			try{
+				for(int i = 0; i < files.length; ++i){
+					filenames.add(files[i].getCanonicalPath());
+				}
+			}
+			catch(IOException ioe){
+				System.err.println("I/O exception " + ioe.getMessage());
+			}
+			
+			Map<String, String> sourceMap = null;
+			Map<String, String> topicMap = null;
+			Map<String, String> subjectMap = null;
+			
+			if(filenames.contains("sources.csv")){
+				sourceMap = CodeFileProcessor.readCodeFile("sources.csv");
+			}
+			if(filenames.contains("topics.csv")){
+				topicMap = CodeFileProcessor.readCodeFile("topics.csv");
+			}
+			if(filenames.contains("subjects2.csv")){
+				subjectMap = CodeFileProcessor.readCodeFile("subjects2.csv");
+			}
+			if(filenames.contains("StoryData03.csv") && sourceMap != null && topicMap != null && subjectMap != null){
+				NewsDataBaseModel dataBase = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
+			}
+		}
+	
 	}
 	
 	//TODO write
