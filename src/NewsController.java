@@ -170,7 +170,12 @@ public class NewsController {
 	
 	//TODO write
 	private void addNewsStory() {
-		System.out.println("got to add story correctly");
+		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
+		this.viewDialog = new JDialog(selectionView, "test", true);
+		this.viewDialog.add(addEditNewsStoryView);
+		this.viewDialog.setResizable(false);
+		this.viewDialog.pack();
+		this.viewDialog.setVisible(true);
 	}
 	
 	//TODO write
@@ -365,6 +370,8 @@ public class NewsController {
 		public void actionPerformed(ActionEvent actionEvent) {
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
 				addNewsStory();
+				System.out.println("added");
+				viewDialog.dispose();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
 				editNewsStories();
