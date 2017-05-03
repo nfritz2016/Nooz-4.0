@@ -175,11 +175,13 @@ public class NewsController {
 	//TODO write
 	private void addNewsStory() {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
-		this.viewDialog = new JDialog(selectionView, "test", true);
+		this.viewDialog = new JDialog(selectionView, "Adding News Maker", true);
 		this.viewDialog.add(addEditNewsStoryView);
 		this.viewDialog.setResizable(false);
 		this.viewDialog.pack();
 		this.viewDialog.setVisible(true);
+		NewsMakerModel newsMakerModel = new NewsMakerModel();
+		//newsMakerModel.addActionListener(addEditNewsStoryView);
 	}
 	
 	//TODO write
@@ -445,7 +447,7 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			
-			if ("Add News Story".equals(actionEvent.getActionCommand())) {
+			if ("Add News Story Botton".equals(actionEvent.getActionCommand())) {
 				addNewsStory();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
