@@ -69,17 +69,21 @@ class NoozFileProcessor {
 	 *             If there is an I/O problem reading the data file.
 	 */
 	public static NewsDataBaseModel readNoozFile(String fileName, Map<String, String> sourceMap,
-			Map<String, String> topicMap, Map<String, String> subjectMap) throws IOException {
-		// TODO Handle possible I/O errors (Eventually)
-		FileReader fr = new FileReader(fileName);
-		BufferedReader br = new BufferedReader(fr);
-		String nextLine = br.readLine(); // First line is header info. Ignore.
-		nextLine = br.readLine();
-		while (nextLine != null) {
-			processLine(nextLine, sourceMap, topicMap, subjectMap);
+			Map<String, String> topicMap, Map<String, String> subjectMap){
+		try{
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
+			String nextLine = br.readLine(); // First line is header info. Ignore.
 			nextLine = br.readLine();
+			while (nextLine != null) {
+				processLine(nextLine, sourceMap, topicMap, subjectMap);
+				nextLine = br.readLine();
+			}
+			br.close();
 		}
-		br.close();
+		catch(IOException ioe){
+			System.err.println("I/O errors when reading the file named " + fileName + ".");
+		}
 		
 		newsDataBase.setNewsMakerListModel(newsMakers);
 		newsDataBase.setNewsStoryListModel(newsStories);

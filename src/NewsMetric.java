@@ -6,6 +6,7 @@
  *
  */
 public enum NewsMetric {
+	
 	LENGTH, COUNT;
 	
 	/**
@@ -16,7 +17,7 @@ public enum NewsMetric {
 	public String toString(){
 		switch(this) {
 		case LENGTH:
-			return "Length";//TODO: make sure these string are capitalized correctly
+			return "Length";
 		case COUNT:
 			return "Count";
 		default:

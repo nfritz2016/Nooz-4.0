@@ -16,32 +16,40 @@ import javax.swing.ListSelectionModel;
 public class SelectionView extends JFrame implements ActionListener {
 	
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
+	
 	private JMenuBar jmb = new JMenuBar();
+	
 	private JMenu jmFile = new JMenu("File");
 	private JMenuItem jmiLoad = new JMenuItem("Load");
 	private JMenuItem jmiSave = new JMenuItem("Save");
 	private JMenuItem jmiImport = new JMenuItem("Import");
 	private JMenuItem jmiExport = new JMenuItem("Export");
+	
 	private JMenu jmNewsMaker = new JMenu("NewsMaker");
 	private JMenuItem jmiAddNewsMaker = new JMenuItem("Add NewsMaker");
 	private JMenuItem jmiEditNewsMaker = new JMenuItem("Edit NewsMaker");
 	private JMenuItem jmiDeleteNewsMaker = new JMenuItem("Delete NewsMaker");
 	private JMenuItem jmiDeleteNewsMakerList = new JMenuItem("Delete NewsMaker List");
+	
 	private JMenu jmNewsStory = new JMenu("NewsStory");
 	private JMenuItem jmiAddNewsStory = new JMenuItem("Add News Story");
 	private JMenuItem jmiEditNewsStory = new JMenuItem("Edit News Story");
 	private JMenuItem jmiSortNewsStories = new JMenuItem("Sort News Stories");
 	private JMenuItem jmiDeleteNewsStory = new JMenuItem("Delete News Stories");
 	private JMenuItem jmiDeleteAllNewsStories = new JMenuItem("Delete All News Stories");
+	
 	private JMenu jmDisplay = new JMenu("Display");
 	private JMenuItem jmiPieChart = new JMenuItem("Pie Chart");
 	private JMenuItem jmiText = new JMenuItem("Text");
+	
 	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>();
 	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 	private JPanel jpNewsMakerList = new JPanel();
+	
 	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	private JPanel jpNewsStoryList = new JPanel();
+	
 	private JSplitPane splitPane;
 	private JLabel newsmakers = new JLabel("NewsMakers");
 	private JLabel newsstories = new JLabel("News Stories");
@@ -49,30 +57,36 @@ public class SelectionView extends JFrame implements ActionListener {
 	public SelectionView() {
 		//sets name of frame
 		setTitle("Nooz");
+		
 		//makes the file tab
 		jmFile.add(jmiLoad);
 		jmFile.add(jmiSave);
 		jmFile.add(jmiImport);
 		jmFile.add(jmiExport);
+		
 		//makes NewsMaker tab
 		jmNewsMaker.add(jmiAddNewsMaker);
 		jmNewsMaker.add(jmiEditNewsMaker);
 		jmNewsMaker.add(jmiDeleteNewsMaker);
 		jmNewsMaker.add(jmiDeleteNewsMakerList);
+		
 		//makes NewsStory Tab
 		jmNewsStory.add(jmiAddNewsStory);
 		jmNewsStory.add(jmiEditNewsStory);
 		jmNewsStory.add(jmiSortNewsStories);
 		jmNewsStory.add(jmiDeleteNewsStory);
 		jmNewsStory.add(jmiDeleteAllNewsStories);
+		
 		//makes display tab
 		jmDisplay.add(jmiPieChart);
 		jmDisplay.add(jmiText);
+		
 		//puts all menus into bar
 		jmb.add(jmFile);
 		jmb.add(jmNewsMaker);
 		jmb.add(jmNewsStory);
 		jmb.add(jmDisplay);
+		
 		//makes the frame and such
 		jpNewsMakerList.setLayout(new BorderLayout());
 		jpNewsStoryList.setLayout(new BorderLayout());
@@ -83,6 +97,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, jpNewsMakerList, jpNewsStoryList);
 		jlNewsMakerList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		jlNewsStoryList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		
 		setJMenuBar(jmb);
 		add(splitPane);
 		pack();

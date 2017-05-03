@@ -9,7 +9,6 @@ import java.util.List;
 public enum NewsMedia {
 	NEWSPAPER, ONLINE, TV;
 	
-	//TODO: See what kind of list to make it into
 	public static List<NewsMedia> VALUES_LIST;
 	
 	public String toString() {
@@ -20,7 +19,7 @@ public enum NewsMedia {
 		case ONLINE:
 			return "Online";
 		case TV:
-			return "TV";//TODO: Check to see if this is right output
+			return "TV";
 		default:
 			throw new IllegalArgumentException();
 		}

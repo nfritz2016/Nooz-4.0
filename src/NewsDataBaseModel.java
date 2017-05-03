@@ -16,7 +16,8 @@ public class NewsDataBaseModel {
 	private Map<String, String> newsTopicMap = new HashMap<String, String>();
 	private Map<String, String> newsSubjectMap = new HashMap<String, String>();
 	
-	NewsMakerModel newsMakerModel = new NewsMakerModel();
+	NewsMakerModel none = new NewsMakerModel();
+	
 	private NewsMakerListModel newsMakerListModel = new NewsMakerListModel();
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
