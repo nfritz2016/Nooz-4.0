@@ -23,7 +23,7 @@ public class NewsController {
 	private MediaTypeSelectionView mediaTypeSelectionView;
 	private List<NewsMedia> selectedMediaTypes = new ArrayList<NewsMedia>();
 	
-	
+	//push test
 	public NewsController() {
 	}
 	
