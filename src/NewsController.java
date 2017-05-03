@@ -15,9 +15,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import src.NewsMakerListModel;
-import src.NewsMakerModel;
-import src.NewsStoryListModel;
 
 public class NewsController {
 
@@ -48,6 +45,10 @@ public class NewsController {
 	
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
+		this.selectionView.registerDisplayMenuListener(new DisplayMenuListener());
+		this.selectionView.registerFileMenuListener(new FileMenuListener());
+		this.selectionView.registerNewsMakerMenuListener(new NewsMakerMenuListener());
+		this.selectionView.registerNewsStoryMenuListener(new NewsStoryMenuListener());
 	}
 	
 	private void loadNewsData() {

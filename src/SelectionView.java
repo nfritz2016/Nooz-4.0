@@ -73,9 +73,6 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiExport.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
 		
-		//Register fileMenuListener
-		registerFileMenuListener(new FileMenuListener());
-		
 		//makes NewsMaker tab
 		jmNewsMaker.add(jmiAddNewsMaker);
 		jmNewsMaker.add(jmiEditNewsMaker);
@@ -91,9 +88,6 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteNewsMaker.setEnabled(false);
 		jmiDeleteNewsMakerList.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
-		
-		//Register the Newsmaker Menu listener
-		registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		
 		//makes NewsStory Tab
 		jmNewsStory.add(jmiAddNewsStory);
@@ -114,9 +108,6 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteAllNewsStories.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
 		
-		//Register news Story menu listener
-		registerNewsStoryMenuListener(new NewsStoryMenuListener());
-		
 		//makes display tab
 		jmDisplay.add(jmiPieChart);
 		jmDisplay.add(jmiText);
@@ -127,9 +118,6 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiPieChart.setEnabled(false);
 		jmiText.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
-		
-		//Register display menu listener
-		registerDisplayMenuListener(new DisplayMenuListener());
 		
 		//puts all menus into bar
 		jmb.add(jmFile);
