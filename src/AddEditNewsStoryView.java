@@ -14,59 +14,77 @@ import javax.swing.JPanel;
 public class AddEditNewsStoryView extends JPanel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
+	
 	private NewsStory newsStory;
+	
 	//contents for type
 	private JLabel jlbNewsMediaType = new JLabel("Type: ");
 	JComboBox<NewsMedia> jcbNewsMediaType = new JComboBox<NewsMedia>(NewsMedia.values());
 	private JPanel jpNewsMediaType = new JPanel();
+	
 	//contents for source
 	private JLabel jlbNewsStorySource = new JLabel("Source: ");
 	JComboBox<String> jcbNewsStorySource = new JComboBox<String>(newsDataBaseModel.getNewsSources());
 	private JPanel jpNewsStorySource = new JPanel();
+	
 	//contents for topic
 	private JLabel jlbNewsStoryTopic = new JLabel("Topic: ");
 	JComboBox<String> jcbNewsStoryTopic = new JComboBox<String>(newsDataBaseModel.getNewsTopics());
 	private JPanel jpNewsStoryTopic = new JPanel();
+	
 	//contents of subject
 	private JLabel jlbNewsStorySubject = new JLabel("Subject: ");
 	JComboBox<String> jcbNewsStorySubject = new JComboBox<String>(newsDataBaseModel.getNewsSubjects());
 	private JPanel jpNewsStorySubject = new JPanel();
+	
 	//contents of NewsMaker1
 	private JLabel jlbNewsStoryNewsMaker1 = new JLabel("News Maker 1: ");
 	JComboBox<String> jcbNewsStoryNewsMaker1 = new JComboBox<String>(newsDataBaseModel.getNewsMakerNames());
 	private JPanel jpNewsStoryNewsMaker1 = new JPanel();
+	
 	//contents of NewsMaker2
 	private JLabel jlbNewsStoryNewsMaker2 = new JLabel("News Maker 2: ");
 	JComboBox<String> jcbNewsStoryNewsMaker2 = new JComboBox<String>(newsDataBaseModel.getNewsMakerNames());
 	private JPanel jpNewsStoryNewsMaker2 = new JPanel();
+	
 	//contents of length field
 	private JLabel jlbNewsStoryLength = new JLabel("Length: ");
 	private NumberFormat integerFieldFormatter = NumberFormat.getNumberInstance();
 	JFormattedTextField jftfNewsStoryLength = new JFormattedTextField(integerFieldFormatter);
 	private JPanel jplNewsStoryLength = new JPanel();
+	
 	//contents of year field
 	private JLabel jlbNewsStoryYear = new JLabel("Year: ");
-	private Integer[] years = {2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017};
+	private Integer[] years = {2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
+			2015, 2016, 2017};
 	JComboBox<Integer> jcbNewsStoryYear = new JComboBox<Integer>(years);
 	private JPanel jplNewsStoryYear = new JPanel();
+	
 	//contents of month field
 	private JLabel jlbNewsStoryMonth = new JLabel("Month: ");
 	JComboBox<Month> jcbNewsStoryMonth = new JComboBox<Month>(Month.values());
 	private JPanel jplNewsStoryMonth = new JPanel();
+	
 	//contents of day
 	private JLabel jlbNewsStoryDay = new JLabel("Day: ");
-	private Integer[] days = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
+	private Integer[] days = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+			25, 26, 27, 28, 29, 30, 31};
 	JComboBox<Integer> jcbNewsStoryDay = new JComboBox<Integer>(days);
 	private JPanel jplNewsStoryDay = new JPanel();
+	
 	//contents of PartOfDay field
 	private JLabel jlbNewsStoryPartOfDay = new JLabel("Part of Day: ");
 	JComboBox<PartOfDay> jcbNewsStoryPartOfDay = new JComboBox<PartOfDay>(PartOfDay.values());
 	private JPanel jplNewsStoryPartOfDay = new JPanel();
+	
 	//panel for when details
 	private JPanel jplNewsStoryWhen = new JPanel(new GridLayout(1, 4));
+	
 	//button to do everything
 	JButton jbtAddEditNewsStory;
+	
 	//panel to contain button
 	private JPanel jplAddEditNewsStory = new JPanel(new GridLayout(9, 1, 12, 12));
 	
@@ -74,46 +92,61 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		this.newsDataBaseModel = newsDataBaseModel;
 		this.newsStory = newsStory;
 		
+		//create type panel and add elements
 		jpNewsMediaType.add(jlbNewsMediaType);
 		jpNewsMediaType.add(jcbNewsMediaType);
 		
+		//create source panel and add elements
 		jpNewsStorySource.add(jlbNewsStorySource);
 		jpNewsStorySource.add(jcbNewsStorySource);
 		
+		//create topic panel and add elements
 		jpNewsStoryTopic.add(jlbNewsStoryTopic);
 		jpNewsStoryTopic.add(jcbNewsStoryTopic);
 		
+		//create subject panel and add elements
 		jpNewsStorySubject.add(jlbNewsStorySubject);
 		jpNewsStorySubject.add(jcbNewsStorySubject);
 		
+		//create newsMaker1 panel and add elements
 		jpNewsStoryNewsMaker1.add(jlbNewsStoryNewsMaker1);
 		jpNewsStoryNewsMaker1.add(jcbNewsStoryNewsMaker1);
 		
+		//create newsMaker2 panel and add elements
 		jpNewsStoryNewsMaker2.add(jlbNewsStoryNewsMaker2);
 		jpNewsStoryNewsMaker2.add(jcbNewsStoryNewsMaker2);
 		
+		//create length panel and add elements
 		jplNewsStoryLength.add(jlbNewsStoryLength);
 		jplNewsStoryLength.add(jftfNewsStoryLength);
 		
+		//create year panel and add elements
 		jplNewsStoryYear.add(jlbNewsStoryYear);
 		jplNewsStoryYear.add(jcbNewsStoryYear);
 		
+		//create month panel and add elements
 		jplNewsStoryMonth.add(jlbNewsStoryMonth);
 		jplNewsStoryMonth.add(jcbNewsStoryMonth);
 		
+		//create day panel and add elements
 		jplNewsStoryDay.add(jlbNewsStoryDay);
 		jplNewsStoryDay.add(jcbNewsStoryDay);
 		
+		//create partOfDay panel and add elements
+		//TODO potentially change this if we're dealing with a Newspaper Story
 		jplNewsStoryPartOfDay.add(jlbNewsStoryPartOfDay);
 		jplNewsStoryPartOfDay.add(jcbNewsStoryPartOfDay);
 		
+		//create time panel and add elements
 		jplNewsStoryWhen.add(jplNewsStoryYear);
 		jplNewsStoryWhen.add(jplNewsStoryMonth);
 		jplNewsStoryWhen.add(jplNewsStoryDay);
 		jplNewsStoryWhen.add(jplNewsStoryPartOfDay);
 		
+		//Create a panel so that the button sizes itself right and add the button
 		jplAddEditNewsStory.add(jbtAddEditNewsStory);
 		
+		//Add all panels to class panel
 		add(jpNewsMediaType);
 		add(jpNewsStorySource);
 		add(jpNewsStoryTopic);
@@ -124,12 +157,16 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		add(jplNewsStoryWhen);
 		add(jplAddEditNewsStory);
 		
+		//Set button and fields depending on whether you're adding or editing
 		if (newsStory == null) {
+			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Add News Story");
 		}
 		else {
+			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Edit News Story");
 			
+			//set the media type combo box based on the type of newsStory
 			if (newsStory instanceof NewspaperStory) {
 				jcbNewsMediaType.setSelectedItem(NewsMedia.NEWSPAPER);
 			}
@@ -140,6 +177,7 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 				jcbNewsMediaType.setSelectedItem(NewsMedia.ONLINE);
 			}
 			
+			//set all other GUI elements to relevant values
 			jcbNewsStorySource.setSelectedItem(newsStory.getSource());
 			jcbNewsStoryTopic.setSelectedItem(newsStory.getTopic());
 			jcbNewsStorySubject.setSelectedItem(newsStory.getSubject());
