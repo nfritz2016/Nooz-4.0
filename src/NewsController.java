@@ -50,6 +50,7 @@ public class NewsController {
 		this.selectionView.registerFileMenuListener(new FileMenuListener());
 		this.selectionView.registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		this.selectionView.registerNewsStoryMenuListener(new NewsStoryMenuListener());
+		System.out.println("listeners registered");
 	}
 	
 	private void loadNewsData() {
@@ -201,7 +202,7 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteAllNewsStories() {
-		NewsStoryListModel.removeListOfNewsStories(NewsStoryListModel.getNewsStories());
+		newsDataBaseModel.removeAllNewsStories();
 	}
 	
 	/**
@@ -374,6 +375,7 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
+			
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
 				addNewsStory();
 				NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
