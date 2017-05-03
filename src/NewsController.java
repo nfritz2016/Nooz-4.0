@@ -133,6 +133,7 @@ public class NewsController {
 						this.newsDataBaseModel.getNewsTopicMap(), this.newsDataBaseModel.getNewsSubjectMap());
 				System.out.println("stories");
 			}
+			
 		}
 	
 	}
