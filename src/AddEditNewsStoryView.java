@@ -83,36 +83,43 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 	private JPanel jplNewsStoryWhen = new JPanel(new GridLayout(1, 4));
 	
 	//button to do everything
-	JButton jbtAddEditNewsStory;
+	JButton jbtAddEditNewsStory = new JButton();
 	
 	//panel to contain button
-	private JPanel jplAddEditNewsStory = new JPanel(new GridLayout(9, 1, 12, 12));
+	private JPanel jplAddEditNewsStory = new JPanel();
 	
 	public AddEditNewsStoryView(NewsDataBaseModel newsDataBaseModel, NewsStory newsStory) {
 		this.newsDataBaseModel = newsDataBaseModel;
-		this.newsStory = newsStory;
+		
+		jftfNewsStoryLength.setColumns(10);
 		
 		//create type panel and add elements
+		jcbNewsMediaType.setEditable(true);
 		jpNewsMediaType.add(jlbNewsMediaType);
 		jpNewsMediaType.add(jcbNewsMediaType);
 		
 		//create source panel and add elements
+		jcbNewsStorySource.setEditable(true);
 		jpNewsStorySource.add(jlbNewsStorySource);
 		jpNewsStorySource.add(jcbNewsStorySource);
 		
 		//create topic panel and add elements
+		jcbNewsStoryTopic.setEditable(true);
 		jpNewsStoryTopic.add(jlbNewsStoryTopic);
 		jpNewsStoryTopic.add(jcbNewsStoryTopic);
 		
 		//create subject panel and add elements
+		jcbNewsStorySubject.setEditable(true);
 		jpNewsStorySubject.add(jlbNewsStorySubject);
 		jpNewsStorySubject.add(jcbNewsStorySubject);
 		
 		//create newsMaker1 panel and add elements
+		jcbNewsStoryNewsMaker1.setEditable(true);
 		jpNewsStoryNewsMaker1.add(jlbNewsStoryNewsMaker1);
 		jpNewsStoryNewsMaker1.add(jcbNewsStoryNewsMaker1);
 		
 		//create newsMaker2 panel and add elements
+		jcbNewsStoryNewsMaker2.setEditable(true);
 		jpNewsStoryNewsMaker2.add(jlbNewsStoryNewsMaker2);
 		jpNewsStoryNewsMaker2.add(jcbNewsStoryNewsMaker2);
 		
@@ -147,6 +154,7 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		jplAddEditNewsStory.add(jbtAddEditNewsStory);
 		
 		//Add all panels to class panel
+		setLayout(new GridLayout(9, 1, 12, 12));
 		add(jpNewsMediaType);
 		add(jpNewsStorySource);
 		add(jpNewsStoryTopic);
@@ -162,11 +170,13 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Add News Story");
 			jbtAddEditNewsStory.setActionCommand("Add News Story");
+			jplAddEditNewsStory.add(jbtAddEditNewsStory);
 		}
 		else {
 			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Edit News Story");
 			jbtAddEditNewsStory.setActionCommand("Edit News Story");
+			jplAddEditNewsStory.add(jbtAddEditNewsStory);
 			
 			//set the media type combo box based on the type of newsStory
 			if (newsStory instanceof NewspaperStory) {
