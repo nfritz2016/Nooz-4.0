@@ -30,7 +30,7 @@ class NoozFileProcessor {
 	
 	private static NewsStoryListModel newsStories = new NewsStoryListModel();
 	
-	private static NewsDataBaseModel newsDataBase;
+	private static NewsDataBaseModel newsDataBase = new NewsDataBaseModel();
 
 	/**
 	 * The primary method for reading the Nooz-style data file.
