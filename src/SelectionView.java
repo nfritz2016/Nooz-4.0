@@ -186,19 +186,30 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	public void registerFileMenuListener(ActionListener fileMenuListener) {
-		jmFile.addActionListener(fileMenuListener);
+		jmiLoad.addActionListener(fileMenuListener);
+		jmiImport.addActionListener(fileMenuListener);
+		jmiSave.addActionListener(fileMenuListener);
+		jmiExport.addActionListener(fileMenuListener);
 	}
 	
 	public void registerNewsMakerMenuListener(ActionListener newsMakerMenuListener) {
-		jmNewsMaker.addActionListener(newsMakerMenuListener);
+		jmiAddNewsMaker.addActionListener(newsMakerMenuListener);
+		jmiEditNewsMaker.addActionListener(newsMakerMenuListener);
+		jmiDeleteNewsMaker.addActionListener(newsMakerMenuListener);
+		jmiDeleteNewsMakerList.addActionListener(newsMakerMenuListener);
 	}
 	
 	public void registerNewsStoryMenuListener(ActionListener newsStoryMenuListener) {
-		jmNewsStory.addActionListener(newsStoryMenuListener);
+		jmiAddNewsStory.addActionListener(newsStoryMenuListener);
+		jmiEditNewsStory.addActionListener(newsStoryMenuListener);
+		jmiSortNewsStories.addActionListener(newsStoryMenuListener);
+		jmiDeleteNewsStory.addActionListener(newsStoryMenuListener);
+		jmiDeleteAllNewsStories.addActionListener(newsStoryMenuListener);
 	}
 	
 	public void registerDisplayMenuListener(ActionListener displayMenuListener) {
-		jmDisplay.addActionListener(displayMenuListener);
+		jmiPieChart.addActionListener(displayMenuListener);
+		jmiText.addActionListener(displayMenuListener);
 	}
 	
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
@@ -211,12 +222,11 @@ public class SelectionView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getActionCommand().equals("Present News Stories")) {
-			//If none are selected, add the whole list of news stories to the jlist
 			if (getSelectedNewsMakers().length == 0) {
 				jlNewsStoryList.setModel(this.newsDataBaseModel.getNewsStories());
 			}
-			//Otherwise, only add the ones that are selected
 			else {
+				
 				DefaultListModel<NewsStory> selectedListModel = new DefaultListModel<NewsStory>();
 				int[] selectedList = getSelectedNewsStories();
 				for (int i = 0; i < getSelectedNewsMakers().length; i++) {
@@ -235,3 +245,4 @@ public class SelectionView extends JFrame implements ActionListener {
 		return jlNewsStoryList.getSelectedIndices();
 	}
 }
+
