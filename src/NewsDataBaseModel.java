@@ -8,6 +8,11 @@ import java.util.Map;
 
 import javax.swing.DefaultListModel;
 
+/**
+ * @author Nathan Fritz
+ * @author Alex Kloppenburg
+ *
+ */
 public class NewsDataBaseModel {
 	
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
