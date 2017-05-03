@@ -221,17 +221,17 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		if ("Add News Story".equals(actionEvent.getActionCommand())) {
+		if (actionEvent.getActionCommand().equals("Update News Story")) {
+			System.out.println("Action performed in sview");
 			NewsMakerModel[] newsMakerModelArray = new NewsMakerModel[newsDataBaseModel.getNewsMakers().size()];
 			for (int i = 0; i < newsDataBaseModel.getNewsMakers().size(); i++) {
 				newsMakerModelArray[i] = newsDataBaseModel.getNewsMakerListModel().get(i);
-				System.out.println("Actionperformed sview");
 			}
-			jlNewsMakerList.setListData(newsMakerModelArray);
-			
 			newsMakerModelArray[1] = new NewsMakerModel("none");
-			System.out.println("Actionperformed sview");
+			jlNewsMakerList.setListData(newsMakerModelArray);
+			System.out.println("Action performed in sview");
 		}
+		System.out.println("Action performed in sview");
 		/*
 		if(actionEvent.getActionCommand().equals("Present News Stories")) {
 			if (getSelectedNewsMakers().length == 0) {
