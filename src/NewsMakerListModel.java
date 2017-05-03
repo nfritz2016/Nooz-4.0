@@ -82,7 +82,11 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public String[] getNewsMakerNames() {
-		return (String[]) this.newsMakerDefaultListModel.toArray();
+		String[] names = new String[this.newsMakerDefaultListModel.size()];
+		for (int i = 0; i < this.newsMakerDefaultListModel.size(); i++) {
+			names[i] = this.newsMakerDefaultListModel.getElementAt(i).getName();
+		}
+		return names;
 	}
 	
 	public void add(NewsMakerModel newsMakerModel) {
