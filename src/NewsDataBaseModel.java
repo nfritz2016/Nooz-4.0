@@ -40,7 +40,7 @@ public class NewsDataBaseModel {
 	}
 	
 	public String[] getNewsSources() {
-		/*
+		
 		String[] sources = new String[this.newsSourceMap.size()];
 		int i = 0;
 		for (String source : this.newsSourceMap.values()) {
@@ -48,8 +48,8 @@ public class NewsDataBaseModel {
 			i++;
 		}
 		return sources;
-		*/
-		return (String[]) this.newsSourceMap.values().toArray();
+		
+		//return (String[]) this.newsSourceMap.values().toArray();
 	}
 	
 	public void setNewsSourceMap(Map<String, String> newsSourceMap) {
@@ -61,7 +61,13 @@ public class NewsDataBaseModel {
 	}
 	
 	public String[] getNewsTopics() {
-		return (String[]) this.newsTopicMap.values().toArray();
+		String[] topics = new String[this.newsTopicMap.size()];
+		int i = 0;
+		for (String topic : this.newsTopicMap.values()) {
+			topics[i] = topic;
+			i++;
+		}
+		return topics;
 	}
 	
 	public void setNewsTopicMap(Map<String, String> newsTopicMap) {
@@ -73,7 +79,13 @@ public class NewsDataBaseModel {
 	}
 	
 	public String[] getNewsSubjects() {
-		return (String[]) this.newsSubjectMap.values().toArray();
+		String[] subjects = new String[this.newsSubjectMap.size()];
+		int i = 0;
+		for (String subject : this.newsSubjectMap.values()) {
+			subjects[i] = subject;
+			i++;
+		}
+		return subjects;
 	}
 	
 	public void setNewsSubjectMap(Map<String, String> newsSubjectMap) {

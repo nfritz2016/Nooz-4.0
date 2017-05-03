@@ -172,8 +172,7 @@ public class NewsController {
 	
 	//TODO write
 	private void addNewsStory() {
-		//calls or uses JDialog
-		NewsMakerModel.addNewsStory();
+		System.out.println("got to add story correctly");
 	}
 	
 	//TODO write
