@@ -115,25 +115,27 @@ public class NewsController {
 				System.err.println("I/O exception " + ioe.getMessage());
 			}
 			
+			Map<String, String> sourceMap = CodeFileProcessor.readCodeFile("sources.csv");
+			Map<String, String> topicMap = CodeFileProcessor.readCodeFile("topics.csv");
+			Map<String, String> subjectMap = CodeFileProcessor.readCodeFile("subjects2.csv");
+			
 			if(filename.contains("sources.csv")){
-				this.newsDataBaseModel.setNewsSourceMap(CodeFileProcessor.readCodeFile("sources.csv"));
+				this.newsDataBaseModel.setNewsSourceMap(sourceMap);
 				System.out.println("sources");
 			}
 			
 			if(filename.contains("topics.csv")){
-				this.newsDataBaseModel.setNewsTopicMap(CodeFileProcessor.readCodeFile("topics.csv"));
+				this.newsDataBaseModel.setNewsTopicMap(topicMap);
 				System.out.println("topics");
 			}
 			if(filename.contains("subjects2.csv")){
-				this.newsDataBaseModel.setNewsSubjectMap(CodeFileProcessor.readCodeFile("subjects2.csv"));
+				this.newsDataBaseModel.setNewsSubjectMap(subjectMap);
 				System.out.println("subjects");
 			}
-			if(filename.contains("StoryData03.csv") && this.newsDataBaseModel.getNewsSourceMap() != null && this.newsDataBaseModel.getNewsTopicMap() != null && this.newsDataBaseModel.getNewsSubjectMap() != null){
-				NewsDataBaseModel dataBase = NoozFileProcessor.readNoozFile("StoryData03.csv", this.newsDataBaseModel.getNewsSourceMap(), 
-						this.newsDataBaseModel.getNewsTopicMap(), this.newsDataBaseModel.getNewsSubjectMap());
+			if(filename.contains("StoryData03.csv") && sourceMap != null && topicMap != null && subjectMap != null) {
+				newsDataBaseModel = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
 				System.out.println("stories");
 			}
-			this.newsDataBaseModel.addActionListener(this.selectionView);
 		}
 	
 	}
