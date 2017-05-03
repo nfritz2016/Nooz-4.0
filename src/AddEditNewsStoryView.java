@@ -94,7 +94,6 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		jftfNewsStoryLength.setColumns(10);
 		
 		//create type panel and add elements
-		jcbNewsMediaType.setEditable(true);
 		jpNewsMediaType.add(jlbNewsMediaType);
 		jpNewsMediaType.add(jcbNewsMediaType);
 		
