@@ -25,13 +25,13 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JMenuItem jmiImport = new JMenuItem("Import");
 	private JMenuItem jmiExport = new JMenuItem("Export");
 	
-	private JMenu jmNewsMaker = new JMenu("NewsMaker");
-	private JMenuItem jmiAddNewsMaker = new JMenuItem("Add NewsMaker");
-	private JMenuItem jmiEditNewsMaker = new JMenuItem("Edit NewsMaker");
-	private JMenuItem jmiDeleteNewsMaker = new JMenuItem("Delete NewsMaker");
-	private JMenuItem jmiDeleteNewsMakerList = new JMenuItem("Delete NewsMaker List");
+	private JMenu jmNewsMaker = new JMenu("Newsmakers");
+	private JMenuItem jmiAddNewsMaker = new JMenuItem("Add Newsmaker");
+	private JMenuItem jmiEditNewsMaker = new JMenuItem("Edit Newsmaker");
+	private JMenuItem jmiDeleteNewsMaker = new JMenuItem("Delete Newsmaker");
+	private JMenuItem jmiDeleteNewsMakerList = new JMenuItem("Delete Newsmaker List");
 	
-	private JMenu jmNewsStory = new JMenu("NewsStory");
+	private JMenu jmNewsStory = new JMenu("News Stories");
 	private JMenuItem jmiAddNewsStory = new JMenuItem("Add News Story");
 	private JMenuItem jmiEditNewsStory = new JMenuItem("Edit News Story");
 	private JMenuItem jmiSortNewsStories = new JMenuItem("Sort News Stories");
@@ -63,21 +63,37 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmFile.add(jmiSave);
 		jmFile.add(jmiImport);
 		jmFile.add(jmiExport);
+		//sets apppropriate commands
+		jmiLoad.setActionCommand("Load");
+		jmiSave.setActionCommand("Save");
+		jmiImport.setActionCommand("Import");
+		jmiExport.setActionCommand("Export");
 		//Set appropriate buttons inactive initially
 		jmiSave.setEnabled(false);
 		jmiExport.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
+		
+		//Register fileMenuListener
+		registerFileMenuListener(new FileMenuListener());
 		
 		//makes NewsMaker tab
 		jmNewsMaker.add(jmiAddNewsMaker);
 		jmNewsMaker.add(jmiEditNewsMaker);
 		jmNewsMaker.add(jmiDeleteNewsMaker);
 		jmNewsMaker.add(jmiDeleteNewsMakerList);
+		//set appropriate commands
+		jmiAddNewsMaker.setActionCommand("Add Newsmaker");
+		jmiEditNewsMaker.setActionCommand("Edit Newsmaker");
+		jmiDeleteNewsMaker.setActionCommand("Delete Newsmaker");
+		jmiDeleteNewsMakerList.setActionCommand("Delete Newsmaker List");
 		//Set appropriate buttons inactive initially
 		jmiEditNewsMaker.setEnabled(false);
 		jmiDeleteNewsMaker.setEnabled(false);
 		jmiDeleteNewsMakerList.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
+		
+		//Register the Newsmaker Menu listener
+		registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		
 		//makes NewsStory Tab
 		jmNewsStory.add(jmiAddNewsStory);
@@ -85,6 +101,12 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmNewsStory.add(jmiSortNewsStories);
 		jmNewsStory.add(jmiDeleteNewsStory);
 		jmNewsStory.add(jmiDeleteAllNewsStories);
+		//Set appropriate commands
+		jmiAddNewsStory.setActionCommand("Add News Story");
+		jmiEditNewsStory.setActionCommand("Edit News Story");
+		jmiSortNewsStories.setActionCommand("Sort News Stories");
+		jmiDeleteNewsStory.setActionCommand("Delete News Story");
+		jmiDeleteAllNewsStories.setActionCommand("Delete All News Stories");
 		//Set appropriate buttons inactive initially
 		jmiEditNewsStory.setEnabled(false);
 		jmiSortNewsStories.setEnabled(false);
@@ -92,13 +114,22 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteAllNewsStories.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
 		
+		//Register news Story menu listener
+		registerNewsStoryMenuListener(new NewsStoryMenuListener());
+		
 		//makes display tab
 		jmDisplay.add(jmiPieChart);
 		jmDisplay.add(jmiText);
+		//Set appropriate commands
+		jmiPieChart.setActionCommand("Pie Chart");
+		jmiText.setActionCommand("Text");
 		//Set appropriate buttons inactive initially
 		jmiPieChart.setEnabled(false);
 		jmiText.setEnabled(false);
 		//Add methods here to turn buttons active when something happens
+		
+		//Register display menu listener
+		registerDisplayMenuListener(new DisplayMenuListener());
 		
 		//puts all menus into bar
 		jmb.add(jmFile);
@@ -150,7 +181,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		if(actionEvent.getActionCommand().equals("Present NewsStories")) {
+		if(actionEvent.getActionCommand().equals("Present News Stories")) {
 			if (getSelectedNewsMakers().length == 0) {
 				//put all stories in story JList.
 			}
