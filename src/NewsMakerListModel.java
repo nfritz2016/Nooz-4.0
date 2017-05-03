@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -116,6 +117,14 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public void sort() {
+		//TODO unsure on how correct this is
+		NewsMakerModel[] sortingArray = (NewsMakerModel[])this.newsMakerDefaultListModel.toArray();
+		
+		Arrays.sort(sortingArray);
+		this.newsMakerDefaultListModel.clear();
+		for(int i = 0; i < sortingArray.length; ++i){
+			this.newsMakerDefaultListModel.addElement(sortingArray[i]);
+		}
 		
 	}
 }
