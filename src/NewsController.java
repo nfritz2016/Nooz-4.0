@@ -289,7 +289,18 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
+			if("Add Newsmaker".equals(actionEvent.getActionCommand())) {
+				addNewsMaker();
+			}
+			if("Edit Newsmaker".equals(actionEvent.getActionCommand())) {
+				editNewsMakers();
+			}
+			if("Delete Newsmaker".equals(actionEvent.getActionCommand())) {
+				deleteNewsMakers();
+			}
+			if("Delete Newsmaker List".equals(actionEvent.getActionCommand())) {
+				deleteNewsMakerList();
+			}
 		}
 	}
 	
