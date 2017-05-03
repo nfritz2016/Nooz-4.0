@@ -37,13 +37,35 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public NewsMakerModel getExactMatch(String newsMakerName) {
+		
+		//linear searches through the list and returns the first newsMaker that has a name that exactly matches the given string
+		for (int i = 0; i < newsMakerDefaultListModel.size(); ++i) {
+			if (newsMakerDefaultListModel.get(i).getName().equals(newsMakerName)) {
+				return new NewsMakerModel(newsMakerName);
+			}
+		}
+		
+		/*
+		 * If the exact match is not found the linear search won't do anything, so we do what we did in the last project and return 
+		 * null once the search is done 
+		 */
 		return null;
-		//TODO
 	}
 	
-	public NewsMakerModel getPartialMatch(String newsMakerName) {
+	public NewsMakerModel getPartialMatch(String newsMakerName){
+		
+		//linear searches through the list and returns the first newsMaker that has a name that contains the given string
+		for (int i = 0; i < newsMakerDefaultListModel.size(); ++i) {
+			if (newsMakerDefaultListModel.get(i).getName().contains(newsMakerName)) {
+				return new NewsMakerModel(newsMakerName);
+			}
+		}
+		
+		/*
+		 * If the partial match is not found the linear search won't do anything, so we do what we did in the last project and return 
+		 * null once the search is done 
+		 */
 		return null;
-		//TODO
 	}
 	
 	public DefaultListModel<NewsMakerModel> getNewsMakers() {
@@ -94,6 +116,6 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public void sort() {
-		//TODO not sure how to sort
+		
 	}
 }
