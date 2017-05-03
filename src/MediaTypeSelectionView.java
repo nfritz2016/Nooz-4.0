@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MediaTypeSelectionView extends JPanel {
+	
     private static final long serialVersionUID = 1L;
 
     JCheckBox jcbNewspaper = new JCheckBox(NewsMedia.NEWSPAPER.toString());
@@ -13,11 +14,14 @@ public class MediaTypeSelectionView extends JPanel {
     JCheckBox jcbOnline = new JCheckBox(NewsMedia.ONLINE.toString());
 
     private JLabel jlblMediaType = new JLabel("Display news stories from which media type(s)?");
+    private JPanel jpMediaType = new JPanel(new GridLayout(0, 1));
+    
     private JButton jbBlank = new JButton();
     JButton jbCancel = new JButton("Cancel");
     JButton jbOkay = new JButton("OK");
     private JPanel jpCompletionButtons = new JPanel(new GridLayout(1, 0));
-    private JPanel jpMediaType = new JPanel(new GridLayout(0, 1));
+    
+    
 
     public MediaTypeSelectionView() {
         this.jbBlank.setVisible(false);

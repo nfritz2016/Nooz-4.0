@@ -161,10 +161,12 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 		if (newsStory == null) {
 			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Add News Story");
+			jbtAddEditNewsStory.setActionCommand("Add News Story");
 		}
 		else {
 			//Set button to relevant text
 			jbtAddEditNewsStory.setText("Edit News Story");
+			jbtAddEditNewsStory.setActionCommand("Edit News Story");
 			
 			//set the media type combo box based on the type of newsStory
 			if (newsStory instanceof NewspaperStory) {

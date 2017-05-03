@@ -267,7 +267,8 @@ public class NewsController {
 		public void actionPerformed(ActionEvent actionEvent) {
 			
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
-				EditNewsMakerView.getSelectedNewsStoryIndices();
+				//I think???
+				//EditNewsMakerView.getSelectedNewsStoryIndices();
 			}
 			
 		}
