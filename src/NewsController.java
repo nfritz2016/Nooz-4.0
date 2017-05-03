@@ -175,13 +175,13 @@ public class NewsController {
 	//TODO write
 	private void addNewsStory() {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
+		this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
 		this.viewDialog = new JDialog(selectionView, "Adding News Maker", true);
 		this.viewDialog.add(addEditNewsStoryView);
 		this.viewDialog.setResizable(false);
 		this.viewDialog.pack();
 		this.viewDialog.setVisible(true);
 		
-		this.newsDataBaseModel.addActionListener(new AddEditNewsStoryListener());
 	}
 	
 	//TODO write
@@ -399,22 +399,24 @@ public class NewsController {
 				int day = (int) addEditNewsStoryView.jcbNewsStoryDay.getSelectedItem();
 				LocalDate date = LocalDate.of(year, monthAsInt, day);
 				PartOfDay partOfDay = (PartOfDay) addEditNewsStoryView.jcbNewsStoryPartOfDay.getSelectedItem();
+				NewsStory story = null;
 				if (type.equals(NewsMedia.NEWSPAPER)) {
-					NewspaperStory story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
+					story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
 				}
 				else if (type.equals(NewsMedia.TV)) {
-					TVNewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+					story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
-					OnlineNewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+					story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
 					System.out.println("finished online");
 				}
+				System.out.println(story.toString());
 				viewDialog.dispose();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
@@ -445,7 +447,7 @@ public class NewsController {
 		}
 	}
 	
-	private class EditNewsMakerNameListener implements ActionListener {
+	public class EditNewsMakerNameListener implements ActionListener {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {	
@@ -466,7 +468,7 @@ public class NewsController {
 		}
 	}
 	
-	private class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
+	public class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -480,7 +482,7 @@ public class NewsController {
 	}
 	
 	//written by alex 5/2
-	private class AddEditNewsStoryListener implements ActionListener {
+	public class AddEditNewsStoryListener implements ActionListener {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
