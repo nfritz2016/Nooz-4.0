@@ -1,9 +1,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class NewsController {
@@ -37,9 +43,30 @@ public class NewsController {
 		this.selectionView = selectionView;
 	}
 	
-	//TODO write
-	private void loadNewsData() {
-		
+	private void loadNewsData() throws IOException {
+		JFileChooser fc = new JFileChooser(".");
+		int returnValue = fc.showOpenDialog(selectionView);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			String fileName = null;
+			try {
+				fileName = fc.getSelectedFile().getCanonicalPath();
+				FileInputStream fileInputStream = new FileInputStream(fileName);
+				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+				newsDataBaseModel.none = (NewsMakerModel) objectInputStream.readObject();
+				newsDataBaseModel.setNewsMakerListModel((NewsMakerListModel) objectInputStream.readObject());
+				
+				//NOT SURE AFTER THIS POINT
+				newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) objectInputStream.readObject());
+				newsDataBaseModel.setNewsSourceMap((Map<String, String>) objectInputStream.readObject());
+				newsDataBaseModel.setNewsTopicMap((Map<String, String>) objectInputStream.readObject());
+				newsDataBaseModel.setNewsSubjectMap((Map<String, String>) objectInputStream.readObject());
+			} 
+			//WHY DO WE NEED TRY/CATCH?
+			// either class not found | invalid class exception | Stream corrupted exception
+			catch (ClassNotFoundException cnf) {
+				System.err.println("Class not found exception: " + cnf.getMessage());
+			}
+		}	
 	}
 	
 	//TODO write
