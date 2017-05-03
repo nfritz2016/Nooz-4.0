@@ -133,11 +133,7 @@ public class NewsController {
 						this.newsDataBaseModel.getNewsTopicMap(), this.newsDataBaseModel.getNewsSubjectMap());
 				System.out.println("stories");
 			}
-<<<<<<< HEAD
-			
-=======
 			this.newsDataBaseModel.addActionListener(this.selectionView);
->>>>>>> branch 'master' of git@github.com:nfritz2016/4NCNJ.git
 		}
 	
 	}
