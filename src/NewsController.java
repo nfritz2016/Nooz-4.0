@@ -43,7 +43,7 @@ public class NewsController {
 		this.selectionView = selectionView;
 	}
 	
-	private void loadNewsData() throws IOException {
+	private void loadNewsData(){
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -66,6 +66,9 @@ public class NewsController {
 			catch (ClassNotFoundException cnf) {
 				System.err.println("Class not found exception: " + cnf.getMessage());
 			}
+			catch(IOException ioe){
+				System.err.println("I/O exception: " + ioe.getMessage());
+			}
 		}	
 	}
 	
@@ -81,7 +84,9 @@ public class NewsController {
 	
 	//TODO write
 	private void exportNewsStories() {
-		
+		//get list of stores from textview (or another function)
+		//get output name froma jfilechooser
+		NoozFileProcessor.writeNewsTextFile(outputFileName, listOfStories);
 	}
 	
 	//TODO write
