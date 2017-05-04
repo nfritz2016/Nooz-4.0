@@ -18,7 +18,8 @@ import java.util.TreeMap;
  * calling method that will keep track of it.
  * </P>
  * 
- * @author alex Kloppenburg
+ * @author Dean Hougen
+ * @author Alex Kloppenburg
  * @version 1.0
  * 
  */
