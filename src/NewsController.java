@@ -22,7 +22,7 @@ public class NewsController {
 
 	private NewsDataBaseModel newsDataBaseModel;
 	
-	private SelectionView selectionView = new SelectionView();
+	private SelectionView selectionView;
 	
 	private EditNewsMakerView editNewsMakerView;
 	
