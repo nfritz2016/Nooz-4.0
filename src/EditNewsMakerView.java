@@ -18,26 +18,63 @@ import javax.swing.JTextField;
  */
 public class EditNewsMakerView extends JPanel implements ActionListener, Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
 	
+	/**
+	 * 
+	 */
 	NewsMakerModel newsMakerModel = new NewsMakerModel();
 	
+	/**
+	 * 
+	 */
 	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
+	
+	/**
+	 * 
+	 */
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
+	
+	/**
+	 * 
+	 */
 	private JPanel jpNewsStoryList = new JPanel();
 	
-	//
+	/**
+	 * 
+	 */
 	JTextField jtfName = new JTextField();
+	
+	/**
+	 * 
+	 */
 	private JLabel jlbName = new JLabel("Name: ");
+	
+	/**
+	 * 
+	 */
 	private JPanel jplName = new JPanel();
 	
 	//A button to remove them
+	/**
+	 * 
+	 */
 	JButton jbtRemoveFromStory = new JButton("Remove From Story");
 	
 	
-	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 * @param newsDataBaseModel
+	 */
 	public EditNewsMakerView(NewsMakerModel newsMakerModel, NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
 		this.newsMakerModel = newsMakerModel;
@@ -76,6 +113,9 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		}
 	}*/
 	
+	/**
+	 * 
+	 */
 	private void enableRemovalButton(){
 		if(this.newsMakerModel.getNewsStoryListModel() == null){
 			jbtRemoveFromStory.setEnabled(false);
@@ -88,6 +128,9 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getActionCommand().equals("Remove From Story")) {

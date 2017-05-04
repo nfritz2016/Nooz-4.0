@@ -11,13 +11,27 @@ import javax.swing.DefaultListModel;
  */
 public class NewsMakerListModel implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
 	private DefaultListModel<NewsMakerModel> newsMakerDefaultListModel = new DefaultListModel<NewsMakerModel>();
 	
+	/**
+	 * 
+	 */
 	public NewsMakerListModel() {
 		//empty constructor
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerListModel
+	 */
 	public NewsMakerListModel(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerDefaultListModel.clear();
 		for (int i = 0; i < newsMakerListModel.size(); i++) {
@@ -25,18 +39,36 @@ public class NewsMakerListModel implements Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return this.newsMakerDefaultListModel.isEmpty();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int size() {
 		return this.newsMakerDefaultListModel.getSize();
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 * @return
+	 */
 	public boolean contains(NewsMakerModel newsMakerModel) {
 		return this.newsMakerDefaultListModel.contains(newsMakerModel);
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerName
+	 * @return
+	 */
 	public NewsMakerModel getExactMatch(String newsMakerName) {
 		
 		//linear searches through the list and returns the first newsMaker that has a name that exactly matches the given string
@@ -53,6 +85,11 @@ public class NewsMakerListModel implements Serializable {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerName
+	 * @return
+	 */
 	public NewsMakerModel getPartialMatch(String newsMakerName){
 		
 		//linear searches through the list and returns the first newsMaker that has a name that contains the given string
@@ -69,18 +106,36 @@ public class NewsMakerListModel implements Serializable {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public DefaultListModel<NewsMakerModel> getNewsMakers() {
 		return this.newsMakerDefaultListModel;
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 */
 	public NewsMakerModel get(int index) {
 		return this.newsMakerDefaultListModel.getElementAt(index);
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 * @return
+	 */
 	public NewsMakerModel get(NewsMakerModel newsMakerModel){
 		return this.newsMakerDefaultListModel.getElementAt(this.newsMakerDefaultListModel.indexOf(newsMakerModel));
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNewsMakerNames() {
 		String[] names = new String[this.newsMakerDefaultListModel.size()];
 		for (int i = 0; i < this.newsMakerDefaultListModel.size(); i++) {
@@ -89,21 +144,37 @@ public class NewsMakerListModel implements Serializable {
 		return names;
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 */
 	public void add(NewsMakerModel newsMakerModel) {
 		this.newsMakerDefaultListModel.addElement(newsMakerModel);
 
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 */
 	public void replace(NewsMakerModel newsMakerModel) {
 		if (this.newsMakerDefaultListModel.contains(newsMakerModel)) {
 			this.newsMakerDefaultListModel.set(this.newsMakerDefaultListModel.indexOf(newsMakerModel), newsMakerModel);
 		}
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 */
 	public void remove(NewsMakerModel newsMakerModel) {
 		this.newsMakerDefaultListModel.remove(this.newsMakerDefaultListModel.indexOf(newsMakerModel));
 	}
 	
+	/**
+	 * 
+	 * @param newsMakers
+	 */
 	public void removeListOfNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
 		for (int i = 0; i < newsMakers.getSize(); i++) {
 			for(int j = 0; j < newsMakers.get(i).getNewsStoryListModel().size(); ++j){
@@ -117,6 +188,9 @@ public class NewsMakerListModel implements Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void removeAllNewsMakers() {
 		for(int i = 0; i < this.size(); ++i){
 			for(int j = 0; j < this.get(i).getNewsStoryListModel().size(); ++j){
@@ -127,6 +201,10 @@ public class NewsMakerListModel implements Serializable {
 		this.newsMakerDefaultListModel.clear();
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerListModel
+	 */
 	public void setNewsMakersFromNewsMakerList(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerDefaultListModel.clear();
 		for (int i = 0; i < newsMakerListModel.size(); i++) {
@@ -134,6 +212,9 @@ public class NewsMakerListModel implements Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void sort() {
 		//TODO unsure on how correct this is
 		NewsMakerModel[] sortingArray = new NewsMakerModel[this.newsMakerDefaultListModel.size()];

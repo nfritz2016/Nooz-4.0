@@ -25,11 +25,18 @@ import java.util.Map;
  * 
  */
 class NoozFileProcessor {
+	
 	/** The list of news makers. */
 	private static NewsMakerListModel newsMakers = new NewsMakerListModel();
 	
+	/**
+	 * 
+	 */
 	private static NewsStoryListModel newsStories = new NewsStoryListModel();
 	
+	/**
+	 * 
+	 */
 	private static NewsDataBaseModel newsDataBase = new NewsDataBaseModel();
 
 	/**

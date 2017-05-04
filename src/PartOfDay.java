@@ -11,6 +11,9 @@
  */
 public enum PartOfDay {
 	
+	/**
+	 * 
+	 */
 	MORNING, AFTERNOON, EVENING, LATE_NIGHT;
 
 	/**
