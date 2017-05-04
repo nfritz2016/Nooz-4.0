@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -117,25 +118,44 @@ public class NewsController {
 				System.err.println("I/O exception " + ioe.getMessage());
 			}
 			
-			Map<String, String> sourceMap = CodeFileProcessor.readCodeFile("sources.csv");
-			Map<String, String> topicMap = CodeFileProcessor.readCodeFile("topics.csv");
-			Map<String, String> subjectMap = CodeFileProcessor.readCodeFile("subjects2.csv");
+			Map<String, String> sourceMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("sources.csv"));
+			if (sourceMap != null) {
+				System.out.println("not null");
+			}
+			Map<String, String> topicMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("topics.csv"));
+			Map<String, String> subjectMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("subjects2.csv"));
 			
-			
+			if(filename.contains("sources.csv")){
 				this.newsDataBaseModel.setNewsSourceMap(sourceMap);
+				if (sourceMap != null) {
+					System.out.println("not null 2");
+				}
 				System.out.println("sources");
+			}
 			
-			
-			
+			if(filename.contains("topics.csv")){
 				this.newsDataBaseModel.setNewsTopicMap(topicMap);
 				System.out.println("topics");
-			
+			}
+			if(filename.contains("subjects2.csv")){
 				this.newsDataBaseModel.setNewsSubjectMap(subjectMap);
 				System.out.println("subjects");
-			
+			}
+			if (sourceMap != null) {
+				System.out.println("not null 3");
+			}
+			if(filename.contains("StoryData03.csv") && sourceMap != null && topicMap != null && subjectMap != null) {
+				System.out.println("got to loop");
+				if (sourceMap != null) {
+					System.out.println("not null 4");
+				}
 				newsDataBaseModel = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
+				System.out.println("checking for 5");
+				if (sourceMap != null) {
+					System.out.println("not null 5");
+				}
 				System.out.println("stories");
-			
+			}
 		}
 	
 	}
@@ -407,6 +427,7 @@ public class NewsController {
 					story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
+					System.out.println(story);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
 					story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -486,7 +507,7 @@ public class NewsController {
 		public void actionPerformed(ActionEvent actionEvent) {
 			
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
-				addNewsStory();
+				addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
 				editNewsStories();
