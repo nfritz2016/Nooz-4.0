@@ -18,6 +18,12 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import src.EditNewsMakerView;
+import src.NewsMakerListModel;
+import src.NewsMakerModel;
+import src.NewsController.EditNewsMakerNameListener;
+import src.NewsController.RemoveNewsMakerFromNewStoriesListener;
+
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
@@ -303,27 +309,22 @@ public class NewsController {
 	//TODO NOT SURE HOW TO USE THIS VIEW
 	private void editNewsMakers() {
 		int [] makers = selectionView.getSelectedNewsMakers();
-		NewsMakerListModel list = new NewsMakerListModel();
+		NewsMakerListModel newsMakerListModel = this.newsDataBaseModel.getNewsMakerListModel();
 		if(makers.length == 0) {
 			JOptionPane.showMessageDialog(null, "No news makers have been selected.");
 		}
 		else {
-			for(int index = 0; index < list.size(); ++index) {
-				this.editNewsMakerView = new EditNewsMakerView(list.get(index), this.newsDataBaseModel);
-				//this.editNewsMakerView.jbtRemoveFromStory.addActionListener();
-				
-				
-				
-
-				/*
-				this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
-				this.viewDialog = new JDialog(selectionView, "Editing News Maker", true);
-				this.viewDialog.add(addEditNewsStoryView);
+			for(int index: makers) {
+				NewsMakerModel newsMakerModel = newsMakerListModel.get(index);
+				String newsMakerName = newsMakerModel.getName();
+				this.editNewsMakerView = new EditNewsMakerView(newsMakerModel, this.newsDataBaseModel);
+				this.editNewsMakerView.jbtRemoveFromStory.addActionListener(new RemoveNewsMakerFromNewStoriesListener());
+				this.editNewsMakerView.jtfName.addActionListener(new EditNewsMakerNameListener());
+				this.viewDialog = new JDialog(selectionView, "Editing News Makers", true);
+				this.viewDialog.add(editNewsMakerView);
 				this.viewDialog.setResizable(false);
-				this.viewDialog.pack();
+				this.viewDialog.pack();getClass();
 				this.viewDialog.setVisible(true);
-				 */
-		
 			}
 		}
 	}
@@ -822,23 +823,29 @@ public class NewsController {
 	 * @author Cavan Gary
 	 */
 	public class EditNewsMakerNameListener implements ActionListener {
-		
-		/**
-		 * @author Nathan Fritz
-		 * @author Alex Kloppenburg
-		 * @author Joe Pauly
-		 * @author Cavan Gary
-		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {	
 			//before we do this we need to add an if statement for the listener
-			if ("something".equals(actionEvent.getActionCommand())) {
-				
-				//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
-				//if(!NewsMakerListModel.getNewsMakerNames().contains()) {
-				//	 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
-				//}
+			if ("Edit NewsMaker".equals(actionEvent.getActionCommand())) {
+				NewsMakerModel maker = new NewsMakerModel(editNewsMakerView.jtfName.getText());
+				if(newsDataBaseModel.getNewsMakerListModel().contains(maker)){
+					String[] options = {"No", "Yes"};
+					int choice = JOptionPane.showOptionDialog(null, 
+											     "This news maker already exists.\nDo you want to override the name?",
+											     null, JOptionPane.CLOSED_OPTION,
+											     JOptionPane.CLOSED_OPTION,
+											     null,
+											     options,
+											     options[1]);
+					if(choice == 1) {
+						newsDataBaseModel.replaceNewsMakerModel(maker);
+						newsDataBaseModel.sortNewsMakerListModel();
+					}
+				}
+				else {
+					newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).setName(editNewsMakerView.jtfName.getText());
+				}
 				/*
 				 * if name exists, confirm replacing existing news maker with name whose name has just been change
 				 * by using JOptionPane
@@ -856,20 +863,11 @@ public class NewsController {
 	 * @author Cavan Gary
 	 */
 	public class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
-		
-		/**
-		 * @author Nathan Fritz
-		 * @author Alex Kloppenburg
-		 * @author Joe Pauly
-		 * @author Cavan Gary
-		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
-				//I think???
-				//EditNewsMakerView.getSelectedNewsStoryIndices();
+			deleteNewsMakers();
 			}
 			
 		}

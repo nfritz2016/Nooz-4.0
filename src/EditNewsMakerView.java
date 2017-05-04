@@ -32,7 +32,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	/**
 	 * 
 	 */
-	NewsMakerModel newsMakerModel = new NewsMakerModel();
+	public NewsMakerModel newsMakerModel = new NewsMakerModel();
 	
 	/**
 	 * 
@@ -81,6 +81,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		this.newsDataBaseModel = newsDataBaseModel;
 		this.newsMakerModel = newsMakerModel;
 		this.newsDataBaseModel.addNewsMakerModel(this.newsMakerModel);
+		this.jbtRemoveFromStory.setActionCommand("Remove From Story");
 		
 		//needs code to fill the JList based on the model
 		if(this.newsMakerModel != null && this.newsDataBaseModel != null  && this.newsMakerModel.getNewsStoryListModel() != null){
