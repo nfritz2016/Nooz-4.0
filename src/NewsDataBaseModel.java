@@ -197,7 +197,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	}
 	
 	private void processEvent(ActionEvent e) {
-		ArrayList<ActionListener> list;
+		ArrayList<ActionListener> list = new ArrayList<ActionListener>();
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
