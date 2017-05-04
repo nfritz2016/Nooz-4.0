@@ -206,7 +206,7 @@ public class NewsController {
 				}
 			}
 			
-			JOptionPane.showMessageDialog( null, combo, "select or type a value", JOptionPane.QUESTION_MESSAGE);
+			JOptionPane.showMessageDialog( null, combo, "Enter the data represented in this file", JOptionPane.INFORMATION_MESSAGE);
 			selectedItem = (String)combo.getSelectedItem();
 			
 			if(selectedItem.equals("Source Codes")) {
