@@ -262,10 +262,16 @@ public class NewsController {
 
 			newsMaker1.addActionListener(selectionView);
 			newsMaker2.addActionListener(selectionView);
+		
+			selectionView.setNewsDataBaseModel(newsDataBaseModel);
+			
 			newsDataBaseModel.addActionListener(selectionView);
 			newsDataBaseModel.addNewsStory(story);
+			newsDataBaseModel.getNewsStoryListModel().add(story);
 			
+			System.out.println("Should be size 1 " + newsDataBaseModel.getNewsStories().getSize());
 			System.out.println("finished online");
+			
 		}
 		
 	}
