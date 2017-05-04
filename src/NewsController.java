@@ -121,23 +121,21 @@ public class NewsController {
 			Map<String, String> topicMap = CodeFileProcessor.readCodeFile("topics.csv");
 			Map<String, String> subjectMap = CodeFileProcessor.readCodeFile("subjects2.csv");
 			
-			if(filename.contains("sources.csv")){
+			
 				this.newsDataBaseModel.setNewsSourceMap(sourceMap);
 				System.out.println("sources");
-			}
 			
-			if(filename.contains("topics.csv")){
+			
+			
 				this.newsDataBaseModel.setNewsTopicMap(topicMap);
 				System.out.println("topics");
-			}
-			if(filename.contains("subjects2.csv")){
+			
 				this.newsDataBaseModel.setNewsSubjectMap(subjectMap);
 				System.out.println("subjects");
-			}
-			if(filename.contains("StoryData03.csv") && sourceMap != null && topicMap != null && subjectMap != null) {
+			
 				newsDataBaseModel = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
 				System.out.println("stories");
-			}
+			
 		}
 	
 	}
