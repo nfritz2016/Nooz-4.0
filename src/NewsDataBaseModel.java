@@ -26,7 +26,7 @@ public class NewsDataBaseModel {
 	
 	
 	public NewsDataBaseModel() {
-		//empty constructor
+		this.addNewsMakerModel(none);
 	}
 	
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
