@@ -135,12 +135,12 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
+	private JList<NewsMakerModel> jlNewsMakerList;
 	
 	/**
 	 * 
 	 */
-	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
+	private JScrollPane jspNewsMakerList;
 	
 	/**
 	 * 
@@ -150,12 +150,12 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
+	private JList<NewsStory> jlNewsStoryList;
 	
 	/**
 	 * 
 	 */
-	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
+	private JScrollPane jspNewsStoryList;
 	
 	/**
 	 * 
@@ -183,7 +183,13 @@ public class SelectionView extends JFrame implements ActionListener {
 	public SelectionView() {
 		//sets name of frame
 		setTitle("Nooz");
+		jlNewsMakerList = new JList<NewsMakerModel>();
+		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
+		jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 		
+		jlNewsStoryList = new JList<NewsStory>();
+		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
+		jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 		//makes the file tab
 		jmFile.add(jmiLoad);
 		jmFile.add(jmiSave);
@@ -365,7 +371,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
-			
 		}
 		System.out.println("Action performed in sview");
 	}
