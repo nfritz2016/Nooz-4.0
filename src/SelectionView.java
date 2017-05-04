@@ -21,7 +21,8 @@ import javax.swing.ListSelectionModel;
  *
  */
 public class SelectionView extends JFrame implements ActionListener {
-	
+	private static final long serialVersionUID = 1L;
+
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
 	
 	private JMenuBar jmb = new JMenuBar();
@@ -221,16 +222,10 @@ public class SelectionView extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		
-		if (actionEvent.getActionCommand().equals("Add News Story")) {
-			NewsMakerModel[] newsMakerModelArray = new NewsMakerModel[newsDataBaseModel.getNewsMakers().size()];
-			for (int i = 0; i < newsDataBaseModel.getNewsMakers().size(); i++) {
-				newsMakerModelArray[i] = newsDataBaseModel.getNewsMakerListModel().get(i);
-			}
-			newsMakerModelArray[1] = new NewsMakerModel("none");
-			jlNewsMakerList.setListData(newsMakerModelArray);
+		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
+			jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
+			jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
 		}
-		
 		System.out.println("Action performed in sview");
 	}
 	

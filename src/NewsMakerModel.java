@@ -36,8 +36,8 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
+			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 		}
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Add News Story"));
 		System.out.println("called addNewsStory");
 	}
 	
@@ -76,6 +76,7 @@ public class NewsMakerModel implements ActionListener, Serializable {
 		//TODO not entirely sure b/c no javadoc
 	}
 	
+
 	public synchronized void addActionListener(ActionListener actionListener) {
 		if (actionListenerList == null)
 			actionListenerList = new ArrayList<ActionListener>();
@@ -87,10 +88,12 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	private void processEvent(ActionEvent e) {
+		System.out.println("called processEvent");
 		ArrayList<ActionListener> list;
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
+			// Do not worry about the cast warning here.
 			list = (ArrayList<ActionListener>) actionListenerList.clone();
 		}
 		for (int i = 0; i < list.size(); i++) {
@@ -99,8 +102,10 @@ public class NewsMakerModel implements ActionListener, Serializable {
 		}
 	}
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 	}
+
 }
