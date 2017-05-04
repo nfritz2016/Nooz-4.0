@@ -84,7 +84,6 @@ public class NewsController {
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		newsDataBaseModel = new NewsDataBaseModel();
 		this.newsDataBaseModel = newsDataBaseModel;
-		this.selectionView.setNewsDataBaseModel(this.newsDataBaseModel);
 		//newsDataBaseModel.addActionListener(selectionView);
 	}
 	

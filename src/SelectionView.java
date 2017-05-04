@@ -273,7 +273,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiPieChart.setActionCommand("Pie Chart");
 		jmiText.setActionCommand("Text");
 		//Set appropriate buttons inactive initially
-		if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+		if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
 			jmiPieChart.setEnabled(false);
 			jmiText.setEnabled(false);
 		}
@@ -356,12 +356,17 @@ public class SelectionView extends JFrame implements ActionListener {
 	 * @param newsDataBaseModel
 	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
+		
+		//Sets Model
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
 			newsDataBaseModel.addActionListener(this);
 		}
 		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
 		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
+		
+		//Checks buttons
+		
 	}
 
 	
@@ -371,7 +376,61 @@ public class SelectionView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
-
+			//Set filemenu buttons
+			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+				jmiLoad.setEnabled(true);
+				jmiSave.setEnabled(false);
+				jmiImport.setEnabled(true);
+				jmiExport.setEnabled(false);
+				
+			}
+			else{
+				jmiLoad.setEnabled(true);
+				jmiSave.setEnabled(true);
+				jmiImport.setEnabled(true);
+				jmiExport.setEnabled(true);
+			}
+			
+			//Set set Newsmaker Menu buttons
+			if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+				jmiAddNewsMaker.setEnabled(true);
+				jmiEditNewsMaker.setEnabled(false);
+				jmiDeleteNewsMaker.setEnabled(false);
+				jmiDeleteNewsMakerList.setEnabled(false);
+			}
+			else{
+				jmiAddNewsMaker.setEnabled(true);
+				jmiEditNewsMaker.setEnabled(true);
+				jmiDeleteNewsMaker.setEnabled(true);
+				jmiDeleteNewsMakerList.setEnabled(true);
+			}
+			
+			//Set News Story Menu buttons
+			if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+				jmiAddNewsStory.setEnabled(true);
+				jmiEditNewsStory.setEnabled(false);
+				jmiSortNewsStories.setEnabled(false);
+				jmiDeleteNewsStory.setEnabled(false);
+				jmiDeleteAllNewsStories.setEnabled(false);
+			}
+			else{
+				jmiAddNewsStory.setEnabled(true);
+				jmiEditNewsStory.setEnabled(true);
+				jmiSortNewsStories.setEnabled(true);
+				jmiDeleteNewsStory.setEnabled(true);
+				jmiDeleteAllNewsStories.setEnabled(true);
+			}
+			
+			//Set appropriate buttons inactive initially
+			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+				jmiPieChart.setEnabled(false);
+				jmiText.setEnabled(false);
+			}
+			else{
+				jmiPieChart.setEnabled(true);
+				jmiText.setEnabled(true);
+			}
+			
 		}
 		System.out.println("Action performed in sview");
 	}
