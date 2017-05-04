@@ -224,6 +224,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
 			jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
+			jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
 		}
 		System.out.println("Action performed in sview");
 	}
