@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Nathan Fritz
  *
  */
-public class NewsMakerModel implements Serializable {
+public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -67,8 +67,9 @@ public class NewsMakerModel implements Serializable {
 		return false;
 	}
 	
+	@Override
 	public int compareTo(NewsMakerModel newsMakerModel) {
-		return this.compareTo(newsMakerModel);
+		return this.getName().compareTo(newsMakerModel.getName());
 		//TODO not entirely sure
 	}
 	
