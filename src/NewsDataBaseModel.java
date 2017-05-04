@@ -32,6 +32,8 @@ public class NewsDataBaseModel implements Serializable{
 	
 	
 	public NewsDataBaseModel() {
+		this.newsMakerListModel = new NewsMakerListModel();
+		this.newsStoryListModel = new NewsStoryListModel();
 		this.addNewsMakerModel(none);
 	}
 	
