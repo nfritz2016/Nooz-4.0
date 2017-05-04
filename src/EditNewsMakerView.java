@@ -44,7 +44,12 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		this.newsDataBaseModel.addNewsMakerModel(this.newsMakerModel);
 		
 		//needs code to fill the JList based on the model
-		this.jlNewsStoryList = new JList<NewsStory>(this.newsDataBaseModel.getNewsStories());
+		if(this.newsMakerModel != null && this.newsDataBaseModel != null  && this.newsMakerModel.getNewsStoryListModel() != null){
+			this.jlNewsStoryList = new JList<NewsStory>(this.newsMakerModel.getNewsStoryListModel().getNewsStories());
+		}
+		else{
+			this.jlNewsStoryList = new JList<NewsStory>(this.newsDataBaseModel.getNewsStories());
+		}
 
 		jplName.add(jlbName);
 		jplName.add(jtfName);
