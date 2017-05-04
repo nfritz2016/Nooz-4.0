@@ -255,8 +255,9 @@ public class TextView implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent actionEvent){
 		
-		if("something".equals(actionEvent.getActionCommand())){
-			//make it update itself (not sure how)????
+		if("Text".equals(actionEvent.getActionCommand())){
+			constructTitle();
+			constructNewsStoriesAndSummary();
 		}
 		
 	}

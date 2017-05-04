@@ -57,8 +57,6 @@ class UserInterface {
 	 */
 	static String convertToOutputFormat(NewsStory newsStory, List<NewsMedia> mediaType) {
 
-		// TODO: Append each line with subject and (for TV and online) part of
-		// day.
 		String storyString = "";
 		LocalDate date = newsStory.getDate();
 

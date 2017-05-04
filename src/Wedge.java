@@ -22,8 +22,9 @@ public class Wedge {
 	 *            The text for the constructed wedge.
 	 */
 	public Wedge(double percent, String text) {
-		// TODO: Ensure a value between 0 and 100.
-		this.setPercent(percent);
+		if(percent >= 0.0 && percent <= 100.0){
+			this.setPercent(percent);
+		}
 		this.setText(text);
 	}
 
@@ -43,8 +44,9 @@ public class Wedge {
 	 *            The value to set in the percent field.
 	 */
 	public void setPercent(double percent) {
-		// TODO: Ensure a value between 0 and 100.
-		this.percent = percent;
+		if(percent >= 0.0 && percent <= 100.0){
+			this.percent = percent;
+		}
 	}
 
 	/**
