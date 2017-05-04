@@ -110,7 +110,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public void removeAllNewsMakers() {
-		this.newsMakerDefaultListModel.clear();
+		this.getNewsMakers().clear();
 	}
 	
 	public void setNewsMakersFromNewsMakerList(NewsMakerListModel newsMakerListModel) {
