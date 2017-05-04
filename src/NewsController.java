@@ -205,6 +205,9 @@ public class NewsController {
 					System.err.println("I/O exception " + ioe.getMessage());
 				}
 			}
+			else if(returnValue == JFileChooser.CANCEL_OPTION) {
+				break;
+			}
 			
 			JOptionPane.showMessageDialog( null, combo, "Enter the data represented in this file", JOptionPane.INFORMATION_MESSAGE);
 			selectedItem = (String)combo.getSelectedItem();
@@ -229,7 +232,7 @@ public class NewsController {
 		}
 	
 	
-		if(this.newsDataBaseModel.getNewsSourceMap() != null && this.newsDataBaseModel.getNewsTopicMap() != null && this.newsDataBaseModel.getNewsSubjectMap() != null ) {
+		if(!(sourceMap.isEmpty()) && !(topicMap.isEmpty()) && !(subjectMap.isEmpty()) ) {
 			NewsDataBaseModel dataBase = NoozFileProcessor.readNoozFile(storyFile, sourceMap, topicMap, subjectMap);
 			newsDataBaseModel.setNewsMakerListModel(dataBase.getNewsMakerListModel());
 			newsDataBaseModel.setNewsStoryListModel(dataBase.getNewsStoryListModel());
