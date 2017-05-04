@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Nathan Fritz
  *
  */
-public class NewsMakerModel implements ActionListener, Serializable {
+public class NewsMakerModel implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -102,10 +102,5 @@ public class NewsMakerModel implements ActionListener, Serializable {
 			ActionListener listener = list.get(i);
 			listener.actionPerformed(e);
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//TODO idk what to do here
 	}
 }
