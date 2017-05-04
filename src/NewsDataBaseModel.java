@@ -135,7 +135,14 @@ public class NewsDataBaseModel implements Serializable{
 	}
 	
 	public void removeAllNewsMakers() {
+		for(int i = 0; i < this.newsStoryListModel.size(); ++i){
+			for(int j = 0; j < this.newsMakerListModel.get(i).getNewsStoryListModel().size(); ++j){
+				this.newsMakerListModel.get(i).getNewsStoryListModel().get(j).setNewsMaker1(none);
+				this.newsMakerListModel.get(i).getNewsStoryListModel().get(j).setNewsMaker2(none);
+			}
+		}
 		this.newsMakerListModel.removeAllNewsMakers();
+		this.newsMakerListModel.add(none);
 	}
 	
 	public void sortNewsMakerListModel() {

@@ -18,7 +18,7 @@ public class NewsMakerModel implements Serializable {
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
 	public NewsMakerModel() {
-		//empty constructor
+		this.name = "none";
 	}
 	
 	public NewsMakerModel(String name) {

@@ -21,7 +21,7 @@ public class NewsMakerListModel implements Serializable {
 	public NewsMakerListModel(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerDefaultListModel.clear();
 		for (int i = 0; i < newsMakerListModel.size(); i++) {
-		newsMakerDefaultListModel.addElement(newsMakerListModel.get(i));
+			newsMakerDefaultListModel.addElement(newsMakerListModel.get(i));
 		}
 	}
 	
@@ -110,7 +110,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	public void removeAllNewsMakers() {
-		this.getNewsMakers().clear();
+		this.newsMakerDefaultListModel.clear();
 	}
 	
 	public void setNewsMakersFromNewsMakerList(NewsMakerListModel newsMakerListModel) {
@@ -122,7 +122,11 @@ public class NewsMakerListModel implements Serializable {
 	
 	public void sort() {
 		//TODO unsure on how correct this is
-		NewsMakerModel[] sortingArray = (NewsMakerModel[])this.newsMakerDefaultListModel.toArray();
+		NewsMakerModel[] sortingArray = new NewsMakerModel[this.newsMakerDefaultListModel.size()];
+		
+		for(int i = 0; i < this.newsMakerDefaultListModel.size(); ++i){
+			sortingArray[i] = (NewsMakerModel)this.newsMakerDefaultListModel.get(i);
+		}
 		
 		Arrays.sort(sortingArray);
 		this.newsMakerDefaultListModel.clear();

@@ -531,7 +531,8 @@ public class NewsDataBaseModelTest {
 		if (!newsStory2.getNewsMaker2().equals(newsMakerModel2)) {
 			fail("News maker not properly added to story");
 		}
-
+		
+		
 		newsDataBaseModel.removeAllNewsMakers();
 
 		if (!newsStory1.getNewsMaker1().equals(new NewsMakerModel())) {
