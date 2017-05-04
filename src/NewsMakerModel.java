@@ -11,7 +11,7 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
+	private ArrayList<ActionListener> actionListenerList;
 	
 	private String name;
 	
@@ -76,11 +76,13 @@ public class NewsMakerModel implements ActionListener, Serializable {
 		//TODO not entirely sure b/c no javadoc
 	}
 	
-	public void addActionListener(ActionListener actionListener) {
-		this.actionListenerList.add(actionListener);
+	public synchronized void addActionListener(ActionListener actionListener) {
+		if (actionListenerList == null)
+			actionListenerList = new ArrayList<ActionListener>();
+		actionListenerList.add(actionListener);
 	}
 	
-	public void removeActionListener(ActionListener actionListener) {
+	public synchronized void removeActionListener(ActionListener actionListener) {
 		this.actionListenerList.remove(actionListener);
 	}
 	
@@ -99,6 +101,6 @@ public class NewsMakerModel implements ActionListener, Serializable {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//TODO idk what to do here
+		
 	}
 }
