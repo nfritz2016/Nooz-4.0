@@ -55,7 +55,6 @@ public class NewsController {
 		this.selectionView.registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		this.selectionView.registerNewsStoryMenuListener(new NewsStoryMenuListener());
 		newsDataBaseModel.none.addActionListener(selectionView);
-		System.out.println("listeners registered");
 	}
 	
 	private void loadNewsData() {
@@ -241,28 +240,27 @@ public class NewsController {
 		int day = (int) addEditNewsStoryView.jcbNewsStoryDay.getSelectedItem();
 		LocalDate date = LocalDate.of(year, monthAsInt, day);
 		PartOfDay partOfDay = (PartOfDay) addEditNewsStoryView.jcbNewsStoryPartOfDay.getSelectedItem();
-		NewsStory story = null;
 		if (type.equals(NewsMedia.NEWSPAPER)) {
-			story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
+			NewsStory story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
 			newsMaker1.addNewsStory(story);
 			newsMaker2.addNewsStory(story);
 			newsMaker1.addActionListener(selectionView);
 			newsMaker2.addActionListener(selectionView);
 		}
 		else if (type.equals(NewsMedia.TV)) {
-			story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+			NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 			newsMaker1.addNewsStory(story);
 			newsMaker2.addNewsStory(story);
 			newsMaker1.addActionListener(selectionView);
 			newsMaker2.addActionListener(selectionView);
 		}
 		else if (type.equals(NewsMedia.ONLINE)) {
-			story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+			NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 			newsMaker1.addNewsStory(story);
 			newsMaker2.addNewsStory(story);
 			newsDataBaseModel.addNewsStory(story);
-			newsMaker1.addActionListener(selectionView);
-			newsMaker2.addActionListener(selectionView);
+			//newsMaker1.addActionListener(selectionView);
+			//newsMaker2.addActionListener(selectionView);
 			System.out.println("finished online");
 		}
 	}
