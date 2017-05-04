@@ -50,7 +50,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JMenuItem jmiPieChart = new JMenuItem("Pie Chart");
 	private JMenuItem jmiText = new JMenuItem("Text");
 	
-	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>();
+	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
 	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 	private JPanel jpNewsMakerList = new JPanel();
 	
@@ -178,6 +178,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		jlNewsMakerList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		jlNewsStoryList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		
+		
 		setJMenuBar(jmb);
 		add(splitPane);
 		pack();
@@ -217,7 +218,9 @@ public class SelectionView extends JFrame implements ActionListener {
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
 			newsDataBaseModel.addActionListener(this);
-		}
+			
+		}	
+		jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
 	}
 	
 	@Override
