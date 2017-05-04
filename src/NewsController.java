@@ -19,14 +19,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import src.DateComparator;
-import src.LengthComparator;
-import src.NewsMakerListModel;
-import src.NewsStory;
-import src.NewsStoryListModel;
-import src.SourceComparator;
-import src.SubjectComparator;
-
 
 public class NewsController {
 
@@ -53,6 +45,7 @@ public class NewsController {
 	
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
+		newsDataBaseModel.addActionListener(selectionView);
 	}
 	
 	public void setSelectionView(SelectionView selectionView) {

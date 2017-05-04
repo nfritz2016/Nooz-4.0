@@ -91,6 +91,7 @@ public class NewsMakerListModel implements Serializable {
 	
 	public void add(NewsMakerModel newsMakerModel) {
 		this.newsMakerDefaultListModel.addElement(newsMakerModel);
+
 	}
 	
 	public void replace(NewsMakerModel newsMakerModel) {

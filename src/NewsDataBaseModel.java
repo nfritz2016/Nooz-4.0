@@ -12,7 +12,7 @@ import javax.swing.DefaultListModel;
  * @author Alex Kloppenburg
  *
  */
-public class NewsDataBaseModel implements Serializable{
+public class NewsDataBaseModel implements ActionListener, Serializable{
 	
 	/**
 	 * 
@@ -32,7 +32,9 @@ public class NewsDataBaseModel implements Serializable{
 	
 	
 	public NewsDataBaseModel() {
+
 		this.addNewsMakerModel(this.none);
+
 	}
 	
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
@@ -204,5 +206,11 @@ public class NewsDataBaseModel implements Serializable{
 			ActionListener listener = list.get(i);
 			listener.actionPerformed(e);
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
