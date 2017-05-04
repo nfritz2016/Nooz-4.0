@@ -22,7 +22,7 @@ public class NewsController {
 
 	private NewsDataBaseModel newsDataBaseModel;
 	
-	private SelectionView selectionView;
+	private SelectionView selectionView = new SelectionView();
 	
 	private EditNewsMakerView editNewsMakerView;
 	
@@ -434,6 +434,8 @@ public class NewsController {
 					story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
+					//newsMaker1.addActionListener(selectionView);
+					//newsMaker2.addActionListener(selectionView);
 					System.out.println("finished online");
 				}
 				System.out.println(story.toString());
