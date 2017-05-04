@@ -18,12 +18,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import src.EditNewsMakerView;
-import src.NewsMakerListModel;
-import src.NewsMakerModel;
-import src.NewsController.EditNewsMakerNameListener;
-import src.NewsController.RemoveNewsMakerFromNewStoriesListener;
-
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
@@ -323,7 +317,8 @@ public class NewsController {
 				this.viewDialog = new JDialog(selectionView, "Editing News Makers", true);
 				this.viewDialog.add(editNewsMakerView);
 				this.viewDialog.setResizable(false);
-				this.viewDialog.pack();getClass();
+				this.viewDialog.pack();
+				//getClass();
 				this.viewDialog.setVisible(true);
 			}
 		}
