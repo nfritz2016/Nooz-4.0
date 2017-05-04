@@ -22,7 +22,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
 	
-	private DefaultListModel<String> newsStoryStringList = new DefaultListModel<String>();
+	NewsMakerModel newsMakerModel = new NewsMakerModel();
 	
 	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
@@ -40,6 +40,12 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	
 	public EditNewsMakerView(NewsMakerModel newsMakerModel, NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
+		this.newsMakerModel = newsMakerModel;
+		this.newsDataBaseModel.addNewsMakerModel(this.newsMakerModel);
+		
+		//needs code to fill the JList based on the model
+		this.jlNewsStoryList = new JList<NewsStory>(this.newsDataBaseModel.getNewsStories());
+
 		jplName.add(jlbName);
 		jplName.add(jtfName);
 		jpNewsStoryList.add(jspNewsStoryList);
@@ -66,7 +72,10 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	}*/
 	
 	private void enableRemovalButton(){
-		if(getSelectedNewsStoryIndices() == null){
+		if(this.newsMakerModel.getNewsStoryListModel() == null){
+			jbtRemoveFromStory.setEnabled(false);
+		}
+		else if(this.newsMakerModel.getNewsStoryListModel().getNewsStories().isEmpty()){
 			jbtRemoveFromStory.setEnabled(false);
 		}
 		else{
@@ -74,6 +83,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		}
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if(actionEvent.getActionCommand().equals("Remove From Story")) {
 			//If none are selected, add the whole list of news stories to the jlist
@@ -84,6 +94,9 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 				}
 				
 			}
+		}
+		if(actionEvent.getActionCommand().equals("Modified News Story List")){
+			enableRemovalButton();
 		}
 	}
 }
