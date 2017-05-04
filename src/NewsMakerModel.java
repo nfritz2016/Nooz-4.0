@@ -23,6 +23,7 @@ public class NewsMakerModel implements Serializable {
 	
 	public NewsMakerModel(String name) {
 		this.name = name;
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
 	public String getName() {
@@ -78,9 +79,11 @@ public class NewsMakerModel implements Serializable {
 	
 
 	public synchronized void addActionListener(ActionListener actionListener) {
-		if (actionListenerList == null)
+		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
+		}
 		actionListenerList.add(actionListener);
+		System.out.println(actionListenerList.get(0));
 	}
 	
 	public synchronized void removeActionListener(ActionListener actionListener) {
