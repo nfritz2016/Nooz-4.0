@@ -4,7 +4,6 @@ import javax.swing.DefaultListModel;
 
 /**
  * @author Nathan Fritz
- *
  */
 public class NewsStoryListModel implements Serializable {
 	
@@ -26,8 +25,7 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsStoryListModel
+	 * @author Nathan Fritz
 	 */
 	public NewsStoryListModel(NewsStoryListModel newsStoryListModel) {
 		this.newsStories.clear();
@@ -37,66 +35,56 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public boolean isEmpty() {
 		return newsStories.isEmpty();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public int size() {
 		return newsStories.getSize();
 	}
 	
 	/**
-	 * 
-	 * @param newsStory
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public boolean contains(NewsStory newsStory) {
 		return this.newsStories.contains(newsStory);
 	}
 	
 	/**
-	 * 
-	 * @param index
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public NewsStory get(int index) {
 		return this.newsStories.getElementAt(index);
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public DefaultListModel<NewsStory> getNewsStories() {
 		return this.newsStories;
 	}
 	
 	/**
-	 * 
-	 * @param newsStory
+	 * @author Nathan Fritz
 	 */
 	public void add(NewsStory newsStory) {
 		this.newsStories.addElement(newsStory);
 	}
 	
 	/**
-	 * 
-	 * @param newsStory
+	 * @author Nathan Fritz
 	 */
 	public void remove(NewsStory newsStory) {
 		this.newsStories.remove(this.newsStories.indexOf(newsStory));
 	}
 	
 	/**
-	 * 
-	 * @param newsStories
+	 * @author Nathan Fritz
 	 */
 	public void removeListOfNewsStories(DefaultListModel<NewsStory> newsStories) {
 		for (int i = 0; i < newsStories.getSize(); i++) {
@@ -105,8 +93,7 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsStoryListModel
+	 * @author Nathan Fritz
 	 */
 	public void setNewsStories(NewsStoryListModel newsStoryListModel) {
 		this.newsStories.clear();
@@ -116,8 +103,7 @@ public class NewsStoryListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsStoryArray
+	 * @author Nathan Fritz
 	 */
 	public void setNewsStoriesFromArray(NewsStory[] newsStoryArray) {
 		this.newsStories.clear();

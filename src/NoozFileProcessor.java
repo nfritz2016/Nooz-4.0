@@ -21,6 +21,7 @@ import java.util.Map;
  * </P>
  * 
  * @author Dean Hougen
+ * @author Alex Kloppenburg
  * @version 3.0
  * 
  */
@@ -74,6 +75,9 @@ class NoozFileProcessor {
 	 * @return The list of news makers created.
 	 * @throws IOException
 	 *             If there is an I/O problem reading the data file.
+	 *             
+	 * @author Alex Kloppenburg
+	 * @author Dean Hougen
 	 */
 	public static NewsDataBaseModel readNoozFile(String fileName, Map<String, String> sourceMap,
 			Map<String, String> topicMap, Map<String, String> subjectMap){
@@ -108,6 +112,8 @@ class NoozFileProcessor {
 	 *            The stories to write.
 	 * @throws IOException
 	 *             If there is an I/O problem writing the file.
+	 *             
+	 * @author Dean Hougen
 	 */
 	public static void writeNewsTextFile(String outputFileName, String listOfStories) throws IOException {
 		FileWriter outfile = new FileWriter(outputFileName);
@@ -140,6 +146,9 @@ class NoozFileProcessor {
 	 *            The map from topic code to topic description.
 	 * @param subjectMap
 	 *            The map from subject code to subject description.
+	 *            
+	 * @author Alex Kloppenburg
+	 * @author Dean Hougen
 	 */
 	private static void processLine(String line, Map<String, String> sourceMap, Map<String, String> topicMap,
 			Map<String, String> subjectMap) {
@@ -269,6 +278,8 @@ class NoozFileProcessor {
 	 *            The encoded date.
 	 * @return The decoded date or <code>null</code> if the date cannot be
 	 *         decoded.
+	 *         
+	 * @author Dean Hougen
 	 */
 	private static LocalDate decodeDate(String dateString) {
 
@@ -327,6 +338,8 @@ class NoozFileProcessor {
 	 * @param lengthString
 	 *            The length as a String.
 	 * @return The length as an int.
+	 * 
+	 * @author Dean Hougen
 	 */
 	private static int decodeLength(String lengthString) {
 		int length = 0;
@@ -371,6 +384,8 @@ class NoozFileProcessor {
 	 *            vary for the second news maker based on whether the first news
 	 *            maker name contained a comma.
 	 * @return The decoded news maker name.
+	 * 
+	 * @author Dean Hougen
 	 */
 	private static String decodeNewsmakerName(String[] parts, int startingIndex) {
 		String nameString = "";
@@ -413,6 +428,8 @@ class NoozFileProcessor {
 	 *            The numeral specifying the part of the day.
 	 * @return The part of the day as one of the enumerated values of PartOfDay
 	 *         (or null for an invalid code).
+	 *         
+	 * @author Dean Hougen
 	 */
 	private static PartOfDay decodePartOfDay(String partOfDayCode) {
 		switch (partOfDayCode) {

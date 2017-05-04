@@ -7,7 +7,6 @@ import javax.swing.DefaultListModel;
 
 /**
  * @author Nathan Fritz
- *
  */
 public class NewsMakerListModel implements Serializable {
 	
@@ -22,15 +21,14 @@ public class NewsMakerListModel implements Serializable {
 	private DefaultListModel<NewsMakerModel> newsMakerDefaultListModel = new DefaultListModel<NewsMakerModel>();
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 */
 	public NewsMakerListModel() {
 		//empty constructor
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerListModel
+	 * @author Nathan Fritz
 	 */
 	public NewsMakerListModel(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerDefaultListModel.clear();
@@ -40,34 +38,28 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public boolean isEmpty() {
 		return this.newsMakerDefaultListModel.isEmpty();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public int size() {
 		return this.newsMakerDefaultListModel.getSize();
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerModel
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public boolean contains(NewsMakerModel newsMakerModel) {
 		return this.newsMakerDefaultListModel.contains(newsMakerModel);
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerName
-	 * @return
+	 * @author Alex Kloppenburg
 	 */
 	public NewsMakerModel getExactMatch(String newsMakerName) {
 		
@@ -86,9 +78,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerName
-	 * @return
+	 * @author Alex Kloppenburg
 	 */
 	public NewsMakerModel getPartialMatch(String newsMakerName){
 		
@@ -107,34 +97,28 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public DefaultListModel<NewsMakerModel> getNewsMakers() {
 		return this.newsMakerDefaultListModel;
 	}
 	
 	/**
-	 * 
-	 * @param index
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public NewsMakerModel get(int index) {
 		return this.newsMakerDefaultListModel.getElementAt(index);
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerModel
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public NewsMakerModel get(NewsMakerModel newsMakerModel){
 		return this.newsMakerDefaultListModel.getElementAt(this.newsMakerDefaultListModel.indexOf(newsMakerModel));
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public String[] getNewsMakerNames() {
 		String[] names = new String[this.newsMakerDefaultListModel.size()];
@@ -145,8 +129,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerModel
+	 * @author Nathan Fritz
 	 */
 	public void add(NewsMakerModel newsMakerModel) {
 		this.newsMakerDefaultListModel.addElement(newsMakerModel);
@@ -154,8 +137,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerModel
+	 * @author Nathan Fritz
 	 */
 	public void replace(NewsMakerModel newsMakerModel) {
 		if (this.newsMakerDefaultListModel.contains(newsMakerModel)) {
@@ -164,16 +146,14 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerModel
+	 * @author Nathan Fritz
 	 */
 	public void remove(NewsMakerModel newsMakerModel) {
 		this.newsMakerDefaultListModel.remove(this.newsMakerDefaultListModel.indexOf(newsMakerModel));
 	}
 	
 	/**
-	 * 
-	 * @param newsMakers
+	 * @author Alex Kloppenburg
 	 */
 	public void removeListOfNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
 		for (int i = 0; i < newsMakers.getSize(); i++) {
@@ -189,7 +169,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 */
 	public void removeAllNewsMakers() {
 		for(int i = 0; i < this.size(); ++i){
@@ -202,8 +182,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerListModel
+	 * @author Nathan Fritz
 	 */
 	public void setNewsMakersFromNewsMakerList(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerDefaultListModel.clear();
@@ -213,7 +192,7 @@ public class NewsMakerListModel implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 */
 	public void sort() {
 		//TODO unsure on how correct this is

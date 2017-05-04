@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 /**
  * @author Nathan Fritz
- *
+ * @author Alex Kloppenburg
+ * @author Joe Pauly
+ * @author Cavan Gary
  */
 public class AddEditNewsStoryView extends JPanel implements Serializable {
 	
@@ -240,9 +242,10 @@ public class AddEditNewsStoryView extends JPanel implements Serializable {
 	private JPanel jplAddEditNewsStory = new JPanel();
 	
 	/**
-	 * 
-	 * @param newsDataBaseModel
-	 * @param newsStory
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public AddEditNewsStoryView(NewsDataBaseModel newsDataBaseModel, NewsStory newsStory) {
 		this.newsDataBaseModel = newsDataBaseModel;

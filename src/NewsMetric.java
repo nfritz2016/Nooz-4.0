@@ -15,6 +15,8 @@ public enum NewsMetric {
 	/**
 	 * This overridden code capitalizes the code correctly for output to
 	 * the user.
+	 * 
+	 * @author Cavan Gary
 	 */
 	@Override
 	public String toString(){

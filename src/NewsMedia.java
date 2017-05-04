@@ -19,7 +19,8 @@ public enum NewsMedia {
 	public static List<NewsMedia> VALUES_LIST;
 	
 	/**
-	 * 
+	 * @author Cavan Gary
+	 * @author Alex Kloppenburg
 	 */
 	public String toString() {
 		
@@ -36,7 +37,8 @@ public enum NewsMedia {
 	}
 	
 	/**
-	 * 
+	 * @author Cavan Gary
+	 * @author Alex Kloppenburg
 	 * @return
 	 */
 	public List<NewsMedia> valuesAsList() {

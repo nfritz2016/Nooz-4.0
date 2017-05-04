@@ -16,7 +16,7 @@ import java.util.Locale;
  * 
  * @author Dean Hougen
  * @version 3.0
- * edited 5/1 by Alex Kloppenburg
+ * @author Alex Kloppenburg
  *
  */
 class UserInterface {

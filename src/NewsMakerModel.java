@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 /**
  * @author Nathan Fritz
- *
  */
 public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> {
 	
@@ -30,15 +29,15 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 */
 	public NewsMakerModel() {
 		this.name = "None";
 	}
 	
 	/**
-	 * 
-	 * @param name
+	 * @author Nathan Fritz
 	 */
 	public NewsMakerModel(String name) {
 		this.name = name;
@@ -46,24 +45,21 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public String getName() {
 		return this.name;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public NewsStoryListModel getNewsStoryListModel() {
 		return this.newsStoryListModel;
 	}
 	
 	/**
-	 * 
-	 * @param newsStory
+	 * @author Nathan Fritz
 	 */
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
@@ -72,24 +68,21 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
-	 * @param name
+	 * @author Nathan Fritz
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
 	/**
-	 * 
-	 * @param newsStoryListModel
+	 * @author Nathan Fritz
 	 */
 	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
 		this.newsStoryListModel = newsStoryListModel;
 	}
 	
 	/**
-	 * 
-	 * @param newsStory
+	 * @author Nathan Fritz
 	 */
 	public void removeNewsStory(NewsStory newsStory) {
 		if (this.newsStoryListModel.contains(newsStory)) {
@@ -99,7 +92,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
+	 * @author Dean Hougen
 	 */
 	public boolean equals(Object o) {
 		if (o instanceof NewsMakerModel) {
@@ -112,7 +105,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 */
 	@Override
 	public int compareTo(NewsMakerModel newsMakerModel) {
@@ -121,7 +114,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 */
 	public String toString() {
 		return name;
@@ -129,8 +122,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
-	 * @param actionListener
+	 * @author Nathan Fritz
 	 */
 	public synchronized void addActionListener(ActionListener actionListener) {
 		if (actionListenerList == null) {
@@ -140,16 +132,14 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	/**
-	 * 
-	 * @param actionListener
+	 * @author Nathan Fritz
 	 */
 	public synchronized void removeActionListener(ActionListener actionListener) {
 		this.actionListenerList.remove(actionListener);
 	}
 	
 	/**
-	 * 
-	 * @param e
+	 * @author Nathan Fritz
 	 */
 	private void processEvent(ActionEvent e) {
 		ArrayList<ActionListener> list;

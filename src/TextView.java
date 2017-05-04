@@ -12,12 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- * 
- * @author Alex
- *
+ * @author Alex Kloppenburg
  */
-//class created by alex 4/25
-//all fields created by alex 4/25
 public class TextView implements ActionListener{
 	
 	/**
@@ -66,13 +62,8 @@ public class TextView implements ActionListener{
 	private JTextArea jtaSummaryLine = new JTextArea(summaryLine);
 	
 	/**
-	 * 
-	 * @param newsMakerModel
-	 * @param newsMedia
-	 * @param sortCriteria
+	 * @author Alex Kloppenburg
 	 */
-	//created by alex 4/25
-	//graphical part of method body written by alex 4/26
 	public TextView(NewsMakerModel newsMakerModel, List<NewsMedia> newsMedia, List<SortCriterion> sortCriteria){
 		
 		/*fill strings with info, will populate into text fields bc of initializations above.  When initialized,
@@ -107,8 +98,10 @@ public class TextView implements ActionListener{
 	/**
 	 * This method adapts several methods from the UserInterface class from project 3, adapting them for use with the 
 	 * new MVC classes.  It creates a single string containing both the list of NewsStories 
+	 * 
+	 * @author Dean Hougen
+	 * @author Alex Kloppenburg
 	 */
-	//created by alex 4/25
 	private void constructNewsStoriesAndSummary(){
 		
 		/* The list of stories as a String */
@@ -222,9 +215,8 @@ public class TextView implements ActionListener{
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 */
-	//created by alex 4/25
 	private String constructTitle(){
 		
 		String title = "Text View of " ;
@@ -248,7 +240,7 @@ public class TextView implements ActionListener{
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 * @param e
 	 */
 	//created by alex 4/25

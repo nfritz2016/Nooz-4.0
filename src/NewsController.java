@@ -18,9 +18,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- * 
- * @author Alex
- *
+ * @author Nathan Fritz
+ * @author Alex Kloppenburg
+ * @author Joe Pauly
+ * @author Cavan Gary
  */
 public class NewsController {
 	
@@ -65,15 +66,20 @@ public class NewsController {
 	private List<NewsMedia> selectedMediaTypes = new ArrayList<NewsMedia>();
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public NewsController() {
 		//empty constructor
 	}
 	
 	/**
-	 * 
-	 * @param newsDataBaseModel
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		newsDataBaseModel = new NewsDataBaseModel();
@@ -82,8 +88,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @param selectionView
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
@@ -95,7 +103,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private void loadNewsData() {
 		JFileChooser fc = new JFileChooser(".");
@@ -124,9 +135,11 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
-	//TODO: check this method. Based off of loadNewsData
 	private void saveNewsData() {
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
@@ -152,7 +165,10 @@ public class NewsController {
 	
 
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private void importNoozStories() {
 		JFileChooser fc = new JFileChooser(".");
@@ -210,7 +226,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void exportNewsStories() {
@@ -220,7 +239,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void addNewsMaker() {
@@ -257,7 +279,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO NOT SURE HOW TO USE THIS VIEW
 	private void editNewsMakers() {
@@ -288,7 +313,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void deleteNewsMakers() {
@@ -306,7 +334,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void deleteNewsMakerList() {
@@ -324,9 +355,11 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
-	//TODO write
 	private void addNewsStory() {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
 		AddEditNewsStoryListener listener = new AddEditNewsStoryListener();
@@ -339,7 +372,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void editNewsStories() {
@@ -411,7 +447,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void sortNewsStories() {
@@ -453,7 +492,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void deleteNewsStories() {
@@ -471,7 +513,10 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//TODO write
 	private void deleteAllNewsStories() {
@@ -494,6 +539,12 @@ public class NewsController {
      * <code>SectionView</code> and displays one pie chart per news maker. For
      * each pie chart it needs to determine the media type(s) to display, the
      * news content type to display, and the news metric to use for display.
+     * 
+     *
+     * @author Nathan Fritz
+     * @author Alex Kloppenburg
+     * @author Joe Pauly
+     * @author Cavan Gary
      */
     private void displayPieCharts() {
         // Get the indices of the news makers selected in the selection view.
@@ -556,9 +607,12 @@ public class NewsController {
         }
     }
 	
-	/**
-	 * 
-	 */
+    /**
+     * @author Nathan Fritz
+     * @author Alex Kloppenburg
+     * @author Joe Pauly
+     * @author Cavan Gary
+     */
 	private void displayTextViews() {
 		
 		// Get the indices of the news makers selected in the selection view.
@@ -618,14 +672,18 @@ public class NewsController {
 	//TODO write listeners
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private class FileMenuListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -647,14 +705,18 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private class NewsMakerMenuListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -675,14 +737,18 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private class NewsStoryMenuListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -708,14 +774,18 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	private class DisplayMenuListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -730,14 +800,18 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public class EditNewsMakerNameListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -760,14 +834,18 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -782,15 +860,19 @@ public class NewsController {
 	}
 	
 	/**
-	 * 
-	 * @author Alex
-	 *
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	//written by alex 5/2
 	public class AddEditNewsStoryListener implements ActionListener {
 		
 		/**
-		 * 
+		 * @author Nathan Fritz
+		 * @author Alex Kloppenburg
+		 * @author Joe Pauly
+		 * @author Cavan Gary
 		 */
 		//TODO write
 		@Override
@@ -860,9 +942,11 @@ public class NewsController {
      * work -- the overridden <code>actionPerformed</code> method -- which is
      * called when there is a relevant <code>actionEvent</code>.
      * 
-     * @author Dean Hougen
-     * @version 1.0
      *
+     * @author Nathan Fritz
+     * @author Alex Kloppenburg
+     * @author Joe Pauly
+     * @author Cavan Gary
      */
     public class MediaTypeSelectionListener implements ActionListener {
 

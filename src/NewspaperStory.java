@@ -18,7 +18,8 @@ import java.time.LocalDate;
  * different length units.
  * </P>
  * 
- * @author Dean Hougen and Cavan Gary
+ * @author Dean Hougen
+ * @author Cavan Gary
  * @version 3.0
  * 
  */
@@ -50,6 +51,9 @@ public class NewspaperStory extends NewsStory implements Serializable {
 	 *            The first news maker featured in the story.
 	 * @param newsMaker2
 	 *            The second news maker featured in the story.
+	 *            
+	 * @author Dean Hougen
+	 * @author Cavan Gary
 	 */
 	public NewspaperStory(LocalDate date, String source, int length, String topic, String subject,
 			NewsMakerModel newsMaker1, NewsMakerModel newsMaker2) {
@@ -65,6 +69,7 @@ public class NewspaperStory extends NewsStory implements Serializable {
 	 * </P>
 	 * 
 	 * @see NewsStory#getLengthInWords()
+	 * @author Dean Hougen
 	 */
 	@Override
 	public int getLengthInWords() {

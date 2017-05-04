@@ -5,7 +5,7 @@ import java.util.Comparator;
  * <P>
  * SubjectComparator compares the subject of two news stories.
  * 
- * @author Joe Pauly (112909034)
+ * @author Joe Pauly
  *
  */
 public class SubjectComparator implements Comparator<NewsStory> {

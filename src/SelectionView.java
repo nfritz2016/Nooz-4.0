@@ -18,7 +18,8 @@ import javax.swing.ListSelectionModel;
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
- *
+ * @author Joe Pauly
+ * @author Cavan Gary
  */
 public class SelectionView extends JFrame implements ActionListener {
 	
@@ -178,7 +179,10 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JLabel newsstories = new JLabel("News Stories");
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
+	 * @author Joe Pauly
+	 * @author Cavan Gary
 	 */
 	public SelectionView() {
 		//sets name of frame
@@ -312,8 +316,8 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @param fileMenuListener
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 */
 	public void registerFileMenuListener(ActionListener fileMenuListener) {
 		jmiLoad.addActionListener(fileMenuListener);
@@ -323,8 +327,8 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @param newsMakerMenuListener
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 */
 	public void registerNewsMakerMenuListener(ActionListener newsMakerMenuListener) {
 		jmiAddNewsMaker.addActionListener(newsMakerMenuListener);
@@ -334,8 +338,8 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @param newsStoryMenuListener
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 */
 	public void registerNewsStoryMenuListener(ActionListener newsStoryMenuListener) {
 		jmiAddNewsStory.addActionListener(newsStoryMenuListener);
@@ -346,8 +350,8 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @param displayMenuListener
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 */
 	public void registerDisplayMenuListener(ActionListener displayMenuListener) {
 		jmiPieChart.addActionListener(displayMenuListener);
@@ -355,7 +359,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 * @param newsDataBaseModel
 	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
@@ -368,7 +372,7 @@ public class SelectionView extends JFrame implements ActionListener {
 
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
@@ -379,15 +383,14 @@ public class SelectionView extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @author Nathan Fritz
 	 */
 	public int[] getSelectedNewsMakers() {
 		return jlNewsMakerList.getSelectedIndices();
 	}
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
 	 * @return
 	 */
 	public int[] getSelectedNewsStories() {

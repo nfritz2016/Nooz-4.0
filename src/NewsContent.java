@@ -14,7 +14,7 @@ public enum NewsContent {
 	SOURCE, TOPIC, SUBJECT;
 	
 	/**
-	 * 
+	 * @author Cavan Gary
 	 */
 	@Override
 	public String toString() {

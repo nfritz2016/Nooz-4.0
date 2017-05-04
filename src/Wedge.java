@@ -3,7 +3,9 @@
  * value that described what percentage of the pie should be taken up by this
  * wedge and the text to associate with that wedge.
  * 
- * @author Dean Hougen Nathan Fritz
+ * @author Dean Hougen
+ * @author Nathan Fritz
+ * @author Alex Kloppenburg
  * @version 1.0
  */
 public class Wedge {

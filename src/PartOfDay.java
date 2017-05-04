@@ -19,6 +19,8 @@ public enum PartOfDay {
 	/**
 	 * The overridden <code>toString</code> method gives the part of day in
 	 * "Title Case."
+	 * 
+	 * @author Dean Hougen
 	 */
 	@Override
 	public String toString() {

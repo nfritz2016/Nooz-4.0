@@ -14,7 +14,7 @@ public enum SortCriterion {
 	SOURCE, TOPIC, SUBJECT, LENGTH, DATE_TIME;
 	
 	/**
-	 * 
+	 * @author Cavan Gary
 	 */
 	@Override
 	public String toString() {

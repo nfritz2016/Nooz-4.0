@@ -11,7 +11,9 @@ import java.time.LocalDate;
  * the story, and two lead news makers in the story.
  * </P>
  * 
- * @author Dean Hougen and Cavan Gary
+ * @author Dean Hougen
+ * @author Cavan Gary
+ * @author Alex Kloppenburg
  * @version 2.0
  * 
  */
@@ -70,6 +72,10 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 *            The first news maker featured in the story.
 	 * @param newsMaker2
 	 *            The second news maker featured in the story.
+	 *            
+	 * @author Dean Hougen
+	 * @author Cavan Gary
+	 * @author Alex Kloppenburg
 	 */
 	protected NewsStory(LocalDate date, String source, int length, String topic, String subject, NewsMakerModel newsMaker1,
 			NewsMakerModel newsMaker2) {
@@ -96,6 +102,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The date the story was published.
+	 * @author Dean Hougen
 	 */
 	public LocalDate getDate() {
 		return date; // Note that LocalDate is immutable
@@ -109,6 +116,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The name of the source in which the story was published.
+	 * @author Dean Hougen
 	 */
 	public String getSource() {
 		return source;
@@ -122,6 +130,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The count of the words in the story.
+	 * @author Dean Hougen
 	 */
 	public int getLength() {
 		return length;
@@ -145,6 +154,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The equivalent of the length in words
+	 * 
+	 * @author Dean Hougen
 	 */
 	public abstract int getLengthInWords();
 
@@ -156,6 +167,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The broad topic of the story.
+	 * @author Dean Hougen
 	 */
 	public String getTopic() {
 		return topic;
@@ -169,6 +181,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The specific subject matter of the story.
+	 * @author Dean Hougen
 	 */
 	public String getSubject() {
 		return subject;
@@ -184,6 +197,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The first news maker featured in the story.
+	 * @author Dean Hougen
+	 * @author Alex Kloppenburg
 	 */
 	public NewsMakerModel getNewsMaker1() {
 		NewsMakerModel newsmaker1 = this.newsMaker1;
@@ -200,6 +215,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * </P>
 	 * 
 	 * @return The second news maker featured in the story.
+	 * @author Dean Hougen
+	 * @author Alex Kloppenburg
 	 */
 	public NewsMakerModel getNewsMaker2() {
 		NewsMakerModel newsmaker2 = this.newsMaker2;
@@ -211,6 +228,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param date
+	 * @author Dean Hougen
 	 */
 	public void setDate(LocalDate date) {
 		this.date = date;
@@ -227,6 +245,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param length
+	 * @author Dean Hougen
 	 */
 	public void setLength(int length){
 		this.length = length;
@@ -235,6 +254,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param topic
+	 * @author Dean Hougen
 	 */
 	public void setTopic(String topic){
 		this.topic = topic;
@@ -243,6 +263,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param subject
+	 * @author Dean Hougen
 	 */
 	public void setSubject(String subject){
 		this.subject = subject;
@@ -251,6 +272,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param newsMaker1
+	 * @author Dean Hougen
+	 * @author Alex Kloppenburg
 	 */
 	public void setNewsMaker1(NewsMakerModel newsMaker1){
 		this.newsMaker1 = newsMaker1;
@@ -259,6 +282,8 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	/**
 	 * 
 	 * @param newsMaker2
+	 * @author Dean Hougen
+	 * @author Alex Kloppenburg
 	 */
 	public void setNewsMaker2(NewsMakerModel newsMaker2){
 		this.newsMaker2 = newsMaker2;
@@ -275,6 +300,7 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * 
 	 * @param o
 	 *            The object to which to compare this.
+	 * @author Dean Hougen
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -312,12 +338,17 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	 * <P>
 	 * The natural ordering for news stories is topic.
 	 * </P>
+	 * 
+	 * @author Dean Hougen
 	 */
 	@Override
 	public int compareTo(NewsStory newsStory) {
 		return this.topic.compareTo(newsStory.topic);
 	}
 	
+	/**
+	 * @author Alex Kloppenburg
+	 */
 	public String toString(){
 		return UserInterface.convertToOutputFormat(this, null);
 	}

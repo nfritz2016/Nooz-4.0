@@ -1,9 +1,8 @@
 /**
- * 
- * @author Alex
+ * @author Alex Kloppenburg
  * @author Nathan Fritz
  * @author Cavan Gary
- *
+ * @author Joe Pauly
  */
 //class created by alex 4/25
 //all fields created by alex 4/25
@@ -26,10 +25,11 @@ public class NoozDriver {
 	private static NewsController newsController = new NewsController();
 	
 	/**
-	 * 
-	 * @param args
+	 * @author Alex Kloppenburg
+	 * @author Nathan Fritz
+	 * @author Cavan Gary
+	 * @author Joe Pauly
 	 */
-	//created by alex 4/25
 	public static void main(String[] args){
 		
 		newsDataBaseModel = new NewsDataBaseModel();

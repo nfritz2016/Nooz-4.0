@@ -1,7 +1,7 @@
 /**
  * 
  * @author Cavan Gary
- *
+ * @author Alex Kloppenburg
  */
 public enum Month {
 	
@@ -11,7 +11,7 @@ public enum Month {
 	JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER;
 	
 	/**
-	 * 
+	 * @author Cavan Gary
 	 */
 	@Override
 	public String toString() {
@@ -46,7 +46,7 @@ public enum Month {
 	}
 	
 	/**
-	 * 
+	 * @author Cavan Gary
 	 * @return
 	 */
 	public int toInt(){
@@ -85,7 +85,7 @@ public enum Month {
 	
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 * @param num
 	 * @return
 	 */

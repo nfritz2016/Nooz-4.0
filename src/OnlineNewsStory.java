@@ -23,7 +23,8 @@ import java.time.LocalDate;
  * accessor and mutator methods are included in <code>OnlineNewsStory</code>.
  * </P>
  * 
- * @author Dean Hougen and Cavan Gary
+ * @author Dean Hougen
+ * @author Cavan Gary
  * @version 1.0
  * 
  */

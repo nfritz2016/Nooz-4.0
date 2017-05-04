@@ -23,7 +23,8 @@ import java.time.LocalDate;
  * (<code>getPartOfDay()</code>) is included in <code>TVNewsStory</code>.</b>
  * </P>
  * 
- * @author Dean Hougen and Cavan Gary
+ * @author Dean Hougen
+ * @author Cavan Gary
  * @version 2.0
  * 
  */

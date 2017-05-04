@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * @author Alex Kloppenburg
+ * @author Dean Hougen
  *
  */
 public class MediaTypeSelectionView extends JPanel {
@@ -64,7 +64,7 @@ public class MediaTypeSelectionView extends JPanel {
     
     
     /**
-     * @author 
+     * @author Dean Hougen
      */
     public MediaTypeSelectionView() {
     	
