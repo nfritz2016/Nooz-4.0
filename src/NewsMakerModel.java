@@ -37,9 +37,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
-			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 		}
-		System.out.println("called addNewsStory");
 	}
 	
 	public void setName(String name) {
@@ -84,7 +82,6 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 			actionListenerList = new ArrayList<ActionListener>();
 		}
 		actionListenerList.add(actionListener);
-		System.out.println(actionListenerList.get(0));
 	}
 	
 	public synchronized void removeActionListener(ActionListener actionListener) {
@@ -92,7 +89,6 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	}
 	
 	private void processEvent(ActionEvent e) {
-		System.out.println("called processEvent");
 		ArrayList<ActionListener> list;
 		synchronized (this) {
 			if (actionListenerList == null)

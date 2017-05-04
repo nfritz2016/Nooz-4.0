@@ -171,6 +171,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	
 	public void addNewsStory(NewsStory newsStory) {
 		this.newsStoryListModel.add(newsStory);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
 	public void removeNewsStories(DefaultListModel<NewsStory> newsStories) {
