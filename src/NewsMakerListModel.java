@@ -105,11 +105,24 @@ public class NewsMakerListModel implements Serializable {
 	
 	public void removeListOfNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
 		for (int i = 0; i < newsMakers.getSize(); i++) {
+			for(int j = 0; j < newsMakers.get(i).getNewsStoryListModel().size(); ++j){
+				this.newsMakerDefaultListModel.get(this.newsMakerDefaultListModel.indexOf(newsMakers.get(i))).
+					getNewsStoryListModel().get(j).setNewsMaker1(new NewsMakerModel());
+				this.newsMakerDefaultListModel.get(this.newsMakerDefaultListModel.indexOf(newsMakers.get(i))).
+				getNewsStoryListModel().get(j).setNewsMaker2(new NewsMakerModel());
+			}
 			this.newsMakerDefaultListModel.remove(this.newsMakerDefaultListModel.indexOf(newsMakers.get(i)));
 		}
+		
 	}
 	
 	public void removeAllNewsMakers() {
+		for(int i = 0; i < this.size(); ++i){
+			for(int j = 0; j < this.get(i).getNewsStoryListModel().size(); ++j){
+				this.get(i).getNewsStoryListModel().get(j).setNewsMaker1(new NewsMakerModel());
+				this.get(i).getNewsStoryListModel().get(j).setNewsMaker2(new NewsMakerModel());
+			}
+		}
 		this.newsMakerDefaultListModel.clear();
 	}
 	
