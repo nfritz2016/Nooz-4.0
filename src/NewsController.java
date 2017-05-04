@@ -352,6 +352,7 @@ public class NewsController {
 			JOptionPane.showMessageDialog(null, "No news stories have been selected.");
 		}
 
+
 		else {
 			for(int index = 0; index < list.size(); ++index) {
 			this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, list.get(index));
@@ -405,6 +406,7 @@ public class NewsController {
 				System.out.println("finished online");
 			}
 			}
+
 		}
 	}
 	

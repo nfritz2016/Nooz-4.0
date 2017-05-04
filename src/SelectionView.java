@@ -362,8 +362,10 @@ public class SelectionView extends JFrame implements ActionListener {
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
 			newsDataBaseModel.addActionListener(this);
+
 		}	
 	}
+
 	
 	/**
 	 * 
@@ -371,6 +373,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
+
 		}
 		System.out.println("Action performed in sview");
 	}

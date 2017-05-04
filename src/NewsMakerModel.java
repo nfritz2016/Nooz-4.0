@@ -68,7 +68,7 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
-		}
+			}
 	}
 	
 	/**
