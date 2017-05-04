@@ -183,9 +183,6 @@ public class NewsController {
 			}
 			
 			Map<String, String> sourceMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("sources.csv"));
-			if (sourceMap != null) {
-				System.out.println("not null");
-			}
 			Map<String, String> topicMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("topics.csv"));
 			Map<String, String> subjectMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("subjects2.csv"));
 			
