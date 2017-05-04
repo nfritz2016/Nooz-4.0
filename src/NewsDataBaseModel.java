@@ -337,7 +337,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
 		}
-		System.out.println("ACTION" + l.getClass());
 		actionListenerList.add(l);
 	}
 	
@@ -356,9 +355,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * @param e
 	 */
 	private void processEvent(ActionEvent e) {
-
-		System.out.println(e.getActionCommand());
-		System.out.println("test");
 		ArrayList<ActionListener> list;
 
 		synchronized (this) {
