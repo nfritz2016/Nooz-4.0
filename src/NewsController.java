@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -169,16 +170,70 @@ public class NewsController {
 	 * @author Cavan Gary
 	 */
 	private void importNoozStories() {
+		
+		//Initialized file chooser
 		JFileChooser fc = new JFileChooser(".");
+
+		//creates the combo box and adds it to joption pane
+		String[] boxElements = {"Source Codes", "Topic Codes", "Subject Codes", "News Stories"};
+		JComboBox<String> combo = new JComboBox<String>(boxElements);
+		JOptionPane.showMessageDialog( null, combo, "select or type a value", JOptionPane.QUESTION_MESSAGE);
+		String selectedItem = (String)combo.getSelectedItem();
+		
+		Map<String, String> sourceMap = new TreeMap<String, String>();
+		Map<String, String> topicMap = new TreeMap<String, String>();
+		Map<String, String> subjectMap = new TreeMap<String, String>();
+
+		//sentinel statement
+		while(!(selectedItem.equals("News Stories")))
+		{
+			String filename = "";
+			String singleFileName = "";
+			
+			int returnValue = fc.showOpenDialog(selectionView);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				try{
+					filename = fc.getSelectedFile().getCanonicalPath();
+					String[] files = filename.split("\\\\");
+					singleFileName = files[files.length - 1];
+				}
+				catch(IOException ioe){
+					System.err.println("I/O exception " + ioe.getMessage());
+				}
+			}
+			
+			if(selectedItem.equals("Source Codes")) {
+				sourceMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				this.newsDataBaseModel.setNewsSourceMap(sourceMap);
+			}
+			else if(selectedItem.equals("Topic Codes")) {
+				topicMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				this.newsDataBaseModel.setNewsSourceMap(topicMap);
+			}
+			else if(selectedItem.equals("Subject Codes")) {
+				subjectMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				this.newsDataBaseModel.setNewsSubjectMap(subjectMap);
+			}
+			
+			JOptionPane.showMessageDialog( null, combo, "select or type a value", JOptionPane.QUESTION_MESSAGE);
+			selectedItem = (String)combo.getSelectedItem();
+			
+		}
+		
+		String filename = "";
+		String singleFileName = "";
 		int returnValue = fc.showOpenDialog(selectionView);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			String filename = "";
 			try{
 				filename = fc.getSelectedFile().getCanonicalPath();
+				String[] files = filename.split("\\\\");
+				singleFileName = files[files.length - 1];
+
 			}
 			catch(IOException ioe){
 				System.err.println("I/O exception " + ioe.getMessage());
 			}
+
 			
 			Map<String, String> sourceMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile("sources.csv"));
 			if (sourceMap != null) {
@@ -222,7 +277,18 @@ public class NewsController {
 				System.out.println("stories");
 			}
 		}
+
 		//selectionView.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
+
+	
+		
+		if(this.newsDataBaseModel.getNewsSourceMap() != null && this.newsDataBaseModel.getNewsTopicMap() != null && this.newsDataBaseModel.getNewsSubjectMap() != null ) {
+			newsDataBaseModel = NoozFileProcessor.readNoozFile(singleFileName, sourceMap, topicMap, subjectMap);
+		}
+		
+		selectionView.setNewsDataBaseModel(newsDataBaseModel);
+	
+
 	}
 	
 	/**
