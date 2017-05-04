@@ -652,8 +652,7 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			System.out.println("1234");
-			if ("add button".equals(actionEvent.getActionCommand())) {
+			if ("Add Story Button Pressed".equals(actionEvent.getActionCommand())) {
 				NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
 				String source = (String) addEditNewsStoryView.jcbNewsStorySource.getSelectedItem();
 				String topic = (String) addEditNewsStoryView.jcbNewsStoryTopic.getSelectedItem();
