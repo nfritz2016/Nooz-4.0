@@ -21,47 +21,165 @@ import javax.swing.ListSelectionModel;
  *
  */
 public class SelectionView extends JFrame implements ActionListener {
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
 	
+	/**
+	 * 
+	 */
 	private JMenuBar jmb = new JMenuBar();
 	
+	/**
+	 * 
+	 */
 	private JMenu jmFile = new JMenu("File");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiLoad = new JMenuItem("Load");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiSave = new JMenuItem("Save");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiImport = new JMenuItem("Import");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiExport = new JMenuItem("Export");
 	
+	/**
+	 * 
+	 */
 	private JMenu jmNewsMaker = new JMenu("Newsmakers");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiAddNewsMaker = new JMenuItem("Add Newsmaker");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiEditNewsMaker = new JMenuItem("Edit Newsmaker");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiDeleteNewsMaker = new JMenuItem("Delete Newsmaker");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiDeleteNewsMakerList = new JMenuItem("Delete Newsmaker List");
 	
+	/**
+	 * 
+	 */
 	private JMenu jmNewsStory = new JMenu("News Stories");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiAddNewsStory = new JMenuItem("Add News Story");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiEditNewsStory = new JMenuItem("Edit News Story");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiSortNewsStories = new JMenuItem("Sort News Stories");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiDeleteNewsStory = new JMenuItem("Delete News Stories");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiDeleteAllNewsStories = new JMenuItem("Delete All News Stories");
 	
+	/**
+	 * 
+	 */
 	private JMenu jmDisplay = new JMenu("Display");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiPieChart = new JMenuItem("Pie Chart");
+	
+	/**
+	 * 
+	 */
 	private JMenuItem jmiText = new JMenuItem("Text");
 	
+	/**
+	 * 
+	 */
 	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
+	
+	/**
+	 * 
+	 */
 	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
+	
+	/**
+	 * 
+	 */
 	private JPanel jpNewsMakerList = new JPanel();
 	
+	/**
+	 * 
+	 */
 	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
+	
+	/**
+	 * 
+	 */
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
+	
+	/**
+	 * 
+	 */
 	private JPanel jpNewsStoryList = new JPanel();
 	
+	/**
+	 * 
+	 */
 	private JSplitPane splitPane;
+	
+	/**
+	 * 
+	 */
 	private JLabel newsmakers = new JLabel("NewsMakers");
+	
+	/**
+	 * 
+	 */
 	private JLabel newsstories = new JLabel("News Stories");
 	
+	/**
+	 * 
+	 */
 	public SelectionView() {
 		//sets name of frame
 		setTitle("Nooz");
@@ -187,6 +305,10 @@ public class SelectionView extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @param fileMenuListener
+	 */
 	public void registerFileMenuListener(ActionListener fileMenuListener) {
 		jmiLoad.addActionListener(fileMenuListener);
 		jmiImport.addActionListener(fileMenuListener);
@@ -194,6 +316,10 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiExport.addActionListener(fileMenuListener);
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerMenuListener
+	 */
 	public void registerNewsMakerMenuListener(ActionListener newsMakerMenuListener) {
 		jmiAddNewsMaker.addActionListener(newsMakerMenuListener);
 		jmiEditNewsMaker.addActionListener(newsMakerMenuListener);
@@ -201,6 +327,10 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteNewsMakerList.addActionListener(newsMakerMenuListener);
 	}
 	
+	/**
+	 * 
+	 * @param newsStoryMenuListener
+	 */
 	public void registerNewsStoryMenuListener(ActionListener newsStoryMenuListener) {
 		jmiAddNewsStory.addActionListener(newsStoryMenuListener);
 		jmiEditNewsStory.addActionListener(newsStoryMenuListener);
@@ -209,11 +339,19 @@ public class SelectionView extends JFrame implements ActionListener {
 		jmiDeleteAllNewsStories.addActionListener(newsStoryMenuListener);
 	}
 	
+	/**
+	 * 
+	 * @param displayMenuListener
+	 */
 	public void registerDisplayMenuListener(ActionListener displayMenuListener) {
 		jmiPieChart.addActionListener(displayMenuListener);
 		jmiText.addActionListener(displayMenuListener);
 	}
 	
+	/**
+	 * 
+	 * @param newsDataBaseModel
+	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
@@ -221,6 +359,9 @@ public class SelectionView extends JFrame implements ActionListener {
 		}	
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
@@ -229,10 +370,18 @@ public class SelectionView extends JFrame implements ActionListener {
 		System.out.println("Action performed in sview");
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int[] getSelectedNewsMakers() {
 		return jlNewsMakerList.getSelectedIndices();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int[] getSelectedNewsStories() {
 		return jlNewsStoryList.getSelectedIndices();
 	}

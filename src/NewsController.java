@@ -1,6 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,35 +17,74 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * 
+ * @author Alex
+ *
+ */
 public class NewsController {
-
+	
+	/**
+	 * 
+	 */
 	private NewsDataBaseModel newsDataBaseModel;
 	
+	/**
+	 * 
+	 */
 	private SelectionView selectionView;
 	
+	/**
+	 * 
+	 */
 	private EditNewsMakerView editNewsMakerView;
 	
+	/**
+	 * 
+	 */
 	private JDialog viewDialog;
 	
+	/**
+	 * 
+	 */
 	private AddEditNewsStoryView addEditNewsStoryView;
 	
+	/**
+	 * 
+	 */
 	private NewsStory editedNewsStory;
 	
+	/**
+	 * 
+	 */
 	private MediaTypeSelectionView mediaTypeSelectionView;
 	
+	/**
+	 * 
+	 */
 	private List<NewsMedia> selectedMediaTypes = new ArrayList<NewsMedia>();
 	
-	//push test2
+	/**
+	 * 
+	 */
 	public NewsController() {
 		//empty constructor
 	}
 	
+	/**
+	 * 
+	 * @param newsDataBaseModel
+	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		newsDataBaseModel = new NewsDataBaseModel();
 		this.newsDataBaseModel = newsDataBaseModel;
 		//newsDataBaseModel.addActionListener(selectionView);
 	}
 	
+	/**
+	 * 
+	 * @param selectionView
+	 */
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
 		this.selectionView.registerDisplayMenuListener(new DisplayMenuListener());
@@ -56,6 +94,9 @@ public class NewsController {
 		newsDataBaseModel.none.addActionListener(selectionView);
 	}
 	
+	/**
+	 * 
+	 */
 	private void loadNewsData() {
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
@@ -82,6 +123,9 @@ public class NewsController {
 		}	
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO: check this method. Based off of loadNewsData
 	private void saveNewsData() {
 		JFileChooser fc = new JFileChooser(".");
@@ -107,7 +151,9 @@ public class NewsController {
 	}
 	
 
-	
+	/**
+	 * 
+	 */
 	private void importNoozStories() {
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
@@ -163,6 +209,9 @@ public class NewsController {
 	
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void exportNewsStories() {
 		//get list of stores from textview (or another function)
@@ -170,6 +219,9 @@ public class NewsController {
 		//NoozFileProcessor.writeNewsTextFile(outputFileName, listOfStories);
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void addNewsMaker() {
 		//If news maker is not in database, add it
@@ -204,6 +256,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO NOT SURE HOW TO USE THIS VIEW
 	private void editNewsMakers() {
 		int [] makers = selectionView.getSelectedNewsMakers();
@@ -232,6 +287,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void deleteNewsMakers() {
 		int [] makers = selectionView.getSelectedNewsMakers();
@@ -247,6 +305,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void deleteNewsMakerList() {
 		String[] options = {"No", "Yes"};
@@ -262,6 +323,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void addNewsStory() {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
@@ -274,6 +338,9 @@ public class NewsController {
 		this.viewDialog.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void editNewsStories() {
 		int [] stories = selectionView.getSelectedNewsStories();
@@ -341,6 +408,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void sortNewsStories() {
 		String[] criteria = {"source", "topic", "length", "date/time", "subject"};
@@ -380,6 +450,9 @@ public class NewsController {
 
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void deleteNewsStories() {
 		int [] stories = selectionView.getSelectedNewsStories();
@@ -395,6 +468,9 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	//TODO write
 	private void deleteAllNewsStories() {
 		String[] options = {"No", "Yes"};
@@ -478,7 +554,9 @@ public class NewsController {
         }
     }
 	
-	
+	/**
+	 * 
+	 */
 	private void displayTextViews() {
 		
 		// Get the indices of the news makers selected in the selection view.
@@ -537,7 +615,16 @@ public class NewsController {
 	//LISTENERS
 	//TODO write listeners
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	private class FileMenuListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -557,7 +644,16 @@ public class NewsController {
 
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	private class NewsMakerMenuListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -576,7 +672,16 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	private class NewsStoryMenuListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -600,7 +705,16 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	private class DisplayMenuListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -613,7 +727,16 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	public class EditNewsMakerNameListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {	
@@ -634,7 +757,16 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	public class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
@@ -647,8 +779,17 @@ public class NewsController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Alex
+	 *
+	 */
 	//written by alex 5/2
 	public class AddEditNewsStoryListener implements ActionListener {
+		
+		/**
+		 * 
+		 */
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {

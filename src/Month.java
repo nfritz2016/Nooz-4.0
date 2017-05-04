@@ -5,9 +5,14 @@
  */
 public enum Month {
 	
+	/**
+	 * 
+	 */
 	JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER;
 	
-	//turns a month enum into a String
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
 		switch(this){
@@ -40,7 +45,10 @@ public enum Month {
 		}
 	}
 	
-	//turns a month enum into a number
+	/**
+	 * 
+	 * @return
+	 */
 	public int toInt(){
 			
 			switch(this){
@@ -76,8 +84,11 @@ public enum Month {
 	}
 	
 	
-	//TODO: Check to see if num is good parameter for mimir
-	//turns a number into a month enum
+	/**
+	 * 
+	 * @param num
+	 * @return
+	 */
 	public static Month fromInt(int num){
 		switch(num){
 		case 1:

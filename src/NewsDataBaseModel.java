@@ -18,35 +18,74 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/**
+	 * 
+	 */
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
 	
+	/**
+	 * 
+	 */
 	private Map<String, String> newsSourceMap = new HashMap<String, String>();
+	
+	/**
+	 * 
+	 */
 	private Map<String, String> newsTopicMap = new HashMap<String, String>();
+	
+	/**
+	 * 
+	 */
 	private Map<String, String> newsSubjectMap = new HashMap<String, String>();
 	
+	/**
+	 * 
+	 */
 	NewsMakerModel none = new NewsMakerModel("None");
 	
+	/**
+	 * 
+	 */
 	private NewsMakerListModel newsMakerListModel = new NewsMakerListModel();
+	
+	/**
+	 * 
+	 */
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
-	
+	/**
+	 * 
+	 */
 	public NewsDataBaseModel() {
 
 		this.addNewsMakerModel(this.none);
 
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerListModel
+	 * @param newsStoryListModel
+	 */
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
 		this.newsMakerListModel = newsMakerListModel;
 		this.newsStoryListModel = newsStoryListModel;
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Map<String, String> getNewsSourceMap() {
 		return this.newsSourceMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNewsSources() {
 		
 		String[] sources = new String[this.newsSourceMap.size()];
@@ -60,14 +99,26 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		//return (String[]) this.newsSourceMap.values().toArray();
 	}
 	
+	/**
+	 * 
+	 * @param newsSourceMap
+	 */
 	public void setNewsSourceMap(Map<String, String> newsSourceMap) {
 		this.newsSourceMap = newsSourceMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Map<String, String> getNewsTopicMap() {
 		return this.newsTopicMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNewsTopics() {
 		String[] topics = new String[this.newsTopicMap.size()];
 		int i = 0;
@@ -78,14 +129,26 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		return topics;
 	}
 	
+	/**
+	 * 
+	 * @param newsTopicMap
+	 */
 	public void setNewsTopicMap(Map<String, String> newsTopicMap) {
 		this.newsTopicMap = newsTopicMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Map<String, String> getNewsSubjectMap() {
 		return this.newsSubjectMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNewsSubjects() {
 		String[] subjects = new String[this.newsSubjectMap.size()];
 		int i = 0;
@@ -96,93 +159,180 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		return subjects;
 	}
 	
+	/**
+	 * 
+	 * @param newsSubjectMap
+	 */
 	public void setNewsSubjectMap(Map<String, String> newsSubjectMap) {
 		this.newsSubjectMap = newsSubjectMap;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean newsMakerListIsEmpty() {
 		return this.newsMakerListModel.isEmpty();
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 * @return
+	 */
 	public boolean containsNewsMakerModel(NewsMakerModel newsMakerModel) {
 		return this.newsMakerListModel.contains(newsMakerModel);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public NewsMakerListModel getNewsMakerListModel() {
 		return this.newsMakerListModel;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNewsMakerNames() {
 		return this.newsMakerListModel.getNewsMakerNames();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public DefaultListModel<NewsMakerModel> getNewsMakers() {
 		return this.newsMakerListModel.getNewsMakers();
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerListModel
+	 */
 	public void setNewsMakerListModel(NewsMakerListModel newsMakerListModel) {
 		this.newsMakerListModel = newsMakerListModel;
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 */
 	public void addNewsMakerModel(NewsMakerModel newsMakerModel) {
 		this.newsMakerListModel.add(newsMakerModel);
 	}
 	
+	/**
+	 * 
+	 * @param newsMakerModel
+	 */
 	public void replaceNewsMakerModel(NewsMakerModel newsMakerModel) {
 		this.newsMakerListModel.replace(newsMakerModel);
 	}
 	
+	/**
+	 * 
+	 * @param newsMakers
+	 */
 	public void removeNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
 		this.newsMakerListModel.removeListOfNewsMakers(newsMakers);
 	}
 	
+	/**
+	 * 
+	 */
 	public void removeAllNewsMakers() {
 		this.newsMakerListModel.removeAllNewsMakers();
 		this.newsMakerListModel.add(none);
 	}
 	
+	/**
+	 * 
+	 */
 	public void sortNewsMakerListModel() {
 		this.newsMakerListModel.sort();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean newsStoryListIsEmpty() {
 		return this.newsStoryListModel.isEmpty();
 	}
 	
+	/**
+	 * 
+	 * @param newsStory
+	 * @return
+	 */
 	public boolean containsNewsStory(NewsStory newsStory) {
 		return this.newsStoryListModel.contains(newsStory);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public NewsStoryListModel getNewsStoryListModel() {
 		return this.newsStoryListModel;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public DefaultListModel<NewsStory> getNewsStories() {
 		return this.newsStoryListModel.getNewsStories();
 	}
 	
+	/**
+	 * 
+	 * @param newsStoryListModel
+	 */
 	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
 		this.newsStoryListModel = newsStoryListModel;
 	}
 	
+	/**
+	 * 
+	 * @param newsStoryArray
+	 */
 	public void setNewsStoryListModelFromArray(NewsStory[] newsStoryArray) {
 		this.newsStoryListModel.setNewsStoriesFromArray(newsStoryArray);
 	}
 	
+	/**
+	 * 
+	 * @param newsStory
+	 */
 	public void addNewsStory(NewsStory newsStory) {
 		this.newsStoryListModel.add(newsStory);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
+	/**
+	 * 
+	 * @param newsStories
+	 */
 	public void removeNewsStories(DefaultListModel<NewsStory> newsStories) {
 		this.newsStoryListModel.removeListOfNewsStories(newsStories);
 	}
 	
+	/**
+	 * 
+	 */
 	public void removeAllNewsStories() {
 		//I think this should work, I might just be clearing a copy but I'm pretty sure I'm not
 		this.newsStoryListModel.getNewsStories().clear();
 	}
 	
+	/**
+	 * 
+	 * @param l
+	 */
 	public void addActionListener(ActionListener l) {
 		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
@@ -191,12 +341,20 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		actionListenerList.add(l);
 	}
 	
+	/**
+	 * 
+	 * @param l
+	 */
 	public void removeActionListener(ActionListener l) {
 		if (actionListenerList != null && actionListenerList.contains(l)) {
 			actionListenerList.remove(l);
 		}
 	}
 	
+	/**
+	 * 
+	 * @param e
+	 */
 	private void processEvent(ActionEvent e) {
 
 		System.out.println(e.getActionCommand());
@@ -217,6 +375,9 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

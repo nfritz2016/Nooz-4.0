@@ -9,45 +9,88 @@ import java.util.ArrayList;
  */
 public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
 	private ArrayList<ActionListener> actionListenerList;
 	
+	/**
+	 * 
+	 */
 	private String name;
 	
+	/**
+	 * 
+	 */
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
+	/**
+	 * 
+	 */
 	public NewsMakerModel() {
 		this.name = "None";
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 */
 	public NewsMakerModel(String name) {
 		this.name = name;
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return this.name;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public NewsStoryListModel getNewsStoryListModel() {
 		return this.newsStoryListModel;
 	}
 	
+	/**
+	 * 
+	 * @param newsStory
+	 */
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
 		}
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * 
+	 * @param newsStoryListModel
+	 */
 	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
 		this.newsStoryListModel = newsStoryListModel;
 	}
 	
+	/**
+	 * 
+	 * @param newsStory
+	 */
 	public void removeNewsStory(NewsStory newsStory) {
 		if (this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.remove(newsStory);
@@ -55,6 +98,9 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Remove News Story"));
 	}
 	
+	/**
+	 * 
+	 */
 	public boolean equals(Object o) {
 		if (o instanceof NewsMakerModel) {
 			NewsMakerModel newsMakerModel = (NewsMakerModel) o;
@@ -65,18 +111,27 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 		return false;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	public int compareTo(NewsMakerModel newsMakerModel) {
 		return this.getName().compareTo(newsMakerModel.getName());
 		//TODO not entirely sure
 	}
 	
+	/**
+	 * 
+	 */
 	public String toString() {
 		return name;
 		//TODO not entirely sure b/c no javadoc
 	}
 	
-
+	/**
+	 * 
+	 * @param actionListener
+	 */
 	public synchronized void addActionListener(ActionListener actionListener) {
 		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
@@ -84,10 +139,18 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 		actionListenerList.add(actionListener);
 	}
 	
+	/**
+	 * 
+	 * @param actionListener
+	 */
 	public synchronized void removeActionListener(ActionListener actionListener) {
 		this.actionListenerList.remove(actionListener);
 	}
 	
+	/**
+	 * 
+	 * @param e
+	 */
 	private void processEvent(ActionEvent e) {
 		ArrayList<ActionListener> list;
 		synchronized (this) {

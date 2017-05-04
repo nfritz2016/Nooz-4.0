@@ -7,6 +7,9 @@
  */
 public enum NewsMetric {
 	
+	/**
+	 * 
+	 */
 	LENGTH, COUNT;
 	
 	/**

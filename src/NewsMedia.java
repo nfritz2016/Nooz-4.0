@@ -7,10 +7,20 @@ import java.util.List;
  *
  */
 public enum NewsMedia {
+	
+	/**
+	 * 
+	 */
 	NEWSPAPER, ONLINE, TV;
 	
+	/**
+	 * 
+	 */
 	public static List<NewsMedia> VALUES_LIST;
 	
+	/**
+	 * 
+	 */
 	public String toString() {
 		
 		switch(this) {
@@ -25,6 +35,10 @@ public enum NewsMedia {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<NewsMedia> valuesAsList() {
 		
 		VALUES_LIST = new ArrayList<NewsMedia>();
