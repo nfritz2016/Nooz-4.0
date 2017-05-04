@@ -135,12 +135,12 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsMakerModel> jlNewsMakerList;
+	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>();
 	
 	/**
 	 * 
 	 */
-	private JScrollPane jspNewsMakerList;
+	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 	
 	/**
 	 * 
@@ -150,12 +150,12 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsStory> jlNewsStoryList;
+	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
 	
 	/**
 	 * 
 	 */
-	private JScrollPane jspNewsStoryList;
+	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	
 	/**
 	 * 
@@ -183,13 +183,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	public SelectionView() {
 		//sets name of frame
 		setTitle("Nooz");
-		jlNewsMakerList = new JList<NewsMakerModel>();
-		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
-		jspNewsMakerList = new JScrollPane(jlNewsMakerList);
-		
-		jlNewsStoryList = new JList<NewsStory>();
-		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
-		jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 		//makes the file tab
 		jmFile.add(jmiLoad);
 		jmFile.add(jmiSave);
@@ -363,7 +356,9 @@ public class SelectionView extends JFrame implements ActionListener {
 		if(this.newsDataBaseModel != null) {
 			newsDataBaseModel.addActionListener(this);
 
-		}	
+		}
+		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
+		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
 	}
 
 	
