@@ -5,11 +5,9 @@ import java.util.List;
 
 /**
  * 
- * @author Alex
+ * @author Alex Kloppenburg
  *
  */
-//class created by alex 4/21
-//all fields created by alex 4/21
 public class PieChartView implements ActionListener{
 	
 	/**
@@ -38,7 +36,7 @@ public class PieChartView implements ActionListener{
 	private NewsMetric measure;
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 * @param newsMakerModel
 	 * @param media
 	 * @param content
@@ -60,7 +58,7 @@ public class PieChartView implements ActionListener{
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 * @return
 	 */
 	//created by alex 4/21
@@ -80,10 +78,10 @@ public class PieChartView implements ActionListener{
 	}
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 * @return
 	 */
-	//created by alex 4/21
+	
 	private List<Wedge> constructWedges(){
 		
 		//Gets number of total stories

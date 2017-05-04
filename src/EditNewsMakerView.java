@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 /**
  * @author Nathan Fritz
+ * @author Alex Kloppenburg
  *
  */
 public class EditNewsMakerView extends JPanel implements ActionListener, Serializable {
@@ -71,7 +72,8 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	
 	
 	/**
-	 * 
+	 * @author Nathan Fritz
+	 * @author Alex Kloppenburg
 	 * @param newsMakerModel
 	 * @param newsDataBaseModel
 	 */
@@ -98,6 +100,10 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		enableRemovalButton();
 	}
 	
+	/**
+	 * @author Nathan Fritz
+	 * @return
+	 */
 	public int[] getSelectedNewsStoryIndices() {
 		return jlNewsStoryList.getSelectedIndices();
 	}
@@ -114,7 +120,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 	}*/
 	
 	/**
-	 * 
+	 * @author Alex Kloppenburg
 	 */
 	private void enableRemovalButton(){
 		if(this.newsMakerModel.getNewsStoryListModel() == null){
