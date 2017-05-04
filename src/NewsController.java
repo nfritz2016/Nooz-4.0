@@ -60,6 +60,7 @@ public class NewsController {
 		this.selectionView.registerFileMenuListener(new FileMenuListener());
 		this.selectionView.registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		this.selectionView.registerNewsStoryMenuListener(new NewsStoryMenuListener());
+		newsDataBaseModel.none.addActionListener(selectionView);
 		System.out.println("listeners registered");
 	}
 	
