@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Project 3, CS 2334, Section 010 March 8, 2017
@@ -348,8 +349,27 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	
 	/**
 	 * @author Alex Kloppenburg
+	 * @author Nathan Fritz
 	 */
 	public String toString(){
-		return UserInterface.convertToOutputFormat(this, null);
+		ArrayList<NewsMedia> newsMedia = new ArrayList<NewsMedia>();
+		newsMedia.add(NewsMedia.NEWSPAPER);
+		newsMedia.add(NewsMedia.TV);
+		newsMedia.add(NewsMedia.ONLINE);
+		if (this instanceof NewspaperStory) {
+			return "Newspaper Story: " + UserInterface.convertToOutputFormat(this, newsMedia) + "; " + this.getNewsMaker1() + "; " + this.getNewsMaker2();
+		}
+		
+		else if (this instanceof TVNewsStory) {
+			return "TV News Story: " + UserInterface.convertToOutputFormat(this, newsMedia) + "; " + this.getNewsMaker1() + "; " + this.getNewsMaker2();
+		}
+		
+		else if (this instanceof OnlineNewsStory) {
+			return "Online News Story: " + UserInterface.convertToOutputFormat(this, newsMedia) + "; " + this.getNewsMaker1() + "; " + this.getNewsMaker2();
+		}
+		
+		else {
+			return "Error in toString() of NewsStory";
+		}
 	}
 }
