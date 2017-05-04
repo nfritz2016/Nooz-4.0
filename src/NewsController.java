@@ -157,6 +157,7 @@ public class NewsController {
 				System.out.println("stories");
 			}
 		}
+		selectionView.setNewsDataBaseModel(newsDataBaseModel);
 	
 	}
 	
