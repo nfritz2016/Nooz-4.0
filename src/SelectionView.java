@@ -50,11 +50,11 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JMenuItem jmiPieChart = new JMenuItem("Pie Chart");
 	private JMenuItem jmiText = new JMenuItem("Text");
 	
-	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>();
+	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>(newsDataBaseModel.getNewsMakers());
 	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 	private JPanel jpNewsMakerList = new JPanel();
 	
-	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
+	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	private JPanel jpNewsStoryList = new JPanel();
 	
