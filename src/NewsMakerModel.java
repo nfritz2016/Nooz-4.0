@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Nathan Fritz
  *
  */
-public class NewsMakerModel implements Serializable {
+public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -18,11 +18,12 @@ public class NewsMakerModel implements Serializable {
 	private NewsStoryListModel newsStoryListModel = new NewsStoryListModel();
 	
 	public NewsMakerModel() {
-		//empty constructor
+		this.name = "none";
 	}
 	
 	public NewsMakerModel(String name) {
 		this.name = name;
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
 	public String getName() {
@@ -66,8 +67,9 @@ public class NewsMakerModel implements Serializable {
 		return false;
 	}
 	
+	@Override
 	public int compareTo(NewsMakerModel newsMakerModel) {
-		return this.compareTo(newsMakerModel);
+		return this.getName().compareTo(newsMakerModel.getName());
 		//TODO not entirely sure
 	}
 	
@@ -78,9 +80,11 @@ public class NewsMakerModel implements Serializable {
 	
 
 	public synchronized void addActionListener(ActionListener actionListener) {
-		if (actionListenerList == null)
+		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
+		}
 		actionListenerList.add(actionListener);
+		System.out.println(actionListenerList.get(0));
 	}
 	
 	public synchronized void removeActionListener(ActionListener actionListener) {

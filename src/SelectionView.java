@@ -54,7 +54,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	private JScrollPane jspNewsMakerList = new JScrollPane(jlNewsMakerList);
 	private JPanel jpNewsMakerList = new JPanel();
 	
-	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();
+	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
 	private JScrollPane jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	private JPanel jpNewsStoryList = new JPanel();
 	

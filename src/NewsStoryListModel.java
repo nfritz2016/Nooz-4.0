@@ -9,6 +9,7 @@ import javax.swing.DefaultListModel;
 public class NewsStoryListModel implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	private DefaultListModel<NewsStory> newsStories = new DefaultListModel<NewsStory>();
 	
 	public NewsStoryListModel() {

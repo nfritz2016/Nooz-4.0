@@ -8,14 +8,24 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import src.DateComparator;
+import src.LengthComparator;
+import src.NewsMakerListModel;
+import src.NewsStory;
+import src.NewsStoryListModel;
+import src.SourceComparator;
+import src.SubjectComparator;
 
 
 public class NewsController {
@@ -52,6 +62,7 @@ public class NewsController {
 		this.selectionView.registerFileMenuListener(new FileMenuListener());
 		this.selectionView.registerNewsMakerMenuListener(new NewsMakerMenuListener());
 		this.selectionView.registerNewsStoryMenuListener(new NewsStoryMenuListener());
+		newsDataBaseModel.none.addActionListener(selectionView);
 		System.out.println("listeners registered");
 	}
 	
@@ -181,15 +192,27 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteNewsMakers() {
-		newsDataBaseModel.removeAllNewsMakers();
+		int [] makers = selectionView.getSelectedNewsMakers();
+		NewsMakerListModel list = new NewsMakerListModel();
+		for(int index = 0; index < newsDataBaseModel.getNewsMakerListModel().size(); ++index) {
+				list.add(newsDataBaseModel.getNewsMakerListModel().get(index));
+		}
+		newsDataBaseModel.getNewsMakerListModel().removeListOfNewsMakers(list.getNewsMakers());
 	}
 	
 	//TODO write
 	private void deleteNewsMakerList() {
-		//calls on method in NewsMakerListModel
-		//SHOULDN'T THIS BE removeListOfNewsMakers ?? but then what are the arguments
-		//Get args from the view or model
-		newsDataBaseModel.removeNewsMakers(newsDataBaseModel.getNewsMakers());
+		String[] options = {"No", "Yes"};
+		int choice = JOptionPane.showOptionDialog(null, 
+								     "Are you sure you want remove all news makers?",
+								     null, JOptionPane.CLOSED_OPTION,
+								     JOptionPane.CLOSED_OPTION,
+								     null,
+								     options,
+								     options[1]);
+		if(choice == 1) {
+			newsDataBaseModel.getNewsMakerListModel().removeAllNewsMakers();
+		}
 	}
 	
 	//TODO write
@@ -211,17 +234,71 @@ public class NewsController {
 	
 	//TODO write
 	private void sortNewsStories() {
-		
+		String[] criteria = {"source", "topic", "length", "date/time", "subject"};
+		String input = (String) JOptionPane.showInputDialog(null, 
+															"Select a sort criterion: ", 
+															"Custom Sort",
+															JOptionPane.NO_OPTION,
+															null,
+															criteria,
+															criteria[0]);
+		if(input != null) {
+			List<NewsStory> listCopy = (List<NewsStory>) newsDataBaseModel.getNewsStories();
+			
+			if(input.equals("topic")) {
+				Collections.sort(listCopy);
+			}
+			
+			else if(input.equals("source")) {
+				Collections.sort(listCopy, SourceComparator.SOURCE_COMPARATOR);
+			}
+			
+			else if(input.equals("length")) {
+				Collections.sort(listCopy, LengthComparator.LENGTH_COMPARATOR);
+			}
+			
+			else if(input.equals("date/time")) {
+				Collections.sort(listCopy, DateComparator.DATE_COMPARATOR);
+			}
+			
+			//subject
+			else {
+				Collections.sort(listCopy, SubjectComparator.SUBJECT_COMPARATOR);
+			}
+			
+			newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) listCopy);
+		}
+
 	}
 	
 	//TODO write
 	private void deleteNewsStories() {
-		
+		int [] stories = selectionView.getSelectedNewsStories();
+		if(stories.length == 0) {
+			JOptionPane.showInputDialog("No news stories have been selected.");
+		}
+		else {
+			DefaultListModel<NewsStory> newsStories = new DefaultListModel<NewsStory>();
+			for(int location: stories) {
+			newsStories.add(location, newsDataBaseModel.getNewsStoryListModel().getNewsStories().get(location));
+			}
+			newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsStories);
+		}
 	}
 	
 	//TODO write
 	private void deleteAllNewsStories() {
-		newsDataBaseModel.removeAllNewsStories();
+		String[] options = {"No", "Yes"};
+		int choice = JOptionPane.showOptionDialog(null, 
+								     "Are you sure you want remove all news stories?",
+								     null, JOptionPane.CLOSED_OPTION,
+								     JOptionPane.CLOSED_OPTION,
+								     null,
+								     options,
+								     options[1]);
+		if(choice == 1) {
+		newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsDataBaseModel.getNewsStoryListModel().getNewsStories());
+		}
 	}
 	
 	/**

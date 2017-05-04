@@ -32,8 +32,9 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	
 	
 	public NewsDataBaseModel() {
-		//empty constructor
-		newsMakerListModel.add(none);
+
+		this.addNewsMakerModel(this.none);
+
 	}
 	
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
@@ -137,6 +138,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	
 	public void removeAllNewsMakers() {
 		this.newsMakerListModel.removeAllNewsMakers();
+		this.newsMakerListModel.add(none);
 	}
 	
 	public void sortNewsMakerListModel() {
