@@ -135,7 +135,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsMakerModel> jlNewsMakerList;
+	private JList<NewsMakerModel> jlNewsMakerList = new JList<NewsMakerModel>();
 	
 	/**
 	 * 
@@ -150,7 +150,7 @@ public class SelectionView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private JList<NewsStory> jlNewsStoryList;
+	private JList<NewsStory> jlNewsStoryList = new JList<NewsStory>();;
 	
 	/**
 	 * 
@@ -364,6 +364,13 @@ public class SelectionView extends JFrame implements ActionListener {
 			newsDataBaseModel.addActionListener(this);
 
 		}	
+		
+		
+		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
+		jspNewsMakerList = new JScrollPane(jlNewsMakerList);
+		
+		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
+		jspNewsStoryList = new JScrollPane(jlNewsStoryList);
 	}
 
 	
