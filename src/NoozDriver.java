@@ -13,7 +13,7 @@ public class NoozDriver {
 	/**
 	 * 
 	 */
-	private static NewsDataBaseModel newsDataBaseModel = new NewsDataBaseModel();
+	private static NewsDataBaseModel newsDataBaseModel;
 	
 	/**
 	 * 
@@ -32,6 +32,7 @@ public class NoozDriver {
 	//created by alex 4/25
 	public static void main(String[] args){
 		
+		newsDataBaseModel = new NewsDataBaseModel();
 		selectionView.setNewsDataBaseModel(newsDataBaseModel);
 		newsController.setNewsDataBaseModel(newsDataBaseModel);
 		newsController.setSelectionView(selectionView);

@@ -198,9 +198,13 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	}
 	
 	private void processEvent(ActionEvent e) {
+<<<<<<< HEAD
 		System.out.println(e.getActionCommand());
 		System.out.println("test");
 		ArrayList<ActionListener> list;
+=======
+		ArrayList<ActionListener> list = new ArrayList<ActionListener>();
+>>>>>>> refs/remotes/origin/master
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
