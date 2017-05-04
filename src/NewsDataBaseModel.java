@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +12,13 @@ import javax.swing.DefaultListModel;
  * @author Alex Kloppenburg
  *
  */
-public class NewsDataBaseModel {
+public class NewsDataBaseModel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
 	
 	private Map<String, String> newsSourceMap = new HashMap<String, String>();
