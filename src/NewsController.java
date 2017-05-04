@@ -265,63 +265,13 @@ public class NewsController {
 	//TODO write
 	private void addNewsStory() {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
-		this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
+		AddEditNewsStoryListener listener = new AddEditNewsStoryListener();
+		this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(listener);
 		this.viewDialog = new JDialog(selectionView, "Adding News Maker", true);
 		this.viewDialog.add(addEditNewsStoryView);
 		this.viewDialog.setResizable(false);
 		this.viewDialog.pack();
 		this.viewDialog.setVisible(true);
-		addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
-		addEditNewsStoryView.jbtAddEditNewsStory.setActionCommand("final add");
-		
-		NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
-		String source = (String) addEditNewsStoryView.jcbNewsStorySource.getSelectedItem();
-		String topic = (String) addEditNewsStoryView.jcbNewsStoryTopic.getSelectedItem();
-		String subject = (String) addEditNewsStoryView.jcbNewsStorySubject.getSelectedItem();
-		String newsMaker1Name = (String) addEditNewsStoryView.jcbNewsStoryNewsMaker1.getSelectedItem();
-		String newsMaker2Name = (String) addEditNewsStoryView.jcbNewsStoryNewsMaker2.getSelectedItem();
-		NewsMakerModel newsMaker1 = new NewsMakerModel(newsMaker1Name);
-		NewsMakerModel newsMaker2 = new NewsMakerModel(newsMaker2Name);
-		if (!newsDataBaseModel.getNewsMakerListModel().contains(newsMaker1)) {
-			newsDataBaseModel.addNewsMakerModel(newsMaker1);
-		}
-		if (!newsDataBaseModel.getNewsMakerListModel().contains(newsMaker2)) {
-			newsDataBaseModel.addNewsMakerModel(newsMaker2);
-		}
-		long lengthLong =  (long) addEditNewsStoryView.jftfNewsStoryLength.getValue();
-		int length = (int) lengthLong;
-		int year = (int) addEditNewsStoryView.jcbNewsStoryYear.getSelectedItem();
-		Month monthAsEnum = (Month) addEditNewsStoryView.jcbNewsStoryMonth.getSelectedItem();
-		int monthAsInt = monthAsEnum.toInt();
-		int day = (int) addEditNewsStoryView.jcbNewsStoryDay.getSelectedItem();
-		LocalDate date = LocalDate.of(year, monthAsInt, day);
-		PartOfDay partOfDay = (PartOfDay) addEditNewsStoryView.jcbNewsStoryPartOfDay.getSelectedItem();
-		if (type.equals(NewsMedia.NEWSPAPER)) {
-			NewsStory story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
-			newsMaker1.addNewsStory(story);
-			newsMaker2.addNewsStory(story);
-			newsMaker1.addActionListener(selectionView);
-			newsMaker2.addActionListener(selectionView);
-		}
-		else if (type.equals(NewsMedia.TV)) {
-			NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
-			newsMaker1.addNewsStory(story);
-			newsMaker2.addNewsStory(story);
-			newsMaker1.addActionListener(selectionView);
-			newsMaker2.addActionListener(selectionView);
-		}
-		else if (type.equals(NewsMedia.ONLINE)) {
-			NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
-			newsMaker1.addNewsStory(story);
-			newsMaker2.addNewsStory(story);
-
-			newsMaker1.addActionListener(selectionView);
-			newsMaker2.addActionListener(selectionView);
-			newsDataBaseModel.addActionListener(selectionView);
-			newsDataBaseModel.addNewsStory(story);
-			
-			System.out.println("finished online");
-		}
 	}
 	
 	//TODO write
@@ -702,8 +652,56 @@ public class NewsController {
 		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
-			if ("final".equals(actionEvent.getActionCommand())) {
+			System.out.println("1234");
+			if ("add button".equals(actionEvent.getActionCommand())) {
+				NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
+				String source = (String) addEditNewsStoryView.jcbNewsStorySource.getSelectedItem();
+				String topic = (String) addEditNewsStoryView.jcbNewsStoryTopic.getSelectedItem();
+				String subject = (String) addEditNewsStoryView.jcbNewsStorySubject.getSelectedItem();
+				String newsMaker1Name = (String) addEditNewsStoryView.jcbNewsStoryNewsMaker1.getSelectedItem();
+				String newsMaker2Name = (String) addEditNewsStoryView.jcbNewsStoryNewsMaker2.getSelectedItem();
+				NewsMakerModel newsMaker1 = new NewsMakerModel(newsMaker1Name);
+				NewsMakerModel newsMaker2 = new NewsMakerModel(newsMaker2Name);
+				if (!newsDataBaseModel.getNewsMakerListModel().contains(newsMaker1)) {
+					newsDataBaseModel.addNewsMakerModel(newsMaker1);
+				}
+				if (!newsDataBaseModel.getNewsMakerListModel().contains(newsMaker2)) {
+					newsDataBaseModel.addNewsMakerModel(newsMaker2);
+				}
+				long lengthLong =  (long) addEditNewsStoryView.jftfNewsStoryLength.getValue();
+				int length = (int) lengthLong;
+				int year = (int) addEditNewsStoryView.jcbNewsStoryYear.getSelectedItem();
+				Month monthAsEnum = (Month) addEditNewsStoryView.jcbNewsStoryMonth.getSelectedItem();
+				int monthAsInt = monthAsEnum.toInt();
+				int day = (int) addEditNewsStoryView.jcbNewsStoryDay.getSelectedItem();
+				LocalDate date = LocalDate.of(year, monthAsInt, day);
+				PartOfDay partOfDay = (PartOfDay) addEditNewsStoryView.jcbNewsStoryPartOfDay.getSelectedItem();
+				if (type.equals(NewsMedia.NEWSPAPER)) {
+					NewsStory story = new NewspaperStory(date, source, length, topic, subject, newsMaker1, newsMaker2);
+					newsMaker1.addNewsStory(story);
+					newsMaker2.addNewsStory(story);
+					newsMaker1.addActionListener(selectionView);
+					newsMaker2.addActionListener(selectionView);
+				}
+				else if (type.equals(NewsMedia.TV)) {
+					NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+					newsMaker1.addNewsStory(story);
+					newsMaker2.addNewsStory(story);
+					newsMaker1.addActionListener(selectionView);
+					newsMaker2.addActionListener(selectionView);
+				}
+				else if (type.equals(NewsMedia.ONLINE)) {
+					NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
+					newsMaker1.addNewsStory(story);
+					newsMaker2.addNewsStory(story);
+
+					newsMaker1.addActionListener(selectionView);
+					newsMaker2.addActionListener(selectionView);
+					newsDataBaseModel.addActionListener(selectionView);
+					newsDataBaseModel.addNewsStory(story);
+					
+					System.out.println("finished online");
+				}
 				viewDialog.dispose();
 			}
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
