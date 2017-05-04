@@ -69,7 +69,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	public NewsDataBaseModel(NewsMakerListModel newsMakerListModel, NewsStoryListModel newsStoryListModel) {
 		this.newsMakerListModel = newsMakerListModel;
 		this.newsStoryListModel = newsStoryListModel;
-		
 	}
 	
 	/**
@@ -100,6 +99,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void setNewsSourceMap(Map<String, String> newsSourceMap) {
 		this.newsSourceMap = newsSourceMap;
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -127,6 +127,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void setNewsTopicMap(Map<String, String> newsTopicMap) {
 		this.newsTopicMap = newsTopicMap;
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -154,6 +155,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void setNewsSubjectMap(Map<String, String> newsSubjectMap) {
 		this.newsSubjectMap = newsSubjectMap;
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -195,7 +197,8 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * @author Nathan Fritz
 	 */
 	public void setNewsMakerListModel(NewsMakerListModel newsMakerListModel) {
-		this.newsMakerListModel = newsMakerListModel;
+		this.newsMakerListModel.setNewsMakersFromNewsMakerList(newsMakerListModel);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -203,6 +206,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void addNewsMakerModel(NewsMakerModel newsMakerModel) {
 		this.newsMakerListModel.add(newsMakerModel);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -210,6 +214,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void replaceNewsMakerModel(NewsMakerModel newsMakerModel) {
 		this.newsMakerListModel.replace(newsMakerModel);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -217,6 +222,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void removeNewsMakers(DefaultListModel<NewsMakerModel> newsMakers) {
 		this.newsMakerListModel.removeListOfNewsMakers(newsMakers);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -226,6 +232,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	public void removeAllNewsMakers() {
 		this.newsMakerListModel.removeAllNewsMakers();
 		this.newsMakerListModel.add(none);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -233,6 +240,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void sortNewsMakerListModel() {
 		this.newsMakerListModel.sort();
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -267,7 +275,8 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * @author Nathan Fritz
 	 */
 	public void setNewsStoryListModel(NewsStoryListModel newsStoryListModel) {
-		this.newsStoryListModel = newsStoryListModel;
+		this.newsStoryListModel.setNewsStories(newsStoryListModel);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -275,6 +284,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void setNewsStoryListModelFromArray(NewsStory[] newsStoryArray) {
 		this.newsStoryListModel.setNewsStoriesFromArray(newsStoryArray);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -282,7 +292,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void addNewsStory(NewsStory newsStory) {
 		this.newsStoryListModel.add(newsStory);
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -290,6 +300,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	public void removeNewsStories(DefaultListModel<NewsStory> newsStories) {
 		this.newsStoryListModel.removeListOfNewsStories(newsStories);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -298,6 +309,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	public void removeAllNewsStories() {
 		//I think this should work, I might just be clearing a copy but I'm pretty sure I'm not
 		this.newsStoryListModel.getNewsStories().clear();
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
@@ -324,13 +336,15 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	private void processEvent(ActionEvent e) {
 		ArrayList<ActionListener> list;
-
+		System.out.println("icybucuytuinibtuuifyignyut");
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
 			list = (ArrayList<ActionListener>) actionListenerList.clone();
 		}
+		
 		System.out.println(list.size());
+		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(i);
 			ActionListener listener = list.get(i);

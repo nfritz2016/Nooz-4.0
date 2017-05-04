@@ -378,7 +378,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		
 		System.out.println("ran");
 		
-		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
+		if (actionEvent.getActionCommand().equals("Update Menu Items")) {
 			//Set filemenu buttons
 			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
 				jmiLoad.setEnabled(true);

@@ -82,9 +82,7 @@ public class NewsController {
 	 * @author Cavan Gary
 	 */
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
-		newsDataBaseModel = new NewsDataBaseModel();
 		this.newsDataBaseModel = newsDataBaseModel;
-		//newsDataBaseModel.addActionListener(selectionView);
 	}
 	
 	/**
@@ -213,7 +211,10 @@ public class NewsController {
 				if (sourceMap != null) {
 					System.out.println("not null 4");
 				}
-				newsDataBaseModel = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
+				NewsDataBaseModel dataBase;
+				dataBase = NoozFileProcessor.readNoozFile("StoryData03.csv", sourceMap, topicMap, subjectMap);
+				newsDataBaseModel.setNewsMakerListModel(dataBase.getNewsMakerListModel());
+				newsDataBaseModel.setNewsStoryListModel(dataBase.getNewsStoryListModel());
 				System.out.println("checking for 5");
 				if (sourceMap != null) {
 					System.out.println("not null 5");
@@ -221,8 +222,7 @@ public class NewsController {
 				System.out.println("stories");
 			}
 		}
-		selectionView.setNewsDataBaseModel(newsDataBaseModel);
-	
+		//selectionView.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
 	/**
