@@ -44,8 +44,9 @@ public class NewsController {
 	}
 	
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
+		newsDataBaseModel = new NewsDataBaseModel();
 		this.newsDataBaseModel = newsDataBaseModel;
-		newsDataBaseModel.addActionListener(selectionView);
+		//newsDataBaseModel.addActionListener(selectionView);
 	}
 	
 	public void setSelectionView(SelectionView selectionView) {
@@ -255,10 +256,13 @@ public class NewsController {
 			story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 			newsMaker1.addNewsStory(story);
 			newsMaker2.addNewsStory(story);
-			//newsMaker1.addActionListener(selectionView);
-			//newsMaker2.addActionListener(selectionView);
+			newsMaker1.addActionListener(selectionView);
+			newsMaker2.addActionListener(selectionView);
+			newsDataBaseModel.addActionListener(selectionView);
+			newsDataBaseModel.addNewsStory(story);
 			System.out.println("finished online");
 		}
+		
 	}
 	
 	//TODO write

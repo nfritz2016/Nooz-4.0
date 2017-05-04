@@ -171,6 +171,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	
 	public void addNewsStory(NewsStory newsStory) {
 		this.newsStoryListModel.add(newsStory);
+		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 	}
 	
 	public void removeNewsStories(DefaultListModel<NewsStory> newsStories) {
@@ -186,6 +187,7 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 		if (actionListenerList == null) {
 			actionListenerList = new ArrayList<ActionListener>();
 		}
+		System.out.println("ACTION" + l.getClass());
 		actionListenerList.add(l);
 	}
 	
@@ -196,14 +198,19 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	}
 	
 	private void processEvent(ActionEvent e) {
+		System.out.println(e.getActionCommand());
+		System.out.println("test");
 		ArrayList<ActionListener> list;
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
 			list = (ArrayList<ActionListener>) actionListenerList.clone();
 		}
+		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
+			System.out.println(i);
 			ActionListener listener = list.get(i);
+			System.out.println(listener.getClass());
 			listener.actionPerformed(e);
 		}
 	}
@@ -211,6 +218,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("SHold not be reached");
 	}
 }

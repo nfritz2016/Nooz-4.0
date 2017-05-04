@@ -230,6 +230,7 @@ public class SelectionView extends JFrame implements ActionListener {
 			jlNewsStoryList = new JList<NewsStory>(newsDataBaseModel.getNewsStories());
 		}
 		System.out.println("Action performed in sview");
+		
 	}
 	
 	public int[] getSelectedNewsMakers() {

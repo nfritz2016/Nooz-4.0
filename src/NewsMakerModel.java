@@ -37,7 +37,6 @@ public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> 
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
-			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 		}
 		System.out.println("called addNewsStory");
 	}
