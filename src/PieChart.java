@@ -18,6 +18,7 @@ import java.lang.Math;
  * </P>
  * 
  * @author Dean Hougen
+ * @author Alex Kloppenburg
  * @version 1.0
  */
 public class PieChart extends JFrame{
