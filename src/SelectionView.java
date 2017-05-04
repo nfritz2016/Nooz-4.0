@@ -360,13 +360,13 @@ public class SelectionView extends JFrame implements ActionListener {
 		//Sets Model
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
+			
+			System.out.println("listener added");
+			
 			newsDataBaseModel.addActionListener(this);
 		}
 		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
 		jlNewsStoryList.setModel(newsDataBaseModel.getNewsStories());
-		
-		//Checks buttons
-		
 	}
 
 	
@@ -375,6 +375,9 @@ public class SelectionView extends JFrame implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
+		
+		System.out.println("ran");
+		
 		if (actionEvent.getActionCommand().equals("Addition of News Story")) {
 			//Set filemenu buttons
 			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
