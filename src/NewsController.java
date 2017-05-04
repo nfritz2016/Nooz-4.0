@@ -235,6 +235,7 @@ public class NewsController {
 			NewsMakerModel maker = new NewsMakerModel(name);
 			if(!newsDataBaseModel.getNewsMakerListModel().contains(maker)) {
 				newsDataBaseModel.addNewsMakerModel(maker);
+				selectionView.setNewsDataBaseModel(newsDataBaseModel);
 			}
 			else {
 				String[] options = {"No", "Yes"};
