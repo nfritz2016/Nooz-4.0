@@ -18,12 +18,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import src.EditNewsMakerView;
-import src.NewsMakerListModel;
-import src.NewsMakerModel;
-import src.NewsController.EditNewsMakerNameListener;
-import src.NewsController.RemoveNewsMakerFromNewStoriesListener;
-
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
@@ -240,10 +234,6 @@ public class NewsController {
 			newsDataBaseModel.setNewsMakerListModel(dataBase.getNewsMakerListModel());
 			newsDataBaseModel.setNewsStoryListModel(dataBase.getNewsStoryListModel());
 		}
-		
-		selectionView.setNewsDataBaseModel(newsDataBaseModel);
-	
-
 	}
 	
 	/**
@@ -921,7 +911,6 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.TV)) {
 					NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -930,7 +919,6 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
 					NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -940,9 +928,7 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					//newsDataBaseModel.addActionListener(selectionView);
-					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
-					
+					newsDataBaseModel.addNewsStory(story);					
 					System.out.println("finished online");
 				}
 				viewDialog.dispose();
