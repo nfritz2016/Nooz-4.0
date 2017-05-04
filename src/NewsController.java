@@ -84,6 +84,7 @@ public class NewsController {
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		newsDataBaseModel = new NewsDataBaseModel();
 		this.newsDataBaseModel = newsDataBaseModel;
+		this.selectionView.setNewsDataBaseModel(this.newsDataBaseModel);
 		//newsDataBaseModel.addActionListener(selectionView);
 	}
 	
@@ -257,6 +258,7 @@ public class NewsController {
 			NewsMakerModel maker = new NewsMakerModel(name);
 			if(!newsDataBaseModel.getNewsMakerListModel().contains(maker)) {
 				newsDataBaseModel.addNewsMakerModel(maker);
+				selectionView.setNewsDataBaseModel(newsDataBaseModel);
 			}
 			else {
 				String[] options = {"No", "Yes"};
@@ -906,6 +908,8 @@ public class NewsController {
 					newsMaker2.addNewsStory(story);
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
+					newsDataBaseModel.addNewsStory(story);
+					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.TV)) {
 					NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -913,6 +917,8 @@ public class NewsController {
 					newsMaker2.addNewsStory(story);
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
+					newsDataBaseModel.addNewsStory(story);
+					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
 					NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -921,8 +927,9 @@ public class NewsController {
 
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
-					newsDataBaseModel.addActionListener(selectionView);
+					//newsDataBaseModel.addActionListener(selectionView);
 					newsDataBaseModel.addNewsStory(story);
+					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 					
 					System.out.println("finished online");
 				}
