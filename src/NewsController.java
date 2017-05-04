@@ -13,7 +13,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -168,7 +167,7 @@ public class NewsController {
 	private void exportNewsStories() {
 		//get list of stores from textview (or another function)
 		//get output name froma jfilechooser
-		NoozFileProcessor.writeNewsTextFile(outputFileName, listOfStories);
+		//NoozFileProcessor.writeNewsTextFile(outputFileName, listOfStories);
 	}
 	
 	//TODO write
@@ -672,9 +671,9 @@ public class NewsController {
 			if ("something".equals(actionEvent.getActionCommand())) {
 				
 				//if News maker name doesn't exist in list, set news maker's name and resort list of news makers in database
-				if(!NewsMakerListModel.getNewsMakerNames().contains()) {
-					 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
-				}
+				//if(!NewsMakerListModel.getNewsMakerNames().contains()) {
+				//	 NewsMakerModel.setName(/*WHERE IN THE VIEW IS THE NEW NAME???*/);
+				//}
 				/*
 				 * if name exists, confirm replacing existing news maker with name whose name has just been change
 				 * by using JOptionPane
