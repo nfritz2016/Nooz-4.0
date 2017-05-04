@@ -191,22 +191,33 @@ public class NewsController {
 	private void addNewsMaker() {
 		//If news maker is not in database, add it
 		String name = JOptionPane.showInputDialog("Please enter the news maker's name");
-		NewsMakerModel maker = new NewsMakerModel(name);
-		if(!newsDataBaseModel.getNewsMakerListModel().contains(maker)) {
-			newsDataBaseModel.addNewsMakerModel(maker);
+		
+		//If no name is added in, we make the name "none"
+		if(name != null && name.equals("")){
+			name = "None";
 		}
-		else {
-			String[] options = {"No", "Yes"};
-			int choice = JOptionPane.showOptionDialog(null, 
-									     "This news maker already exists.\nDo you want to override the name?",
-									     null, JOptionPane.CLOSED_OPTION,
-									     JOptionPane.CLOSED_OPTION,
-									     null,
-									     options,
-									     options[1]);
-			if(choice == 1) {
-				newsDataBaseModel.replaceNewsMakerModel(maker);
+		if(name != null){
+			NewsMakerModel maker = new NewsMakerModel(name);
+			if(!newsDataBaseModel.getNewsMakerListModel().contains(maker)) {
+				newsDataBaseModel.addNewsMakerModel(maker);
 			}
+			else {
+				String[] options = {"No", "Yes"};
+				int choice = JOptionPane.showOptionDialog(null, 
+										     "This news maker already exists.\nDo you want to override the name?",
+										     null, JOptionPane.CLOSED_OPTION,
+										     JOptionPane.CLOSED_OPTION,
+										     null,
+										     options,
+										     options[1]);
+				if(choice == 1) {
+					newsDataBaseModel.replaceNewsMakerModel(maker);
+				}
+			}
+			/*System.out.println(this.newsDataBaseModel.getNewsMakerListModel().get(maker).getName());
+			if(this.newsDataBaseModel.getNewsMakerListModel().get(maker).getName().equals("")){
+				System.out.println("empty string");
+			}*/
 		}
 	}
 	
