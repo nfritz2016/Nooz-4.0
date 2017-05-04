@@ -19,22 +19,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import src.AddEditNewsStoryView;
-import src.EditNewsMaker;
-import src.EditNewsMakerView;
-import src.Month;
-import src.NewsMakerListModel;
-import src.NewsMakerModel;
-import src.NewsMedia;
-import src.NewsStory;
-import src.NewsStoryListModel;
-import src.NewspaperStory;
-import src.OnlineNewsStory;
-import src.PartOfDay;
-import src.TVNewsStory;
-import src.NewsController.AddEditNewsStoryListener;
-
-
 public class NewsController {
 
 	private NewsDataBaseModel newsDataBaseModel;
@@ -339,7 +323,6 @@ public class NewsController {
 			
 			System.out.println("finished online");
 		}
-		
 	}
 	
 	//TODO write
