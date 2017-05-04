@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 
 import src.DateComparator;
 import src.LengthComparator;
+import src.NewsMakerListModel;
 import src.NewsStory;
 import src.NewsStoryListModel;
 import src.SourceComparator;
@@ -190,15 +191,27 @@ public class NewsController {
 	
 	//TODO write
 	private void deleteNewsMakers() {
-		newsDataBaseModel.removeAllNewsMakers();
+		int [] makers = selectionView.getSelectedNewsMakers();
+		NewsMakerListModel list = new NewsMakerListModel();
+		for(int index = 0; index < newsDataBaseModel.getNewsMakerListModel().size(); ++index) {
+				list.add(newsDataBaseModel.getNewsMakerListModel().get(index));
+		}
+		newsDataBaseModel.getNewsMakerListModel().removeListOfNewsMakers(list.getNewsMakers());
 	}
 	
 	//TODO write
 	private void deleteNewsMakerList() {
-		//calls on method in NewsMakerListModel
-		//SHOULDN'T THIS BE removeListOfNewsMakers ?? but then what are the arguments
-		//Get args from the view or model
-		newsDataBaseModel.removeNewsMakers(newsDataBaseModel.getNewsMakers());
+		String[] options = {"No", "Yes"};
+		int choice = JOptionPane.showOptionDialog(null, 
+								     "Are you sure you want remove all news makers?",
+								     null, JOptionPane.CLOSED_OPTION,
+								     JOptionPane.CLOSED_OPTION,
+								     null,
+								     options,
+								     options[1]);
+		if(choice == 1) {
+			newsDataBaseModel.getNewsMakerListModel().removeAllNewsMakers();
+		}
 	}
 	
 	//TODO write
