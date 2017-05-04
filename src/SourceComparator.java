@@ -14,6 +14,7 @@ import java.util.Comparator;
  * 
  */
 public class SourceComparator implements Comparator<NewsStory> {
+	
 	/**
 	 * We create a single comparator object for the class and make a public
 	 * final field that references that object. This comparator can then be used

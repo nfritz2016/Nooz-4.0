@@ -8,8 +8,14 @@
  */
 public enum SortCriterion {
 	
+	/**
+	 * 
+	 */
 	SOURCE, TOPIC, SUBJECT, LENGTH, DATE_TIME;
 	
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
 		switch(this) {

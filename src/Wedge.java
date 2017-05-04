@@ -7,6 +7,7 @@
  * @version 1.0
  */
 public class Wedge {
+	
 	/** The percent of the pie that this wedge should occupy. */
 	private double percent;
 

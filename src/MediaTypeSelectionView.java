@@ -5,24 +5,67 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Alex
+ *
+ */
 public class MediaTypeSelectionView extends JPanel {
 	
+	/**
+	 * 
+	 */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 
+     */
     JCheckBox jcbNewspaper = new JCheckBox(NewsMedia.NEWSPAPER.toString());
+    
+    /**
+     * 
+     */
     JCheckBox jcbTVNews = new JCheckBox(NewsMedia.TV.toString());
+    
+    /**
+     * 
+     */
     JCheckBox jcbOnline = new JCheckBox(NewsMedia.ONLINE.toString());
 
+    /**
+     * 
+     */
     private JLabel jlblMediaType = new JLabel("Display news stories from which media type(s)?");
+    
+    /**
+     * 
+     */
     private JPanel jpMediaType = new JPanel(new GridLayout(0, 1));
     
+    /**
+     * 
+     */
     private JButton jbBlank = new JButton();
+    
+    /**
+     * 
+     */
     JButton jbCancel = new JButton("Cancel");
+    
+    /**
+     * 
+     */
     JButton jbOkay = new JButton("OK");
+    
+    /**
+     * 
+     */
     private JPanel jpCompletionButtons = new JPanel(new GridLayout(1, 0));
     
     
-
+    /**
+     * 
+     */
     public MediaTypeSelectionView() {
     	
     	//set button visiblity, text, and commands

@@ -208,30 +208,58 @@ abstract class NewsStory implements Comparable<NewsStory>, Serializable {
 	
 	//Begins setters probably for the edit newsStory window
 	
+	/**
+	 * 
+	 * @param date
+	 */
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	
+	/**
+	 * 
+	 * @param source
+	 */
 	public void setSource(String source){
 		this.source = source;
 	}
 	
+	/**
+	 * 
+	 * @param length
+	 */
 	public void setLength(int length){
 		this.length = length;
 	}
 	
+	/**
+	 * 
+	 * @param topic
+	 */
 	public void setTopic(String topic){
 		this.topic = topic;
 	}
 	
+	/**
+	 * 
+	 * @param subject
+	 */
 	public void setSubject(String subject){
 		this.subject = subject;
 	}
 	
+	/**
+	 * 
+	 * @param newsMaker1
+	 */
 	public void setNewsMaker1(NewsMakerModel newsMaker1){
 		this.newsMaker1 = newsMaker1;
 	}
 	
+	/**
+	 * 
+	 * @param newsMaker2
+	 */
 	public void setNewsMaker2(NewsMakerModel newsMaker2){
 		this.newsMaker2 = newsMaker2;
 	}
