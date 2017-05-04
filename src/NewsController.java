@@ -43,6 +43,7 @@ public class NewsController {
 	
 	public void setNewsDataBaseModel(NewsDataBaseModel newsDataBaseModel) {
 		this.newsDataBaseModel = newsDataBaseModel;
+		newsDataBaseModel.addActionListener(selectionView);
 	}
 	
 	public void setSelectionView(SelectionView selectionView) {
