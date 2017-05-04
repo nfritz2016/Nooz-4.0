@@ -46,19 +46,8 @@ public class EditNewsMakerViewTest {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
-		
-		//TODO debug stuff, delete later
-		for(int i = 0; i < indices.length; ++i){
-			System.out.println(indices[i]);
-		}
 
 		int[] selectedIndices = editNewsMakerView.getSelectedNewsStoryIndices();
-		
-		//TODO debug stuff, delete later
-		for(int i = 0; i < selectedIndices.length; ++i){
-			System.out.println(selectedIndices[i]);
-		}
-		
 		if (selectedIndices.length != indices.length) {
 			fail("Not Equal: Different Sizes");
 		} else {
