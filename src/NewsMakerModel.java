@@ -11,7 +11,7 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>();
+	private ArrayList<ActionListener> actionListenerList;
 	
 	private String name;
 	
@@ -36,8 +36,8 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	public void addNewsStory(NewsStory newsStory) {
 		if (!this.newsStoryListModel.contains(newsStory)) {
 			this.newsStoryListModel.add(newsStory);
+			processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Addition of News Story"));
 		}
-		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Add News Story"));
 		System.out.println("called addNewsStory");
 	}
 	
@@ -77,18 +77,25 @@ public class NewsMakerModel implements ActionListener, Serializable {
 	}
 	
 	public void addActionListener(ActionListener actionListener) {
-		this.actionListenerList.add(actionListener);
+		if (actionListenerList == null) {
+			actionListenerList = new ArrayList<ActionListener>();
+		}
+		actionListenerList.add(actionListener);
 	}
 	
 	public void removeActionListener(ActionListener actionListener) {
-		this.actionListenerList.remove(actionListener);
+		if (actionListenerList != null && actionListenerList.contains(actionListener)) {
+			actionListenerList.remove(actionListener);
+		}
 	}
 	
 	private void processEvent(ActionEvent e) {
+		System.out.println("called processEvent");
 		ArrayList<ActionListener> list;
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
+			// Do not worry about the cast warning here.
 			list = (ArrayList<ActionListener>) actionListenerList.clone();
 		}
 		for (int i = 0; i < list.size(); i++) {
