@@ -335,19 +335,14 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	private void processEvent(ActionEvent e) {
 		ArrayList<ActionListener> list;
-		System.out.println("icybucuytuinibtuuifyignyut");
 		synchronized (this) {
 			if (actionListenerList == null)
 				return;
 			list = (ArrayList<ActionListener>) actionListenerList.clone();
 		}
 		
-		System.out.println(list.size());
-		
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(i);
 			ActionListener listener = list.get(i);
-			System.out.println(listener.getClass());
 			listener.actionPerformed(e);
 		}
 	}
@@ -357,7 +352,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("SHold not be reached");
+
 	}
 }

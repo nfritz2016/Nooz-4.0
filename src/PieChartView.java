@@ -138,15 +138,4 @@ public class PieChartView implements ActionListener{
 		}
 		
 	}
-	
-	//TODO test main, delete leter
-	public static void main(String[] args){
-		List<NewsMedia> testList = new ArrayList<NewsMedia>();
-		testList.add(NewsMedia.TV);
-		
-		PieChartView test = new PieChartView(null, testList, NewsContent.SOURCE, NewsMetric.LENGTH);
-		
-		System.out.print(test.constructTitle());
-	}
-	
 }

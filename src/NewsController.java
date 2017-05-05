@@ -289,10 +289,6 @@ public class NewsController {
 					newsDataBaseModel.replaceNewsMakerModel(maker);
 				}
 			}
-			/*System.out.println(this.newsDataBaseModel.getNewsMakerListModel().get(maker).getName());
-			if(this.newsDataBaseModel.getNewsMakerListModel().get(maker).getName().equals("")){
-				System.out.println("empty string");
-			}*/
 		}
 	}
 	
@@ -512,7 +508,6 @@ public class NewsController {
 								     options[1]);
 		if(choice == 1) {
 			newsDataBaseModel.removeAllNewsStories();
-			System.out.println("Attempted to delete news stories");
 		}
 	}
 	
@@ -834,26 +829,18 @@ public class NewsController {
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
 				int indices[] = editNewsMakerView.getSelectedNewsStoryIndices();
 				
-				for(int i = 0; i < indices.length; ++i){
-					System.out.println(indices[i]);
-				}
-				
 				for(int index = 0; index < indices.length; ++index) {
 					if(newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
 							get(indices[index]).getNewsMaker1().equals(editNewsMakerView.newsMakerModel))
 					{
-						System.out.println("first newsmaker equal");
 						newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
 							get(indices[index]).setNewsMaker1(new NewsMakerModel());
-						System.out.println("first newsmaker set to none");
 					}
 					if(newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
 							get(indices[index]).getNewsMaker2().equals(editNewsMakerView.newsMakerModel))
 					{
-						System.out.println("second newsmaker equal");
 						newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
 							get(indices[index]).setNewsMaker2(new NewsMakerModel());
-						System.out.println("second newsmaker set to none");
 					}
 				}
 			}	
@@ -879,7 +866,6 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			if ("Add Story Button Pressed".equals(actionEvent.getActionCommand())) {
-				System.out.println("button pressed add");
 				NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
 				String source = (String) addEditNewsStoryView.jcbNewsStorySource.getSelectedItem();
 				String topic = (String) addEditNewsStoryView.jcbNewsStoryTopic.getSelectedItem();
@@ -926,13 +912,11 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					//newsDataBaseModel.addActionListener(selectionView);
-					newsDataBaseModel.addNewsStory(story);					
-					System.out.println("finished online");
+					newsDataBaseModel.addNewsStory(story);
 				}
 				viewDialog.dispose();
 			}
 			if ("Edit News Story Button Pressed".equals(actionEvent.getActionCommand())) {
-				System.out.println("button pressed edit");
 				NewsMedia type = (NewsMedia) addEditNewsStoryView.jcbNewsMediaType.getSelectedItem();
 				String source = (String) addEditNewsStoryView.jcbNewsStorySource.getSelectedItem();
 				String topic = (String) addEditNewsStoryView.jcbNewsStoryTopic.getSelectedItem();
@@ -967,15 +951,11 @@ public class NewsController {
 					story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
-					System.out.println(story);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
 					story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
 					newsMaker1.addNewsStory(story);
 					newsMaker2.addNewsStory(story);
-					//newsMaker1.addActionListener(selectionView);
-					//newsMaker2.addActionListener(selectionView);
-					System.out.println("finished online");
 				}
 				viewDialog.dispose();
 			}

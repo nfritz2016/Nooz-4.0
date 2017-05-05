@@ -253,8 +253,6 @@ public class TextView implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent actionEvent){
 		
-		System.out.println("run");
-		
 		if("Text".equals(actionEvent.getActionCommand())){
 			constructTitle();
 			constructNewsStoriesAndSummary();

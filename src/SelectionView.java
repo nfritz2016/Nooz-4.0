@@ -360,9 +360,6 @@ public class SelectionView extends JFrame implements ActionListener {
 		//Sets Model
 		this.newsDataBaseModel = newsDataBaseModel;
 		if(this.newsDataBaseModel != null) {
-			
-			System.out.println("listener added");
-			
 			newsDataBaseModel.addActionListener(this);
 		}
 		jlNewsMakerList.setModel(newsDataBaseModel.getNewsMakers());
@@ -375,8 +372,6 @@ public class SelectionView extends JFrame implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		
-		System.out.println("ran");
 		
 		if (actionEvent.getActionCommand().equals("Update Menu Items")) {
 			//Set filemenu buttons
@@ -435,7 +430,6 @@ public class SelectionView extends JFrame implements ActionListener {
 			}
 			
 		}
-		System.out.println("Action performed in sview");
 	}
 	
 	/**
