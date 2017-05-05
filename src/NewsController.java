@@ -444,6 +444,9 @@ public class NewsController {
 															criteria,
 															criteria[0]);
 		if(input != null) {	
+			ArrayList<NewsStory> stories = new ArrayList();
+			DefaultListModel<NewsStory> model = newsDataBaseModel.getNewsStories();
+			
 			List<NewsStory> listCopy = (List<NewsStory>) newsDataBaseModel.getNewsStories();
 			if(input.equals("topic")) {
 				Collections.sort(listCopy);
