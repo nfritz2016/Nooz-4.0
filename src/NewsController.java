@@ -205,6 +205,9 @@ public class NewsController {
 					System.err.println("I/O exception " + ioe.getMessage());
 				}
 			}
+			else if(returnValue == JFileChooser.CANCEL_OPTION) {
+				break;
+			}
 			
 			JOptionPane.showMessageDialog( null, combo, "Enter the data represented in this file", JOptionPane.INFORMATION_MESSAGE);
 			selectedItem = (String)combo.getSelectedItem();
@@ -229,15 +232,11 @@ public class NewsController {
 		}
 	
 	
-		if(this.newsDataBaseModel.getNewsSourceMap() != null && this.newsDataBaseModel.getNewsTopicMap() != null && this.newsDataBaseModel.getNewsSubjectMap() != null ) {
+		if(!(sourceMap.isEmpty()) && !(topicMap.isEmpty()) && !(subjectMap.isEmpty()) ) {
 			NewsDataBaseModel dataBase = NoozFileProcessor.readNoozFile(storyFile, sourceMap, topicMap, subjectMap);
 			newsDataBaseModel.setNewsMakerListModel(dataBase.getNewsMakerListModel());
 			newsDataBaseModel.setNewsStoryListModel(dataBase.getNewsStoryListModel());
 		}
-		
-		selectionView.setNewsDataBaseModel(newsDataBaseModel);
-	
-
 	}
 	
 	/**
@@ -916,7 +915,6 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.TV)) {
 					NewsStory story = new TVNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -925,7 +923,6 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
 				}
 				else if (type.equals(NewsMedia.ONLINE)) {
 					NewsStory story = new OnlineNewsStory(date, source, length, topic, subject, partOfDay, newsMaker1, newsMaker2);
@@ -935,9 +932,7 @@ public class NewsController {
 					newsMaker1.addActionListener(selectionView);
 					newsMaker2.addActionListener(selectionView);
 					//newsDataBaseModel.addActionListener(selectionView);
-					newsDataBaseModel.addNewsStory(story);
-					selectionView.setNewsDataBaseModel(newsDataBaseModel);
-					
+					newsDataBaseModel.addNewsStory(story);					
 					System.out.println("finished online");
 				}
 				viewDialog.dispose();
