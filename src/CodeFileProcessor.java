@@ -1,6 +1,8 @@
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -24,7 +26,7 @@ import java.util.TreeMap;
  * 
  */
 public class CodeFileProcessor {
-	private static Map<String, String> codeMap = new TreeMap<String, String>();
+	private static Map<String, String> codeMap = new HashMap<String, String>();
 
 	/**
 	 * The method for reading code files.

@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -107,6 +108,7 @@ public class NewsController {
 	 * @author Joe Pauly
 	 * @author Cavan Gary
 	 */
+	@SuppressWarnings("unchecked")
 	private void loadNewsData() {
 		JFileChooser fc = new JFileChooser(".");
 		int returnValue = fc.showOpenDialog(selectionView);
@@ -119,9 +121,9 @@ public class NewsController {
 				newsDataBaseModel.none = (NewsMakerModel) objectInputStream.readObject();
 				newsDataBaseModel.setNewsMakerListModel((NewsMakerListModel) objectInputStream.readObject());
 				newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) objectInputStream.readObject());
-				newsDataBaseModel.setNewsSourceMap((Map<String, String>) objectInputStream.readObject());
-				newsDataBaseModel.setNewsTopicMap((Map<String, String>) objectInputStream.readObject());
-				newsDataBaseModel.setNewsSubjectMap((Map<String, String>) objectInputStream.readObject());
+				newsDataBaseModel.setNewsSourceMap((HashMap<String, String>) objectInputStream.readObject());
+				newsDataBaseModel.setNewsTopicMap((HashMap<String, String>) objectInputStream.readObject());
+				newsDataBaseModel.setNewsSubjectMap((HashMap<String, String>) objectInputStream.readObject());
 				objectInputStream.close();
 			} 
 			catch (ClassNotFoundException cnf) {
@@ -148,7 +150,7 @@ public class NewsController {
 				fileName = fc.getSelectedFile().getCanonicalPath();
 				String[] file = fileName.split("\\\\");
 				String fileSelected = file[file.length - 1];
-				FileOutputStream fileOutputStream = new FileOutputStream(fileSelected);
+				FileOutputStream fileOutputStream = new FileOutputStream(fileName);
 				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 				objectOutputStream.writeObject(newsDataBaseModel.none);
 				objectOutputStream.writeObject(newsDataBaseModel.getNewsMakerListModel());
@@ -157,6 +159,7 @@ public class NewsController {
 				objectOutputStream.writeObject(newsDataBaseModel.getNewsTopicMap());
 				objectOutputStream.writeObject(newsDataBaseModel.getNewsSubjectMap());
 				objectOutputStream.close();
+				
 			} 
 			catch(IOException ioe) {
 				System.err.println("I/O exception: " + ioe.getMessage());
@@ -184,9 +187,9 @@ public class NewsController {
 		String[] boxElements = {"Source Codes", "Topic Codes", "Subject Codes", "News Stories"};
 		JComboBox<String> combo = new JComboBox<String>(boxElements);
 				
-		Map<String, String> sourceMap = new TreeMap<String, String>();
-		Map<String, String> topicMap = new TreeMap<String, String>();
-		Map<String, String> subjectMap = new TreeMap<String, String>();
+		Map<String, String> sourceMap = new HashMap<String, String>();
+		Map<String, String> topicMap = new HashMap<String, String>();
+		Map<String, String> subjectMap = new HashMap<String, String>();
 		String storyFile = "";
 
 		//sentinel statement
@@ -215,15 +218,15 @@ public class NewsController {
 			selectedItem = (String)combo.getSelectedItem();
 			
 			if(selectedItem.equals("Source Codes")) {
-				sourceMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				sourceMap = new HashMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
 				this.newsDataBaseModel.setNewsSourceMap(sourceMap);
 			}
 			else if(selectedItem.equals("Topic Codes")) {
-				topicMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				topicMap = new HashMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
 				this.newsDataBaseModel.setNewsTopicMap(topicMap);
 			}
 			else if(selectedItem.equals("Subject Codes")) {
-				subjectMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
+				subjectMap = new HashMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
 				this.newsDataBaseModel.setNewsSubjectMap(subjectMap);
 			}
 			else if (selectedItem.equals("News Stories")) {
@@ -246,13 +249,35 @@ public class NewsController {
 	 * @author Alex Kloppenburg
 	 * @author Joe Pauly
 	 * @author Cavan Gary
+	 * @throws IOException 
 	 */
 	//TODO write
-	private void exportNewsStories() {
+	private void exportNewsStories() throws IOException {
 		//get list of stores from textview (or another function)
-		//get output name froma jfilechooser
-		//NoozFileProcessor.writeNewsTextFile(outputFileName, listOfStories);
+				//get output name froma jfilechooser
+				
+				JFileChooser fc = new JFileChooser(".");
+				String fileName = "";
+				String singleFileName = "";
+				int returnValue = fc.showSaveDialog(selectionView);
+				if(returnValue == JFileChooser.APPROVE_OPTION) {
+					try {
+						fileName = fc.getSelectedFile().getCanonicalPath();
+						String[] files = fileName.split("\\\\");
+						singleFileName = files[files.length - 1];
+					}
+					catch(IOException ioe){
+						System.err.println("I/O exception " + ioe.getMessage());
+					}
+				}
+			
+		String listOfStories = "";
+		for(int i = 0; i < newsDataBaseModel.getNewsStoryListModel().size(); i++) {
+				listOfStories = listOfStories + "\n" + UserInterface.convertToOutputFormat(newsDataBaseModel.getNewsStories().getElementAt(i), selectedMediaTypes);
+		}
+		NoozFileProcessor.writeNewsTextFile(singleFileName, listOfStories);
 	}
+		
 	
 	/**
 	 * @author Nathan Fritz
@@ -702,7 +727,12 @@ public class NewsController {
 				importNoozStories();
 			}
 			if ("Export".equals(actionEvent.getActionCommand())) {
-				exportNewsStories();
+				try {
+					exportNewsStories();
+				} catch (IOException e) {
+				
+					e.printStackTrace();
+				}
 			}
 		}
 
