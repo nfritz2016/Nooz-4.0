@@ -380,7 +380,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		
 		if (actionEvent.getActionCommand().equals("Update Menu Items")) {
 			//Set filemenu buttons
-			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty() && this.newsDataBaseModel.getNewsMakerListModel().isEmpty()){
 				jmiLoad.setEnabled(true);
 				jmiSave.setEnabled(false);
 				jmiImport.setEnabled(true);
@@ -395,7 +395,7 @@ public class SelectionView extends JFrame implements ActionListener {
 			}
 			
 			//Set set Newsmaker Menu buttons
-			if(newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			if(newsDataBaseModel.getNewsMakerListModel().isEmpty()){
 				jmiAddNewsMaker.setEnabled(true);
 				jmiEditNewsMaker.setEnabled(false);
 				jmiDeleteNewsMaker.setEnabled(false);
@@ -425,7 +425,7 @@ public class SelectionView extends JFrame implements ActionListener {
 			}
 			
 			//Set appropriate buttons inactive initially
-			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()){
+			if(this.newsDataBaseModel.getNewsStoryListModel().isEmpty()  || this.newsDataBaseModel.getNewsMakerListModel().isEmpty()){
 				jmiPieChart.setEnabled(false);
 				jmiText.setEnabled(false);
 			}

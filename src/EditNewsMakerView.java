@@ -85,18 +85,20 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		
 		//needs code to fill the JList based on the model
 		if(this.newsMakerModel != null && this.newsDataBaseModel != null  && this.newsMakerModel.getNewsStoryListModel() != null){
-			this.jlNewsStoryList = new JList<NewsStory>(this.newsMakerModel.getNewsStoryListModel().getNewsStories());
+			System.err.println("@@@@@@@@@@@@@");
+			this.jlNewsStoryList.setModel(this.newsMakerModel.getNewsStoryListModel().getNewsStories());
 		}
 		else{
+			System.err.println("1234567890");
 			this.jlNewsStoryList = new JList<NewsStory>(this.newsDataBaseModel.getNewsStories());
 		}
 
 		jplName.add(jlbName);
 		jplName.add(jtfName);
 		
-		jtfName.setColumns(5);
-		jtfName.setEditable(true);
-		jtfName.setActionCommand("Change Newsmaker Name");
+		jtfName.setColumns(10);
+		jtfName.setText(this.newsMakerModel.getName());
+		jtfName.setActionCommand("Edit Newsmaker Name");
 		
 		jpNewsStoryList.add(jspNewsStoryList);
 		setLayout(new GridLayout(3, 1));
