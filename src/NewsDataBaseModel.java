@@ -82,7 +82,6 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * @author Nathan Fritz
 	 */
 	public String[] getNewsSources() {
-		
 		String[] sources = new String[this.newsSourceMap.size()];
 		int i = 0;
 		for (String source : this.newsSourceMap.values()) {
