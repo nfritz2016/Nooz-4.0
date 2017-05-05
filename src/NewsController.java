@@ -141,12 +141,14 @@ public class NewsController {
 	 */
 	private void saveNewsData() {
 		JFileChooser fc = new JFileChooser(".");
-		int returnValue = fc.showOpenDialog(selectionView);
+		int returnValue = fc.showSaveDialog(selectionView);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			String fileName = null;
 			try {
 				fileName = fc.getSelectedFile().getCanonicalPath();
-				FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+				String[] file = fileName.split("\\\\");
+				String fileSelected = file[file.length - 1];
+				FileOutputStream fileOutputStream = new FileOutputStream(fileSelected);
 				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 				objectOutputStream.writeObject(newsDataBaseModel.none);
 				objectOutputStream.writeObject(newsDataBaseModel.getNewsMakerListModel());
@@ -541,6 +543,7 @@ public class NewsController {
 								     options[1]);
 		if(choice == 1) {
 		newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsDataBaseModel.getNewsStoryListModel().getNewsStories());
+		System.out.println("Attempted to delete news stories");
 		}
 	}
 	
@@ -771,7 +774,6 @@ public class NewsController {
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
 				addNewsStory();
 				}
-				viewDialog.dispose();
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
 				editNewsStories();
 			}
