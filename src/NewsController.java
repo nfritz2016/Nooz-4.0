@@ -17,10 +17,6 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
-import src.NewsMakerModel;
-import src.NewsStory;
-
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
