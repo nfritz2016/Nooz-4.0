@@ -39,12 +39,12 @@ public class TextView implements ActionListener{
 	/**
 	 * 
 	 */
-	private String listOfStories = "test string story list \n\n\n\n\n";
+	private String listOfStories = "";
 	
 	/**
 	 * 
 	 */
-	private String summaryLine = "test string summary line";
+	private String summaryLine = "";
 	
 	/**
 	 * 
@@ -83,13 +83,15 @@ public class TextView implements ActionListener{
 		this.jfText.add(jtaSummaryLine);
 		//Set title
 		this.jfText.setTitle(constructTitle());
-		//Add news stories to the scroll pane
-		this.jtaNewsStoryList.append(this.listOfStories);
-		//Add summary line to the JTextArea
-		this.jtaSummaryLine.append(this.summaryLine);
+		//Fill textareas
+		constructNewsStoriesAndSummary();
+		//Set uneditable
+		jtaNewsStoryList.setEditable(false);
+		jtaSummaryLine.setEditable(false);
 		
 		//pack the frame and set visible
 		this.jfText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.jfText.setLocationRelativeTo(null);
 		this.jfText.pack();
 		this.jfText.setVisible(true);
 		
@@ -247,20 +249,12 @@ public class TextView implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent actionEvent){
 		
+		System.out.println("run");
+		
 		if("Text".equals(actionEvent.getActionCommand())){
 			constructTitle();
 			constructNewsStoriesAndSummary();
 		}
 		
 	}
-	
-	//TODO main method just for testing, delete later
-	public static void main(String[] args){
-		NewsMakerModel test1 = null;
-		List<NewsMedia> test2 = null;
-		List<SortCriterion> test3 = new ArrayList<SortCriterion>();
-		test3.add(SortCriterion.DATE_TIME);
-		new TextView(test1, test2, test3);
-	}
-
 }

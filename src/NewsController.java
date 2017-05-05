@@ -660,10 +660,13 @@ public class NewsController {
                 }
 
                 // Get sort criteria using JOptionPane.
-                List<SortCriterion> selectedSortCriteria = null;
-                selectedSortCriteria = (List<SortCriterion>) JOptionPane.showInputDialog(selectionView,
-                        "Sort news stories based on which criteria?", newsMakerName, JOptionPane.PLAIN_MESSAGE, null,
-                        SortCriterion.values(), NewsContent.TOPIC);
+                List<SortCriterion> selectedSortCriteria = new ArrayList<SortCriterion>();
+                for(int i = 0; i < 4; ++i){
+                	SortCriterion selectedSortCriterion = (SortCriterion)JOptionPane.showInputDialog(selectionView,
+                			"Sort news stories based on which criteria?", newsMakerName, JOptionPane.PLAIN_MESSAGE, null,
+                			SortCriterion.values(), NewsContent.TOPIC);
+                	selectedSortCriteria.add(selectedSortCriterion);
+            	}
                 if (null == selectedSortCriteria) {
                     continue;
                 }
