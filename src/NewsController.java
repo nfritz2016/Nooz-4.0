@@ -444,9 +444,8 @@ public class NewsController {
 															null,
 															criteria,
 															criteria[0]);
-		if(input != null) {
+		if(input != null) {	
 			List<NewsStory> listCopy = (List<NewsStory>) newsDataBaseModel.getNewsStories();
-			
 			if(input.equals("topic")) {
 				Collections.sort(listCopy);
 			}
@@ -467,9 +466,9 @@ public class NewsController {
 			else {
 				Collections.sort(listCopy, SubjectComparator.SUBJECT_COMPARATOR);
 			}
-			
 			newsDataBaseModel.setNewsStoryListModel((NewsStoryListModel) listCopy);
 		}
+		
 
 	}
 	
