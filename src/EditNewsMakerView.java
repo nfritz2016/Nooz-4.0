@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
@@ -81,7 +82,6 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		this.newsDataBaseModel = newsDataBaseModel;
 		this.newsMakerModel = newsMakerModel;
 		this.newsDataBaseModel.addNewsMakerModel(this.newsMakerModel);
-		this.jbtRemoveFromStory.setActionCommand("Remove From Story");
 		
 		//needs code to fill the JList based on the model
 		if(this.newsMakerModel != null && this.newsDataBaseModel != null  && this.newsMakerModel.getNewsStoryListModel() != null){
@@ -93,10 +93,16 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 
 		jplName.add(jlbName);
 		jplName.add(jtfName);
+		
+		jtfName.setColumns(5);
+		jtfName.setEditable(true);
+		jtfName.setActionCommand("Change Newsmaker Name");
+		
 		jpNewsStoryList.add(jspNewsStoryList);
-		setLayout(new BorderLayout(1, 2));
+		setLayout(new GridLayout(3, 1));
 		add(jplName);
 		add(jpNewsStoryList);
+		add(jbtRemoveFromStory);
 		jbtRemoveFromStory.setActionCommand("Remove From Story");
 		enableRemovalButton();
 	}

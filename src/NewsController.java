@@ -316,7 +316,8 @@ public class NewsController {
 				this.viewDialog = new JDialog(selectionView, "Editing News Makers", true);
 				this.viewDialog.add(editNewsMakerView);
 				this.viewDialog.setResizable(false);
-				this.viewDialog.pack();getClass();
+				this.viewDialog.pack();
+				//getClass();
 				this.viewDialog.setVisible(true);
 			}
 		}
