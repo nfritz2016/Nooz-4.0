@@ -670,10 +670,8 @@ public class NewsController {
                 			SortCriterion.values(), NewsContent.TOPIC);
                 	selectedSortCriteria.add(selectedSortCriterion);
             	}
-                if (null == selectedSortCriteria) {
-                    continue;
-                }
-
+                
+                
                 // Create the text view.
                 TextView textView = new TextView(newsMakerModel, selectedMediaTypes, selectedSortCriteria);
 
