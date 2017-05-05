@@ -377,7 +377,7 @@ public class NewsController {
 		this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, null);
 		AddEditNewsStoryListener listener = new AddEditNewsStoryListener();
 		this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(listener);
-		this.viewDialog = new JDialog(selectionView, "Adding News Maker", true);
+		this.viewDialog = new JDialog(selectionView, "Adding News Story", true);
 		this.viewDialog.add(addEditNewsStoryView);
 		this.viewDialog.setResizable(false);
 		this.viewDialog.pack();
@@ -406,7 +406,7 @@ public class NewsController {
 			for(int index = 0; index < list.size(); ++index) {
 			this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, list.get(index));
 			this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(new AddEditNewsStoryListener());
-			this.viewDialog = new JDialog(selectionView, "Editing News Maker", true);
+			this.viewDialog = new JDialog(selectionView, "Editing News Story", true);
 			this.viewDialog.add(addEditNewsStoryView);
 			this.viewDialog.setResizable(false);
 			this.viewDialog.pack();
@@ -512,17 +512,7 @@ public class NewsController {
 	 */
 	//TODO write
 	private void deleteNewsStories() {
-		int [] stories = selectionView.getSelectedNewsStories();
-		if(stories.length == 0) {
-			JOptionPane.showMessageDialog(null, "No news stories have been selected.");
-		}
-		else {
-			DefaultListModel<NewsStory> newsStories = new DefaultListModel<NewsStory>();
-			for(int location: stories) {
-			newsStories.add(location, newsDataBaseModel.getNewsStoryListModel().getNewsStories().get(location));
-			}
-			newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsStories);
-		}
+		
 	}
 	
 	/**
@@ -542,8 +532,8 @@ public class NewsController {
 								     options,
 								     options[1]);
 		if(choice == 1) {
-		newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsDataBaseModel.getNewsStoryListModel().getNewsStories());
-		System.out.println("Attempted to delete news stories");
+			newsDataBaseModel.removeAllNewsStories();
+			System.out.println("Attempted to delete news stories");
 		}
 	}
 	
@@ -864,7 +854,7 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
-			deleteNewsMakers();
+				deleteNewsMakers();
 			}
 			
 		}

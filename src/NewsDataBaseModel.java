@@ -230,8 +230,8 @@ public class NewsDataBaseModel implements ActionListener, Serializable{
 	 * @author Alex Kloppenburg
 	 */
 	public void removeAllNewsMakers() {
-		this.newsMakerListModel.removeAllNewsMakers();
-		this.newsMakerListModel.add(none);
+		this.removeAllNewsMakers();
+		this.addNewsMakerModel(none);
 		processEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Update Menu Items"));
 	}
 	
