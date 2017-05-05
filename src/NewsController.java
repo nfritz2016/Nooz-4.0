@@ -238,6 +238,8 @@ public class NewsController {
 			newsDataBaseModel.setNewsMakerListModel(dataBase.getNewsMakerListModel());
 			newsDataBaseModel.setNewsStoryListModel(dataBase.getNewsStoryListModel());
 		}
+		
+		newsDataBaseModel.sortNewsMakerListModel();
 	}
 	
 	/**
@@ -303,15 +305,14 @@ public class NewsController {
 	//TODO NOT SURE HOW TO USE THIS VIEW
 	private void editNewsMakers() {
 		int [] makers = selectionView.getSelectedNewsMakers();
-		NewsMakerListModel newsMakerListModel = this.newsDataBaseModel.getNewsMakerListModel();
 		if(makers.length == 0) {
 			JOptionPane.showMessageDialog(null, "No news makers have been selected.");
 		}
 		else {
 			for(int index: makers) {
-				NewsMakerModel newsMakerModel = newsMakerListModel.get(index);
-				String newsMakerName = newsMakerModel.getName();
-				this.editNewsMakerView = new EditNewsMakerView(newsMakerModel, this.newsDataBaseModel);
+				String newsMakerName = this.newsDataBaseModel.getNewsMakerListModel().get(index).getName();
+				this.editNewsMakerView = new EditNewsMakerView(this.newsDataBaseModel.getNewsMakerListModel().get(index), 
+						this.newsDataBaseModel);
 				this.editNewsMakerView.jbtRemoveFromStory.addActionListener(new RemoveNewsMakerFromNewStoriesListener());
 				this.editNewsMakerView.jtfName.addActionListener(new EditNewsMakerNameListener());
 				this.viewDialog = new JDialog(selectionView, "Editing News Makers", true);
@@ -321,6 +322,8 @@ public class NewsController {
 				//getClass();
 				this.viewDialog.setVisible(true);
 			}
+			
+			
 		}
 	}
 	
@@ -779,7 +782,7 @@ public class NewsController {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {	
 			//before we do this we need to add an if statement for the listener
-			if ("Edit NewsMaker".equals(actionEvent.getActionCommand())) {
+			if ("Edit Newsmaker Name".equals(actionEvent.getActionCommand())) {
 				NewsMakerModel maker = new NewsMakerModel(editNewsMakerView.jtfName.getText());
 				if(newsDataBaseModel.getNewsMakerListModel().contains(maker)){
 					String[] options = {"No", "Yes"};
@@ -820,15 +823,26 @@ public class NewsController {
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
 				int indices[] = editNewsMakerView.getSelectedNewsStoryIndices();
 				
+				for(int i = 0; i < indices.length; ++i){
+					System.out.println(indices[i]);
+				}
+				
 				for(int index = 0; index < indices.length; ++index) {
-					NewsStory story = newsDataBaseModel.getNewsStoryListModel().get(index);
-					if(story.getNewsMaker1().equals(editNewsMakerView.newsMakerModel))
+					if(newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
+							get(indices[index]).getNewsMaker1().equals(editNewsMakerView.newsMakerModel))
 					{
-						story.setNewsMaker1(new NewsMakerModel(null));
+						System.out.println("first newsmaker equal");
+						newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
+							get(indices[index]).setNewsMaker1(new NewsMakerModel());
+						System.out.println("first newsmaker set to none");
 					}
-					if(story.getNewsMaker2().equals(editNewsMakerView.newsMakerModel))
+					if(newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
+							get(indices[index]).getNewsMaker2().equals(editNewsMakerView.newsMakerModel))
 					{
-						story.setNewsMaker2(new NewsMakerModel(null));
+						System.out.println("second newsmaker equal");
+						newsDataBaseModel.getNewsMakerListModel().get(editNewsMakerView.newsMakerModel).getNewsStoryListModel().
+							get(indices[index]).setNewsMaker2(new NewsMakerModel());
+						System.out.println("second newsmaker set to none");
 					}
 				}
 			}	
