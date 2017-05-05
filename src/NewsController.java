@@ -338,11 +338,10 @@ public class NewsController {
 			JOptionPane.showMessageDialog(null, "No news makers have been selected.");
 		}
 		else {
-		NewsMakerListModel list = new NewsMakerListModel();
-		for(int index = 0; index < newsDataBaseModel.getNewsMakerListModel().size(); ++index) {
-				list.add(newsDataBaseModel.getNewsMakerListModel().get(index));
-		}
-		newsDataBaseModel.getNewsMakerListModel().removeListOfNewsMakers(list.getNewsMakers());
+			int[] indices = selectionView.getSelectedNewsMakers();
+			for(int index = 0; index < indices.length; ++index){
+				newsDataBaseModel.getNewsMakerListModel().remove(newsDataBaseModel.getNewsMakerListModel().get(index));
+			}
 		}
 	}
 	
