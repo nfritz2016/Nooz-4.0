@@ -220,7 +220,7 @@ public class NewsController {
 			}
 			else if(selectedItem.equals("Topic Codes")) {
 				topicMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
-				this.newsDataBaseModel.setNewsSourceMap(topicMap);
+				this.newsDataBaseModel.setNewsTopicMap(topicMap);
 			}
 			else if(selectedItem.equals("Subject Codes")) {
 				subjectMap = new TreeMap<String, String> (CodeFileProcessor.readCodeFile(singleFileName));
