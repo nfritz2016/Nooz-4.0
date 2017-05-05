@@ -3,8 +3,7 @@ import java.util.List;
 
 /**
  * 
- * @author Cavan Gary
- *
+ * @author Cavan Gary - 113388151
  */
 public enum NewsMedia {
 	

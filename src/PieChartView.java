@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 
- * @author Alex Kloppenburg
+ * @author Alex Kloppenburg - 113388722
  *
  */
 public class PieChartView implements ActionListener{

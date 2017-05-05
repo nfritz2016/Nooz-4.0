@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author Nathan Fritz
+ * @author Nathan Fritz - 113294199
  */
 public class NewsMakerModel implements Serializable, Comparable<NewsMakerModel> {
 	

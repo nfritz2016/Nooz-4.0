@@ -12,10 +12,11 @@ import java.util.ArrayList;
  * the story, and two lead news makers in the story.
  * </P>
  * 
+* @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  * @author Dean Hougen
- * @author Cavan Gary
- * @author Alex Kloppenburg
- * @version 2.0
  * 
  */
 abstract class NewsStory implements Comparable<NewsStory>, Serializable {

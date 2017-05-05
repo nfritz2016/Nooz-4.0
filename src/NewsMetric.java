@@ -2,8 +2,7 @@
  * Enumeration to distinguish what each metric of a given story is. Can 
  * be either length or count.
  * 
- * @author Cavan Gary
- *
+ * @author Cavan Gary - 113388151
  */
 public enum NewsMetric {
 	

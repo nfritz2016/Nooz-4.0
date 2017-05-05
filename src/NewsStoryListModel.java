@@ -3,7 +3,7 @@ import java.io.Serializable;
 import javax.swing.DefaultListModel;
 
 /**
- * @author Nathan Fritz
+ * @author Nathan Fritz - 113294199
  */
 public class NewsStoryListModel implements Serializable {
 	
