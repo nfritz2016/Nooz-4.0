@@ -3,8 +3,10 @@
  * the user can choose from when looking through News Stories.
  * Includes source, topic, subject, length, and Date/Time.
  * 
- * @author Cavan Gary
- *
+ * @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public enum SortCriterion {
 	

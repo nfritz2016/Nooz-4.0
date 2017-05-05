@@ -19,8 +19,7 @@ import java.time.LocalDate;
  * </P>
  * 
  * @author Dean Hougen
- * @author Cavan Gary
- * @version 3.0
+ * @author Cavan Gary - 113388151
  * 
  */
 public class NewspaperStory extends NewsStory implements Serializable {

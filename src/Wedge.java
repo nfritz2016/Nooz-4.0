@@ -4,9 +4,10 @@
  * wedge and the text to associate with that wedge.
  * 
  * @author Dean Hougen
- * @author Nathan Fritz
- * @author Alex Kloppenburg
- * @version 1.0
+ * @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class Wedge {
 	

@@ -10,8 +10,10 @@ import java.util.Comparator;
  * </P>
  * 
  * @author Dean Hougen
- * @version 1.0
- * 
+ * @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class SourceComparator implements Comparator<NewsStory> {
 	

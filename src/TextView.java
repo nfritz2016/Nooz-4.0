@@ -13,7 +13,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- * @author Alex Kloppenburg
+ * @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  */
 public class TextView implements ActionListener{
 	

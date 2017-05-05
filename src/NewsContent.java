@@ -3,7 +3,10 @@
  * available to display to the user.
  * Includes source, topic and subject.
  * 
- * @author Cavan Gary
+ * @author Nathan Fritz - 113294199
+ * @author Alex Kloppenburg - 113388722
+ * @author Joe Pauly - 112909034
+ * @author Cavan Gary - 113388151
  *
  */
 public enum NewsContent {

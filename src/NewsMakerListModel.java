@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
- * @author Nathan Fritz
+ * @author Nathan Fritz - 113294199
  */
 public class NewsMakerListModel implements Serializable {
 	

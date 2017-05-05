@@ -24,8 +24,7 @@ import java.time.LocalDate;
  * </P>
  * 
  * @author Dean Hougen
- * @author Cavan Gary
- * @version 1.0
+ * @author Cavan Gary - 113388151
  * 
  */
 public class OnlineNewsStory extends NewsStory implements Serializable {
