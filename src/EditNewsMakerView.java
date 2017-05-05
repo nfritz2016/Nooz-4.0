@@ -98,7 +98,7 @@ public class EditNewsMakerView extends JPanel implements ActionListener, Seriali
 		
 		jtfName.setColumns(10);
 		jtfName.setText(this.newsMakerModel.getName());
-		jtfName.setActionCommand("Change Newsmaker Name");
+		jtfName.setActionCommand("Edit Newsmaker Name");
 		
 		jpNewsStoryList.add(jspNewsStoryList);
 		setLayout(new GridLayout(3, 1));
