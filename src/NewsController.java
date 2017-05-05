@@ -342,7 +342,7 @@ public class NewsController {
 		else {
 			int[] indices = selectionView.getSelectedNewsMakers();
 			for(int index = 0; index < indices.length; ++index){
-				newsDataBaseModel.getNewsMakerListModel().remove(newsDataBaseModel.getNewsMakerListModel().get(index));
+				newsDataBaseModel.getNewsMakerListModel().remove(newsDataBaseModel.getNewsMakerListModel().get(indices[index]));
 			}
 		}
 	}
@@ -365,6 +365,7 @@ public class NewsController {
 								     options[1]);
 		if(choice == 1) {
 			newsDataBaseModel.getNewsMakerListModel().removeAllNewsMakers();
+			newsDataBaseModel.getNewsMakerListModel().add(newsDataBaseModel.none);
 		}
 	}
 	
@@ -482,6 +483,17 @@ public class NewsController {
 	 */
 	//TODO write
 	private void deleteNewsStories() {
+		
+		int [] stories = selectionView.getSelectedNewsStories();
+		if(stories.length == 0) {
+			JOptionPane.showMessageDialog(null, "No news stories have been selected.");
+		}
+		else {
+			int[] indices = selectionView.getSelectedNewsStories();
+			for(int index = 0; index < indices.length; ++index){
+				newsDataBaseModel.getNewsStoryListModel().remove(newsDataBaseModel.getNewsStoryListModel().get(indices[index]));
+			}
+		}
 		
 	}
 	
