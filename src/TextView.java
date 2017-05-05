@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,17 +50,17 @@ public class TextView implements ActionListener{
 	/**
 	 * 
 	 */
-	private JTextArea jtaNewsStoryList = new JTextArea(listOfStories);
+	private JTextArea jtaNewsStoryList;
 	
 	/**
 	 * 
 	 */
-	private JScrollPane jspNewsStoryList = new JScrollPane(jtaNewsStoryList);
+	private JScrollPane jspNewsStoryList;
 	
 	/**
 	 * 
 	 */
-	private JTextArea jtaSummaryLine = new JTextArea(summaryLine);
+	private JTextArea jtaSummaryLine;
 	
 	/**
 	 * @author Alex Kloppenburg
@@ -72,11 +73,15 @@ public class TextView implements ActionListener{
 		this.newsMakerModel = newsMakerModel;
 		this.newsMedia = newsMedia;
 		this.sortCriteria = sortCriteria;
+		constructNewsStoriesAndSummary();
 		
 		//GUI stuff
 		//TODO find right layout to make this look good
 		//Set layout
 		this.jfText.setLayout(new GridLayout(2, 1, 0, 0));
+		jtaNewsStoryList = new JTextArea(listOfStories);
+		jspNewsStoryList = new JScrollPane(jtaNewsStoryList);
+		jtaSummaryLine = new JTextArea(summaryLine);
 		//Add scroll pane to frame
 		this.jfText.add(jspNewsStoryList);
 		//add summary line JTextArea to frame
@@ -84,7 +89,6 @@ public class TextView implements ActionListener{
 		//Set title
 		this.jfText.setTitle(constructTitle());
 		//Fill textareas
-		constructNewsStoriesAndSummary();
 		//Set uneditable
 		jtaNewsStoryList.setEditable(false);
 		jtaSummaryLine.setEditable(false);
