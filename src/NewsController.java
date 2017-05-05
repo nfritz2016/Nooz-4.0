@@ -390,30 +390,38 @@ public class NewsController {
 	 */
 	//TODO write
 	private void editNewsStories() {
-		int [] stories = selectionView.getSelectedNewsStories();
-		NewsStoryListModel list = new NewsStoryListModel();
-		for(int index = 0; index < newsDataBaseModel.getNewsMakerListModel().size(); ++index) {
-			list.add(newsDataBaseModel.getNewsStoryListModel().get(stories[index]));
-		}
-		if(stories.length == 0) {
+		int [] indicies = selectionView.getSelectedNewsStories();
+		if(indicies.length == 0) {
 			JOptionPane.showMessageDialog(null, "No news stories have been selected.");
 		}
-
-
 		else {
-			for(int index = 0; index < list.size(); ++index) {
-			NewsStory selectedStory = list.get(index);
-			this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, selectedStory);
-			AddEditNewsStoryListener listener = new AddEditNewsStoryListener();
-			this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(listener);
-			this.viewDialog = new JDialog(selectionView, "Editing News Story", true);
-			this.viewDialog.add(addEditNewsStoryView);
-			this.viewDialog.setResizable(false);
-			this.viewDialog.pack();
-			this.viewDialog.setVisible(true);
+			NewsStoryListModel list = this.newsDataBaseModel.getNewsStoryListModel();
+			for(int index : indicies) {
+				NewsStory selectedStory = list.get(index);
+				this.addEditNewsStoryView = new AddEditNewsStoryView(this.newsDataBaseModel, selectedStory);
+				AddEditNewsStoryListener listener = new AddEditNewsStoryListener();
+				this.addEditNewsStoryView.jbtAddEditNewsStory.addActionListener(listener);
+				this.viewDialog = new JDialog(selectionView, "Editing News Story", true);
+				this.viewDialog.add(addEditNewsStoryView);
+				this.viewDialog.setResizable(false);
+				this.viewDialog.pack();
+				this.viewDialog.setVisible(true);
 			}
-
 		}
+		
+		/*int[] indices = selectionView.getSelectedNewsMakers();
+
+        // If there are no selected news makers, alert the user and return.
+        if (0 == indices.length) {
+            JOptionPane.showMessageDialog(selectionView, "No newsmaker selected.", "Invalid Selection",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            // If there are selected news makers, go through the process for each.
+            NewsMakerListModel newsMakerListModel = this.newsDataBaseModel.getNewsMakerListModel();
+            for (int index : indices) {
+                NewsMakerModel newsMakerModel = newsMakerListModel.get(index);
+                String newsMakerName = newsMakerModel.getName();
+                */
 	}
 	
 	/**
