@@ -75,8 +75,8 @@ class UserInterface {
 			}
 		}
 		// If the type is TV news, use seconds (from length)
-		else if ((mediaType != null && (mediaType.contains(NewsMedia.TV) && !(mediaType.contains(NewsMedia.ONLINE) && 
-				mediaType.contains(NewsMedia.NEWSPAPER))))) {
+		else if (mediaType != null && mediaType.contains(NewsMedia.TV) && !mediaType.contains(NewsMedia.ONLINE) && 
+				!mediaType.contains(NewsMedia.NEWSPAPER)) {
 			storyString += date.getMonth().getDisplayName(TextStyle.FULL, Locale.US) + " " + date.getDayOfMonth() + ", "
 					+ date.getYear() + "; " + newsStory.getSource() + "; " + newsStory.getLength() + " seconds; "
 					+ newsStory.getTopic() + "; " + newsStory.getSubject() + "; "
