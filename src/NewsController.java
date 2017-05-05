@@ -540,6 +540,7 @@ public class NewsController {
 								     options[1]);
 		if(choice == 1) {
 		newsDataBaseModel.getNewsStoryListModel().removeListOfNewsStories(newsDataBaseModel.getNewsStoryListModel().getNewsStories());
+		System.out.println("Attempted to delete news stories");
 		}
 	}
 	
@@ -767,7 +768,6 @@ public class NewsController {
 			if ("Add News Story".equals(actionEvent.getActionCommand())) {
 				addNewsStory();
 				}
-				viewDialog.dispose();
 			if ("Edit News Story".equals(actionEvent.getActionCommand())) {
 				editNewsStories();
 			}
