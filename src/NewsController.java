@@ -18,6 +18,9 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import src.NewsMakerModel;
+import src.NewsStory;
+
 /**
  * @author Nathan Fritz
  * @author Alex Kloppenburg
@@ -849,13 +852,23 @@ public class NewsController {
 	 * @author Cavan Gary
 	 */
 	public class RemoveNewsMakerFromNewStoriesListener implements ActionListener {
-		//TODO write
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 			if("Remove From Story".equals(actionEvent.getActionCommand())){
-				deleteNewsMakers();
-			}
-			
+				int indices[] = editNewsMakerView.getSelectedNewsStoryIndices();
+				
+				for(int index = 0; index < indices.length; ++index) {
+					NewsStory story = newsDataBaseModel.getNewsStoryListModel().get(index);
+					if(story.getNewsMaker1().equals(editNewsMakerView.newsMakerModel))
+					{
+						story.setNewsMaker1(new NewsMakerModel(null));
+					}
+					if(story.getNewsMaker2().equals(editNewsMakerView.newsMakerModel))
+					{
+						story.setNewsMaker2(new NewsMakerModel(null));
+					}
+				}
+			}	
 		}
 	}
 	
